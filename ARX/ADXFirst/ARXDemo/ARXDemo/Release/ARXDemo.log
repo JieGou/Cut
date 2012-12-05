@@ -1,0 +1,27 @@
+﻿Build started 2012/12/2 7:03:23.
+     1>Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\ARXDemo\ARXDemo.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\ARXDemo.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+         All outputs are up-to-date.
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\Win32\Release\ARXDemo.arx" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\ObjectARX 2013\lib-Win32" rxapi.lib acdb19.lib /DEF:"C:\ObjectARX 2013\inc\AcRxDefault.def" /MANIFEST /ManifestFile:"Release\ARXDemo.arx.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\Win32\Release\ARXDemo.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\Win32\Release\ARXDemo.lib" /MACHINE:X86 /DLL Release\ARXDemo.obj
+         Release\dllmain.obj
+         Release\stdafx.obj
+            Creating library C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\Win32\Release\ARXDemo.lib and object C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\Win32\Release\ARXDemo.exp
+         Generating code
+         Finished generating code
+     1>rxapi.lib(libinit.obj) : warning LNK4099: PDB 'rxapi_cl.pdb' was not found with 'rxapi.lib(libinit.obj)' or at 'C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\Win32\Release\rxapi_cl.pdb'; linking object as if no debug info
+         ARXDemo.vcxproj -> C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\Win32\Release\ARXDemo.arx
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\Win32\Release\ARXDemo.arx;#2" /manifest Release\ARXDemo.arx.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\ARXDemo.unsuccessfulbuild".
+         Touching "Release\ARXDemo.lastbuildstate".
+     1>Done Building Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\ARXDemo\ARXDemo.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.82

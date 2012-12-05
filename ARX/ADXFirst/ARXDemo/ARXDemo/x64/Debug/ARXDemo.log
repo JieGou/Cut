@@ -1,0 +1,27 @@
+﻿Build started 2012/12/5 6:58:56.
+     1>Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\ARXDemo\ARXDemo.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\Debug\ARXDemo.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\ObjectARX 2013\inc-x64" /I"C:\ObjectARX 2013\inc" /Zi /nologo /W1 /WX- /Od /D WIN64 /D _DEBUG /D _WINDOWS /D _USRDLL /D ARXDEMO_EXPORTS /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt CutCommandMgr.cpp
+         CutCommandMgr.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Debug\ARXDemo.arx" /NOLOGO /LIBPATH:"C:\ObjectARX 2013\lib-x64" ac1st19.lib acad.lib acapp.lib acapp_crx.lib AcCamera.lib accore.lib acdb19.lib acdbmgd.lib AcDbPointCloudObj.lib AcFdEval.lib AcFdUi.lib acge19.lib acgiapi.lib acismobj19.lib acModelDocObj.lib AcMPolygonObj19.lib AcPublish_crx.lib AcSceneOE.lib AcTc.lib AcTcUi.lib acui19.lib AdApplicationFrame.lib adui19.lib aNav.lib aseapi19.lib asiapi19.lib axdb.lib rxapi.lib /DEF:"C:\ObjectARX 2013\inc\AcRxDefault.def" /MANIFEST /ManifestFile:"x64\Debug\ARXDemo.arx.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Debug\ARXDemo.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Debug\ARXDemo.lib" /MACHINE:X64 /DLL x64\Debug\ARXDemo.obj
+         x64\Debug\CutCommandMgr.obj
+         x64\Debug\dllmain.obj
+         x64\Debug\stdafx.obj
+         LINK : C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Debug\ARXDemo.arx not found or not built by the last incremental link; performing full link
+            Creating library C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Debug\ARXDemo.lib and object C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Debug\ARXDemo.exp
+     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>rxapi.lib(libinit.obj) : warning LNK4099: PDB 'rxapi_cl.pdb' was not found with 'rxapi.lib(libinit.obj)' or at 'C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Debug\rxapi_cl.pdb'; linking object as if no debug info
+         ARXDemo.vcxproj -> C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Debug\ARXDemo.arx
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Debug\ARXDemo.arx;#2" /manifest x64\Debug\ARXDemo.arx.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "x64\Debug\ARXDemo.unsuccessfulbuild".
+         Touching "x64\Debug\ARXDemo.lastbuildstate".
+     1>Done Building Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\ARXDemo\ARXDemo.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.10

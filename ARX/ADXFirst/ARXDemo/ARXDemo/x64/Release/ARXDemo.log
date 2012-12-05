@@ -1,0 +1,22 @@
+﻿Build started 2012/12/2 7:05:32.
+     1>Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\ARXDemo\ARXDemo.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "x64\Release\ARXDemo.unsuccessfulbuild".
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Release\ARXDemo.arx" /NOLOGO /LIBPATH:"C:\ObjectARX 2013\lib-x64" rxapi.lib acdb19.lib /DEF:"C:\ObjectARX 2013\inc\AcRxDefault.def" /MANIFEST /ManifestFile:"x64\Release\ARXDemo.arx.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Release\ARXDemo.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Release\ARXDemo.lib" /MACHINE:X64 /DLL x64\Release\ARXDemo.obj
+         x64\Release\dllmain.obj
+         x64\Release\stdafx.obj
+            Creating library C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Release\ARXDemo.lib and object C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Release\ARXDemo.exp
+         ARXDemo.vcxproj -> C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Release\ARXDemo.arx
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\x64\Release\ARXDemo.arx;#2" /manifest x64\Release\ARXDemo.arx.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\ARXDemo.unsuccessfulbuild".
+         Touching "x64\Release\ARXDemo.lastbuildstate".
+     1>Done Building Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\ADXFirst\ARXDemo\ARXDemo\ARXDemo.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.28
