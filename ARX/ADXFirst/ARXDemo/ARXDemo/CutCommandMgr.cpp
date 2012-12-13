@@ -7,6 +7,18 @@
 
 #include <adsdlg.h>
 
+#include <dbapserv.h>
+
+#include <dbregion.h>
+
+#include <gepnt3d.h>
+
+//symbol table
+#include <dbsymtb.h>
+
+//3D Object
+#include <dbsol3d.h>
+
 typedef map<string,string>::iterator CommandIterator;
 
 CutCommandMgr* CutCommandMgr::mInstance = NULL;
@@ -31,6 +43,26 @@ CutCommandMgr* CutCommandMgr::instance()
 	}
 
 	return mInstance;
+}
+
+AcDbObjectId PostToModelSpace(AcDbEntity* pEnt)
+{
+	AcDbBlockTable *pBlockTable;
+	acdbHostApplicationServices()->workingDatabase()
+		->getBlockTable(pBlockTable, AcDb::kForRead);
+
+	AcDbBlockTableRecord *pBlockTableRecord;
+	pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRecord,
+	AcDb::kForWrite);
+
+	AcDbObjectId entId;
+	pBlockTableRecord->appendAcDbEntity(entId, pEnt);
+
+	pBlockTable->close();
+	pBlockTableRecord->close();
+	pEnt->close();
+
+	return entId;
 }
 
 void drawLine()
@@ -87,6 +119,40 @@ void fillPoint()
 	acutPrintf(L"DONE! Fill points.\n");
 }
 
+void moveToBottom(AcDbEntity* pEntry)
+{
+	AcGeVector3d vec(-8,10,0);
+
+	AcGeMatrix3d moveMatrix;
+	moveMatrix.setToTranslation(vec);
+
+	pEntry->transformBy(moveMatrix);
+}
+
+void drawCylinder()
+{
+	// 创建特定参数的圆柱体（实际上最后一个参数决定了实体是一个圆锥体还是圆柱） 
+	AcDb3dSolid *pSolid = new AcDb3dSolid(); 
+	pSolid->createFrustum(30, 10, 10, 10);
+
+	// 将圆锥体添加到模型空间
+	PostToModelSpace(pSolid);
+
+	//创建切面
+	AcGePlane plane;
+    plane.set(AcGePoint3d(8,0,0),AcGeVector3d(1,0,0));
+
+	//得到实体与切面相切的截面
+	AcDbRegion *pSelectionRegion = NULL;
+	pSolid->getSection(plane, pSelectionRegion);
+
+	//将其移动到YZ平面
+	moveToBottom(pSelectionRegion);
+	
+	//将截面加入到模型空间
+	PostToModelSpace(pSelectionRegion);
+}
+
 void CutCommandMgr::registerCommands()
 {
 	acutPrintf(L"Begin register all commands supported, amount is [%d].\n",this->mSupportCommands.size());
@@ -95,10 +161,15 @@ void CutCommandMgr::registerCommands()
 	{
 		acutPrintf(L"\n");
 
+		//画直线
 		acedRegCmds->addCommand(CMD_CUT_GROUP,CMD_CUT_DRAWLINE,CMD_CUT_DRAWLINE,ACRX_CMD_TRANSPARENT,drawLine);
 	}
 
+	//填出对话框
 	acedRegCmds->addCommand(CMD_CUT_GROUP,CMD_CUT_FILLPOINT,CMD_CUT_FILLPOINT,ACRX_CMD_TRANSPARENT,fillPoint);
+
+	//画圆柱体
+	acedRegCmds->addCommand(CMD_CUT_GROUP,CMD_LMHS_DRAW_CYLINDER,CMD_LMHS_DRAW_CYLINDER,ACRX_CMD_TRANSPARENT,drawCylinder);
 
 	acutPrintf(L"DONE! Register all commands supported.\n",this->mSupportCommands.size());
 }

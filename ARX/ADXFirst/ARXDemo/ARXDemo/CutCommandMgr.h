@@ -5,6 +5,8 @@
 
 #define CMD_CUT_FILLPOINT L"fillpoint"
 
+#define CMD_LMHS_DRAW_CYLINDER L"yuanzhu"
+
 #include <map>
 #include <string>
 
