@@ -6,6 +6,8 @@
 #include "AsdkAcUiDialogSample.h"
 #include "AcExtensionModule.h"
 
+#include "LMALineConfigManagerDialog.h"
+
 typedef map<wstring,AcRxFunctionPtr>::const_iterator CommandIterator;
 
 CommandManager* CommandManager::gCmdManager = NULL;
@@ -14,9 +16,6 @@ const WCHAR* CommandManager::CMD_GROUP = L"LMA_CMD_GROUP";
 const WCHAR* CommandManager::CMD_LINE_CONFIG = L"LMA_CONFIG";
 const WCHAR* CommandManager::CMD_LINE_INPUT = L"LMA_INPUT";
 const WCHAR* CommandManager::CMD_LIEN_CUT = L"LMA_CUT";
-
-// Define the sole extension module object.
-//AC_IMPLEMENT_EXTENSION_MODULE(theArxDLL);
 
 CommandManager* CommandManager::instance()
 {
@@ -76,7 +75,7 @@ void CommandManager::UnRegisterCommand() const
 void CommandManager::ShowConfigDialog()
 {
 	// Modal
-    AsdkAcUiDialogSample dlg(CWnd::FromHandle(adsw_acadMainWnd()));
-    INT_PTR nReturnValue = dlg.DoModal();
+	LMALineConfigManagerDialog dlg(CWnd::FromHandle(adsw_acadMainWnd()));
+	INT_PTR nReturnValue = dlg.DoModal();
 }
 

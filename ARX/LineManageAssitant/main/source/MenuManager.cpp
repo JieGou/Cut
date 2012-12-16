@@ -124,6 +124,8 @@ void MenuManager::AddDropdownMenu()
 		//see if the menu is already there
         TRY{pDisp = IPopUpMenus.Item(index); pDisp->AddRef();} CATCH(COleDispatchException,e){}END_CATCH;
 
+		CString cmdMenuName;
+
         if (pDisp==NULL) {
             //create it
             CAcadPopupMenu IPopUpMenu(IPopUpMenus.Add(cstrMenuName));
@@ -131,7 +133,9 @@ void MenuManager::AddDropdownMenu()
             VariantInit(&index);
             V_VT(&index) = VT_I4;
             V_I4(&index) = 0;
-            IPopUpMenu.AddMenuItem(index, MAIN_MENU_LINE_CONFIG, L"_G_LMA_CONFIG");
+
+			cmdMenuName.Format(L"%s\n",CommandManager::CMD_LINE_CONFIG);
+            IPopUpMenu.AddMenuItem(index, MAIN_MENU_LINE_CONFIG, cmdMenuName);
 
             VariantInit(&index);
             V_VT(&index) = VT_I4;
@@ -141,7 +145,9 @@ void MenuManager::AddDropdownMenu()
             VariantInit(&index);
             V_VT(&index) = VT_I4;
             V_I4(&index) = 2;
-            IPopUpMenu.AddMenuItem(index, MAIN_MENU_LINE_INPUT, CommandManager::CMD_LINE_INPUT);
+
+			cmdMenuName.Format(L"%s\n",CommandManager::CMD_LINE_INPUT);
+            IPopUpMenu.AddMenuItem(index, MAIN_MENU_LINE_INPUT, cmdMenuName);
 
 			VariantInit(&index);
             V_VT(&index) = VT_I4;
@@ -151,7 +157,9 @@ void MenuManager::AddDropdownMenu()
             VariantInit(&index);
             V_VT(&index) = VT_I4;
             V_I4(&index) = 4;
-            IPopUpMenu.AddMenuItem(index, MAIN_MENU_LINE_CUT,CommandManager::CMD_LIEN_CUT);
+
+			cmdMenuName.Format(L"%s\n",CommandManager::CMD_LIEN_CUT);
+            IPopUpMenu.AddMenuItem(index, MAIN_MENU_LINE_CUT, cmdMenuName);
 
             pDisp = IPopUpMenu.m_lpDispatch;
             pDisp->AddRef();

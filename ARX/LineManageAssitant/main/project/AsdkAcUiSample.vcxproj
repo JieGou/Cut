@@ -143,6 +143,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="LMALineConfigManagerDialog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\resource\AsdkAcUiSample.rc">
@@ -162,9 +163,10 @@
     <ClInclude Include="..\header\LineManageAssitant.h" />
     <ClInclude Include="..\header\MenuLMAMain.h" />
     <ClInclude Include="..\header\MenuManager.h" />
-    <ClInclude Include="..\header\Resource.h" />
     <ClInclude Include="..\header\StdAfx.h" />
+    <ClInclude Include="..\resource\resource.h" />
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="LMALineConfigManagerDialog.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resource\res\AsdkAcUiSample.rc2" />
@@ -173,4 +175,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\resource\AsdkAcUiSample.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

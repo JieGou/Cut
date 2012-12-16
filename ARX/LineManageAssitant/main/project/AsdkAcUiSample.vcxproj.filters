@@ -19,6 +19,9 @@
     <ClCompile Include="CommandManager.cpp">
       <Filter>src\Command</Filter>
     </ClCompile>
+    <ClCompile Include="LMALineConfigManagerDialog.cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\header\MenuLMAMain.h">
@@ -31,9 +34,6 @@
       <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\header\StdAfx.h">
-      <Filter>inc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\header\Resource.h">
       <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\header\LineManageAssitant.h">
@@ -64,6 +64,12 @@
       <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\header\CAcadPopupMenus.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\resource\resource.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="LMALineConfigManagerDialog.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>
