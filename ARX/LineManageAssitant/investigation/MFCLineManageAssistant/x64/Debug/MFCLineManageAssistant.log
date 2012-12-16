@@ -1,0 +1,34 @@
+﻿Build started 2012/12/16 11:56:57.
+     1>Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\MFCLineManageAssistant\MFCLineManageAssistant.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "x64\Debug\MFCLineManageAssistant.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\ObjectARX 2013\inc-x64" /I"C:\ObjectARX 2013\inc" /Zi /nologo /W1 /WX- /O2 /D _AFXDLL /D _UNICODE /D _WINDLL /D _WINDLL /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt MenuLMAMain.cpp MFCLineManageAssistant.cpp
+         MenuLMAMain.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         MFCLineManageAssistant.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         Generating Code...
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /l"0x0409" /nologo /fo"x64\Debug\MFCLineManageAssistant.res" MFCLineManageAssistant.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\mfclma.arx" /NOLOGO /LIBPATH:"C:\ObjectARX 2013\lib-x64" ac1st19.lib acad.lib acapp.lib acapp_crx.lib AcCamera.lib accore.lib acdb19.lib acdbmgd.lib AcDbPointCloudObj.lib AcFdEval.lib AcFdUi.lib acge19.lib acgiapi.lib acismobj19.lib acModelDocObj.lib AcMPolygonObj19.lib AcPublish_crx.lib AcSceneOE.lib AcTc.lib AcTcUi.lib acui19.lib AdApplicationFrame.lib adui19.lib aNav.lib aseapi19.lib asiapi19.lib axdb.lib rxapi.lib accore.lib acad.lib acui19.lib adui19.lib ac1st19.lib acdb19.lib acge19.lib acgiapi.lib acISMobj19.lib rxapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"C:\ObjectARX 2013\inc\AcRxDefault.def" /MANIFEST /ManifestFile:"x64\Debug\mfclma.arx.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\mfclma.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\mfclma.lib" /MACHINE:X64 /DLL x64\Debug\MFCLineManageAssistant.res
+         x64\Debug\CutCommandMgr.obj
+         x64\Debug\MenuLMAMain.obj
+         x64\Debug\MenuManager.obj
+         x64\Debug\MFCLineManageAssistant.obj
+         x64\Debug\stdafx.obj
+         LINK : C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\mfclma.arx not found or not built by the last incremental link; performing full link
+            Creating library C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\mfclma.lib and object C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\mfclma.exp
+     1>rxapi.lib(libinit.obj) : warning LNK4099: PDB 'rxapi_cl.pdb' was not found with 'rxapi.lib(libinit.obj)' or at 'C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\rxapi_cl.pdb'; linking object as if no debug info
+         MFCLineManageAssistant.vcxproj -> C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\mfclma.arx
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\mfclma.arx;#2" /manifest x64\Debug\mfclma.arx.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "x64\Debug\MFCLineManageAssistant.unsuccessfulbuild".
+         Touching "x64\Debug\MFCLineManageAssistant.lastbuildstate".
+     1>Done Building Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\MFCLineManageAssistant\MFCLineManageAssistant.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:25.10

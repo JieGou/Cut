@@ -1,3 +1,0 @@
-chgu
-CHGU-MACPRO-W7 
-2012Äê12ÔÂ13ÈÕ  6:49:29

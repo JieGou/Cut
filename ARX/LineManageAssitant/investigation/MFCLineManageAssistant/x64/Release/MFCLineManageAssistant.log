@@ -1,0 +1,17 @@
+﻿Build started 2012/12/15 7:53:26.
+     1>Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\MFCLineManageAssistant\MFCLineManageAssistant.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "x64\Release\MFCLineManageAssistant.unsuccessfulbuild".
+       ClCompile:
+         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W1 /WX- /O2 /D _WINDLL /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt MFCLineManageAssistant.cpp stdafx.cpp
+         MFCLineManageAssistant.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afx.h(24): fatal error C1189: #error :  Building MFC application with /MD[d] (CRT dll version) requires MFC shared dll version. Please #define _AFXDLL or do not use /MD[d]
+         stdafx.cpp
+     1>C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afx.h(24): fatal error C1189: #error :  Building MFC application with /MD[d] (CRT dll version) requires MFC shared dll version. Please #define _AFXDLL or do not use /MD[d]
+         Generating Code...
+     1>Done Building Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\MFCLineManageAssistant\MFCLineManageAssistant.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.23

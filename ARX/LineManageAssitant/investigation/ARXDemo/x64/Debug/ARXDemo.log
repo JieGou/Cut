@@ -1,0 +1,1872 @@
+﻿Build started 2012/12/15 18:22:47.
+     1>Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\ARXDemo\ARXDemo.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "x64\Debug\LineManageFundation.lastbuildstate".
+       InitializeBuildStatus:
+         Touching "x64\Debug\LineManageFundation.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\ObjectARX 2013\inc-x64" /I"C:\ObjectARX 2013\inc" /Zi /nologo /W1 /WX- /Od /D WIN64 /D _DEBUG /D _WINDOWS /D _USRDLL /D ARXDEMO_EXPORTS /D _AFXDLL /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /showIncludes /errorReport:prompt LineManageAssistant.cpp CutCommandMgr.cpp dllmain.cpp MenuLMAMain.cpp MenuManager.cpp stdafx.cpp
+         LineManageAssistant.cpp
+         Note: including file: c:\users\chgu\dropbox\master\autocad\arx\linemanageassitant\linemanageassistant\arxdemo\LineManageAssistant.h
+         Note: including file: C:\ObjectARX 2013\inc\rxregsvc.h
+         Note: including file:  c:\objectarx 2013\inc\rxdlinkr.h
+         Note: including file:   c:\objectarx 2013\inc\rxobject.h
+         Note: including file:    c:\objectarx 2013\inc\acbasedefs.h
+         Note: including file:    c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\AdAChar.h
+         Note: including file:    c:\objectarx 2013\inc\rxdefs.h
+         Note: including file:     c:\objectarx 2013\inc\adesk.h
+         Note: including file:    c:\objectarx 2013\inc\rxboiler.h
+         Note: including file:     c:\objectarx 2013\inc\rxnames.h
+         Note: including file:    c:\objectarx 2013\inc\acadstrc.h
+         Note: including file:    c:\objectarx 2013\inc\acdbport.h
+         Note: including file:    c:\objectarx 2013\inc\rxclass.h
+         Note: including file:     c:\objectarx 2013\inc\rxobject.h
+         Note: including file:    c:\objectarx 2013\inc\rxdict.h
+         Note: including file:     c:\objectarx 2013\inc\rxobject.h
+         Note: including file:  c:\objectarx 2013\inc\adesk.h
+         Note: including file: C:\ObjectARX 2013\inc\acutads.h
+         Note: including file:  c:\objectarx 2013\inc\adsdef.h
+         Note: including file:  c:\objectarx 2013\inc\AcCoreDefs.h
+         Note: including file: c:\users\chgu\dropbox\master\autocad\arx\linemanageassitant\linemanageassistant\arxdemo\CutCommandMgr.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\map
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xtree
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfunctional
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cstdlib
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\yvals.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\sal.h
+         Note: including file:         c:\program files (x86)\microsoft visual studio 10.0\vc\include\codeanalysis\sourceannotations.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\vadefs.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\use_ansi.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\limits.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xstring
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xmemory
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\new
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\exception
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xstddef
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cstddef
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stddef.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\eh.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\malloc.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\climits
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\utility
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\iosfwd
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cstdio
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\swprintf.inl
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cstring
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cwchar
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\wchar.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\wtime.inl
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdbg.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\type_traits
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\limits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ymath.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cfloat
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\float.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtwrn.h
+         Note: including file:              C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cmath
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\math.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xtr1common
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\memory
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\typeinfo
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\intrin.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\setjmp.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\immintrin.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\wmmintrin.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\nmmintrin.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\smmintrin.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\tmmintrin.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\pmmintrin.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\emmintrin.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xmmintrin.h
+         Note: including file:              C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\mmintrin.h
+         Note: including file:               C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ammintrin.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdexcept
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\istream
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ostream
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ios
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xlocnum
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\streambuf
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xiosbase
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xlocale
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xlocinfo
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xlocinfo.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ctype.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\locale.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xdebug
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\system_error
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cerrno
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\errno.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\share.h
+         CutCommandMgr.cpp
+         Note: including file: c:\users\chgu\dropbox\master\autocad\arx\linemanageassitant\linemanageassistant\arxdemo\CutCommandMgr.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\map
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xtree
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfunctional
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cstdlib
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\yvals.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\sal.h
+         Note: including file:         c:\program files (x86)\microsoft visual studio 10.0\vc\include\codeanalysis\sourceannotations.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\vadefs.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\use_ansi.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\limits.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xstring
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xmemory
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\new
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\exception
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xstddef
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cstddef
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stddef.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\eh.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\malloc.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xutility
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\climits
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\utility
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\iosfwd
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cstdio
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\swprintf.inl
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cstring
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cwchar
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\wchar.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\wtime.inl
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdbg.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\type_traits
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\limits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ymath.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cfloat
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\float.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtwrn.h
+         Note: including file:              C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cmath
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\math.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xtr1common
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\memory
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\typeinfo
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\intrin.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\setjmp.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\immintrin.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\wmmintrin.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\nmmintrin.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\smmintrin.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\tmmintrin.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\pmmintrin.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\emmintrin.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xmmintrin.h
+         Note: including file:              C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\mmintrin.h
+         Note: including file:               C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ammintrin.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxshared
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdexcept
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\istream
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ostream
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ios
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xlocnum
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\streambuf
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xiosbase
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xlocale
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xlocinfo
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xlocinfo.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ctype.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\locale.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xdebug
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\system_error
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cerrno
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\errno.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\share.h
+         Note: including file: C:\ObjectARX 2013\inc\acedads.h
+         Note: including file:  c:\objectarx 2013\inc\adsdef.h
+         Note: including file:   c:\objectarx 2013\inc\AdAChar.h
+         Note: including file:  c:\objectarx 2013\inc\accoredefs.h
+         Note: including file:  c:\objectarx 2013\inc\acbasedefs.h
+         Note: including file:  c:\objectarx 2013\inc\acmem.h
+         Note: including file: C:\ObjectARX 2013\inc\accmd.h
+         Note: including file:  c:\objectarx 2013\inc\adesk.h
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wtypes.h
+         Note: including file:   c:\program files (x86)\microsoft sdks\windows\v7.0a\include\rpc.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\windows.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\sdkddkver.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\excpt.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdarg.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\windef.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winnt.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\specstrings.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\sal_supp.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\specstrings_supp.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\specstrings_strict.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\specstrings_undef.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\driverspecs.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\sdv_driverspecs.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\kernelspecs.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\basetsd.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\guiddef.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack4.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack4.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack4.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack2.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack2.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack8.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ktmtypes.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winbase.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winerror.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wingdi.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack4.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack4.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winuser.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\tvout.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winnls.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wincon.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winver.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\verrsrc.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winreg.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\reason.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winnetwk.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wnnc.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\cderr.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\dde.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ddeml.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\dlgs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\lzexpand.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\mmsystem.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\nb30.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpc.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcdce.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcdcep.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcnsi.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcnterr.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcasync.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\shellapi.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winperf.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winsock.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\inaddr.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wincrypt.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\bcrypt.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ncrypt.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\bcrypt.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winscard.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wtypes.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\rpcndr.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcnsip.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcsal.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\guiddef.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winioctl.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      c:\program files (x86)\microsoft sdks\windows\v7.0a\include\winsmcrd.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winspool.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\prsht.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ole2.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\objbase.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\unknwn.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\objidl.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\guiddef.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\cguid.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\urlmon.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\oleidl.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\servprov.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\msxml.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\oaidl.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\propidl.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\oleauto.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\commdlg.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\prsht.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\stralign.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winsvc.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\mcx.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\imm.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ime_cmodes.h
+         Note: including file:  c:\objectarx 2013\inc\dbmain.h
+         Note: including file:   c:\objectarx 2013\inc\adesk.h
+         Note: including file:   c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:    c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:     c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\gegbl.h
+         Note: including file:      c:\objectarx 2013\inc\gedll.h
+         Note: including file:       c:\objectarx 2013\inc\adesk.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:      c:\objectarx 2013\inc\getol.h
+         Note: including file:       c:\objectarx 2013\inc\gedll.h
+         Note: including file:       c:\objectarx 2013\inc\gedblar.h
+         Note: including file:        c:\objectarx 2013\inc\adesk.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:        c:\objectarx 2013\inc\acarray.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\memory.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         c:\objectarx 2013\inc\adesk.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:      c:\objectarx 2013\inc\gegblge.h
+         Note: including file:       c:\objectarx 2013\inc\gelibver.h
+         Note: including file:        c:\objectarx 2013\inc\adesk.h
+         Note: including file:        c:\objectarx 2013\inc\gedll.h
+         Note: including file:     c:\objectarx 2013\inc\gegblabb.h
+         Note: including file:      c:\objectarx 2013\inc\gegbl.h
+         Note: including file:     c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:    c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:   c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:   c:\objectarx 2013\inc\geline3d.h
+         Note: including file:    c:\objectarx 2013\inc\gelent3d.h
+         Note: including file:     c:\objectarx 2013\inc\gecurv3d.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:      c:\objectarx 2013\inc\geent3d.h
+         Note: including file:       c:\objectarx 2013\inc\gegbl.h
+         Note: including file:       c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:       c:\objectarx 2013\inc\geent2d.h
+         Note: including file:        c:\objectarx 2013\inc\gegbl.h
+         Note: including file:        c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:         c:\objectarx 2013\inc\gevec2d.h
+         Note: including file:          c:\objectarx 2013\inc\adesk.h
+         Note: including file:          c:\objectarx 2013\inc\gegbl.h
+         Note: including file:          c:\objectarx 2013\inc\gegblabb.h
+         Note: including file:          c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:         c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:        c:\objectarx 2013\inc\geintrvl.h
+         Note: including file:         c:\objectarx 2013\inc\gegbl.h
+         Note: including file:        c:\objectarx 2013\inc\gegblnew.h
+         Note: including file:       c:\objectarx 2013\inc\geintrvl.h
+         Note: including file:       c:\objectarx 2013\inc\gegblnew.h
+         Note: including file:      c:\objectarx 2013\inc\geponc3d.h
+         Note: including file:       c:\objectarx 2013\inc\gepent3d.h
+         Note: including file:        c:\objectarx 2013\inc\adesk.h
+         Note: including file:        c:\objectarx 2013\inc\geent3d.h
+         Note: including file:      c:\objectarx 2013\inc\gept3dar.h
+         Note: including file:       c:\objectarx 2013\inc\adesk.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:       c:\objectarx 2013\inc\acarray.h
+         Note: including file:      c:\objectarx 2013\inc\gevc3dar.h
+         Note: including file:       c:\objectarx 2013\inc\adesk.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:       c:\objectarx 2013\inc\acarray.h
+         Note: including file:      c:\objectarx 2013\inc\gedblar.h
+         Note: including file:      c:\objectarx 2013\inc\gevptar.h
+         Note: including file:       c:\objectarx 2013\inc\adesk.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       c:\objectarx 2013\inc\acarray.h
+         Note: including file:      c:\objectarx 2013\inc\geintarr.h
+         Note: including file:       c:\objectarx 2013\inc\adesk.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       c:\objectarx 2013\inc\acarray.h
+         Note: including file:     c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:     c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:   c:\objectarx 2013\inc\AcHeapOpers.h
+         Note: including file:    c:\objectarx 2013\inc\adesk.h
+         Note: including file:   c:\objectarx 2013\inc\adesk.h
+         Note: including file:   c:\objectarx 2013\inc\rxobject.h
+         Note: including file:    c:\objectarx 2013\inc\adesk.h
+         Note: including file:    c:\objectarx 2013\inc\rxdefs.h
+         Note: including file:     c:\objectarx 2013\inc\adesk.h
+         Note: including file:    c:\objectarx 2013\inc\rxboiler.h
+         Note: including file:     c:\objectarx 2013\inc\rxnames.h
+         Note: including file:    c:\objectarx 2013\inc\acadstrc.h
+         Note: including file:    c:\objectarx 2013\inc\acdbport.h
+         Note: including file:    c:\objectarx 2013\inc\rxclass.h
+         Note: including file:     c:\objectarx 2013\inc\rxobject.h
+         Note: including file:    c:\objectarx 2013\inc\rxdict.h
+         Note: including file:     c:\objectarx 2013\inc\rxobject.h
+         Note: including file:   c:\objectarx 2013\inc\rxdlinkr.h
+         Note: including file:    c:\objectarx 2013\inc\rxobject.h
+         Note: including file:   c:\objectarx 2013\inc\rxiter.h
+         Note: including file:    c:\objectarx 2013\inc\rxobject.h
+         Note: including file:   c:\objectarx 2013\inc\rxditer.h
+         Note: including file:    c:\objectarx 2013\inc\rxobject.h
+         Note: including file:    c:\objectarx 2013\inc\rxiter.h
+         Note: including file:   c:\objectarx 2013\inc\rxsrvice.h
+         Note: including file:    c:\objectarx 2013\inc\rxobject.h
+         Note: including file:   c:\objectarx 2013\inc\dbptrar.h
+         Note: including file:    c:\objectarx 2013\inc\adesk.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    c:\objectarx 2013\inc\acarray.h
+         Note: including file:   c:\objectarx 2013\inc\dbcolor.h
+         Note: including file:    c:\objectarx 2013\inc\adesk.h
+         Note: including file:    c:\objectarx 2013\inc\acadstrc.h
+         Note: including file:    c:\objectarx 2013\inc\rxobject.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:   c:\objectarx 2013\inc\dbidar.h
+         Note: including file:    c:\objectarx 2013\inc\adesk.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    c:\objectarx 2013\inc\dbidapps.h
+         Note: including file:     c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\dbid.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:      c:\objectarx 2013\inc\dbhandle.h
+         Note: including file:       c:\objectarx 2013\inc\adesk.h
+         Note: including file:      c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:     c:\objectarx 2013\inc\dbid_ops.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:    c:\objectarx 2013\inc\acarray.h
+         Note: including file:   c:\objectarx 2013\inc\drawable.h
+         Note: including file:    c:\objectarx 2013\inc\rxobject.h
+         Note: including file:    c:\objectarx 2013\inc\rxoverrule.h
+         Note: including file:     c:\objectarx 2013\inc\rxobject.h
+         Note: including file:     c:\objectarx 2013\inc\acarray.h
+         Note: including file:    c:\objectarx 2013\inc\dbid.h
+         Note: including file:   c:\objectarx 2013\inc\dbsecurity.h
+         Note: including file:   c:\objectarx 2013\inc\acdb.h
+         Note: including file:    c:\objectarx 2013\inc\adesk.h
+         Note: including file:    c:\objectarx 2013\inc\rxobject.h
+         Note: including file:    c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:    c:\objectarx 2013\inc\dbidapps.h
+         Note: including file:    c:\objectarx 2013\inc\dbboiler.h
+         Note: including file:     c:\objectarx 2013\inc\rxboiler.h
+         Note: including file:    c:\objectarx 2013\inc\acadstrc.h
+         Note: including file:   c:\objectarx 2013\inc\dbhandle.h
+         Note: including file:   c:\objectarx 2013\inc\dbfiler.h
+         Note: including file:    c:\objectarx 2013\inc\acdb.h
+         Note: including file:    c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:    c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:    c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:    c:\objectarx 2013\inc\gescl3d.h
+         Note: including file:     c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\gegbl.h
+         Note: including file:    c:\objectarx 2013\inc\adsdef.h
+         Note: including file:   c:\objectarx 2013\inc\ads.h
+         Note: including file:    c:\objectarx 2013\inc\adsmigr.h
+         Note: including file:    c:\objectarx 2013\inc\acedads.h
+         Note: including file:    c:\objectarx 2013\inc\acdbads.h
+         Note: including file:     c:\objectarx 2013\inc\adsdef.h
+         Note: including file:     c:\objectarx 2013\inc\acmem.h
+         Note: including file:    c:\objectarx 2013\inc\acutads.h
+         Note: including file:     c:\objectarx 2013\inc\adsdef.h
+         Note: including file:   c:\objectarx 2013\inc\gept3dar.h
+         Note: including file:   c:\objectarx 2013\inc\dbintar.h
+         Note: including file:    c:\objectarx 2013\inc\adesk.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    c:\objectarx 2013\inc\acarray.h
+         Note: including file:   c:\objectarx 2013\inc\dbsubeid.h
+         Note: including file:    c:\objectarx 2013\inc\acdb.h
+         Note: including file:    c:\objectarx 2013\inc\dbidar.h
+         Note: including file:   c:\objectarx 2013\inc\dbaudita.h
+         Note: including file:   c:\objectarx 2013\inc\acgidefs.h
+         Note: including file:    c:\objectarx 2013\inc\adesk.h
+         Note: including file:   c:\objectarx 2013\inc\dbdimvar.h
+         Note: including file:  c:\objectarx 2013\inc\rxobject.h
+         Note: including file: C:\ObjectARX 2013\inc\adscodes.h
+         Note: including file: C:\ObjectARX 2013\inc\adsdlg.h
+         Note: including file:  c:\objectarx 2013\inc\ads.h
+         Note: including file: C:\ObjectARX 2013\inc\dbapserv.h
+         Note: including file:  c:\objectarx 2013\inc\adesk.h
+         Note: including file:  c:\objectarx 2013\inc\acdb.h
+         Note: including file:  c:\objectarx 2013\inc\acarray.h
+         Note: including file:  c:\objectarx 2013\inc\codepgid.h
+         Note: including file:  c:\objectarx 2013\inc\acdlflagbits.h
+         Note: including file:  c:\objectarx 2013\inc\inetstrc.h
+         Note: including file:  c:\objectarx 2013\inc\rxdlinkr.h
+         Note: including file: C:\ObjectARX 2013\inc\dbregion.h
+         Note: including file:  c:\objectarx 2013\inc\dbmain.h
+         Note: including file:  c:\objectarx 2013\inc\dbsubeid.h
+         Note: including file:  c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:  c:\objectarx 2013\inc\gevec3d.h
+         Note: including file: C:\ObjectARX 2013\inc\gepnt3d.h
+         Note: including file: C:\ObjectARX 2013\inc\dbsymtb.h
+         Note: including file:  c:\objectarx 2013\inc\dbmain.h
+         Note: including file:  c:\objectarx 2013\inc\dbdict.h
+         Note: including file:   c:\objectarx 2013\inc\dbmain.h
+         Note: including file:  c:\objectarx 2013\inc\dbdate.h
+         Note: including file:   c:\objectarx 2013\inc\acdb.h
+         Note: including file:  c:\objectarx 2013\inc\dbbackground.h
+         Note: including file:   c:\objectarx 2013\inc\dbmain.h
+         Note: including file:   c:\objectarx 2013\inc\acgienvironment.h
+         Note: including file:    c:\objectarx 2013\inc\acgi.h
+         Note: including file:     c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\acgidefs.h
+         Note: including file:     c:\objectarx 2013\inc\rxobject.h
+         Note: including file:     c:\objectarx 2013\inc\dbpl.h
+         Note: including file:      c:\objectarx 2013\inc\dbmain.h
+         Note: including file:      c:\objectarx 2013\inc\dbcurve.h
+         Note: including file:       c:\objectarx 2013\inc\dbmain.h
+         Note: including file:       c:\objectarx 2013\inc\gept3dar.h
+         Note: including file:       c:\objectarx 2013\inc\gedblar.h
+         Note: including file:       c:\objectarx 2013\inc\geplane.h
+         Note: including file:        c:\objectarx 2013\inc\geplanar.h
+         Note: including file:         c:\objectarx 2013\inc\gesurf.h
+         Note: including file:          c:\objectarx 2013\inc\geent3d.h
+         Note: including file:          c:\objectarx 2013\inc\gevc3dar.h
+         Note: including file:         c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:       c:\objectarx 2013\inc\dbptrar.h
+         Note: including file:      c:\objectarx 2013\inc\gelnsg2d.h
+         Note: including file:       c:\objectarx 2013\inc\geline2d.h
+         Note: including file:        c:\objectarx 2013\inc\gelent2d.h
+         Note: including file:         c:\objectarx 2013\inc\gecurv2d.h
+         Note: including file:          c:\objectarx 2013\inc\adesk.h
+         Note: including file:          c:\objectarx 2013\inc\geent2d.h
+         Note: including file:          c:\objectarx 2013\inc\geponc2d.h
+         Note: including file:           c:\objectarx 2013\inc\gepent2d.h
+         Note: including file:            c:\objectarx 2013\inc\adesk.h
+         Note: including file:            c:\objectarx 2013\inc\geent2d.h
+         Note: including file:            c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:          c:\objectarx 2013\inc\gept2dar.h
+         Note: including file:           c:\objectarx 2013\inc\adesk.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:           c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:           c:\objectarx 2013\inc\acarray.h
+         Note: including file:          c:\objectarx 2013\inc\gevc2dar.h
+         Note: including file:           c:\objectarx 2013\inc\adesk.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:            C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:           c:\objectarx 2013\inc\gevec2d.h
+         Note: including file:           c:\objectarx 2013\inc\acarray.h
+         Note: including file:          c:\objectarx 2013\inc\gedblar.h
+         Note: including file:          c:\objectarx 2013\inc\gevptar.h
+         Note: including file:          c:\objectarx 2013\inc\geintarr.h
+         Note: including file:         c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:         c:\objectarx 2013\inc\gevec2d.h
+         Note: including file:      c:\objectarx 2013\inc\gelnsg3d.h
+         Note: including file:       c:\objectarx 2013\inc\geline3d.h
+         Note: including file:       c:\objectarx 2013\inc\geplane.h
+         Note: including file:      c:\objectarx 2013\inc\gearc2d.h
+         Note: including file:       c:\objectarx 2013\inc\gecurv2d.h
+         Note: including file:       c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:       c:\objectarx 2013\inc\gevec2d.h
+         Note: including file:      c:\objectarx 2013\inc\gearc3d.h
+         Note: including file:       c:\objectarx 2013\inc\gecurv3d.h
+         Note: including file:       c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:       c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:       c:\objectarx 2013\inc\geplane.h
+         Note: including file:       c:\objectarx 2013\inc\gegblabb.h
+         Note: including file:      c:\objectarx 2013\inc\gept2dar.h
+         Note: including file:      c:\objectarx 2013\inc\dbboiler.h
+         Note: including file:     c:\objectarx 2013\inc\gemat3d.h
+         Note: including file:      c:\objectarx 2013\inc\gegbl.h
+         Note: including file:      c:\objectarx 2013\inc\gemat2d.h
+         Note: including file:       c:\objectarx 2013\inc\gegbl.h
+         Note: including file:       c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:      c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:     c:\objectarx 2013\inc\gemat2d.h
+         Note: including file:     c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:     c:\objectarx 2013\inc\dbcolor.h
+         Note: including file:     c:\objectarx 2013\inc\acdb.h
+         Note: including file:     c:\objectarx 2013\inc\AcGiStyleAttributes.h
+         Note: including file:      c:\objectarx 2013\inc\AcGiLineAttributes.h
+         Note: including file:       c:\objectarx 2013\inc\acdb.h
+         Note: including file:       c:\objectarx 2013\inc\AcGiLineAttrUtils.h
+         Note: including file:        c:\objectarx 2013\inc\acdb.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     c:\objectarx 2013\inc\AcGiParameter.h
+         Note: including file:      c:\objectarx 2013\inc\rxcopyonwriteobject.h
+         Note: including file:    c:\objectarx 2013\inc\AcGiLightTraits.h
+         Note: including file:     c:\objectarx 2013\inc\acgi.h
+         Note: including file:   c:\objectarx 2013\inc\dbcolor.h
+         Note: including file:  c:\objectarx 2013\inc\gevec2d.h
+         Note: including file:  c:\objectarx 2013\inc\acgiviewport.h
+         Note: including file:  c:\objectarx 2013\inc\acgivisualstyle.h
+         Note: including file:   c:\objectarx 2013\inc\acgi.h
+         Note: including file:  c:\objectarx 2013\inc\dbdimvar.h
+         Note: including file: C:\ObjectARX 2013\inc\dbsol3d.h
+         Note: including file:  c:\objectarx 2013\inc\dbmain.h
+         Note: including file:  c:\objectarx 2013\inc\dbsubeid.h
+         Note: including file:  c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:  c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:  c:\objectarx 2013\inc\acarray.h
+         Note: including file:  c:\objectarx 2013\inc\dbsurf.h
+         Note: including file:   c:\objectarx 2013\inc\dbmain.h
+         Note: including file:   c:\objectarx 2013\inc\dbsubeid.h
+         Note: including file:   c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:   c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:   c:\objectarx 2013\inc\dbbody.h
+         Note: including file:    c:\objectarx 2013\inc\dbmain.h
+         Note: including file:    c:\objectarx 2013\inc\dbsubeid.h
+         Note: including file:   c:\objectarx 2013\inc\dbRevolveOptions.h
+         Note: including file:    c:\objectarx 2013\inc\dbmain.h
+         Note: including file:    c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:    c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:    c:\objectarx 2013\inc\dbbody.h
+         Note: including file:   c:\objectarx 2013\inc\dbSweepOptions.h
+         Note: including file:    c:\objectarx 2013\inc\dbmain.h
+         Note: including file:    c:\objectarx 2013\inc\dbsubeid.h
+         Note: including file:    c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:    c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:    c:\objectarx 2013\inc\dbbody.h
+         Note: including file:   c:\objectarx 2013\inc\dbLoftOptions.h
+         Note: including file:    c:\objectarx 2013\inc\dbmain.h
+         Note: including file:    c:\objectarx 2013\inc\dbsubeid.h
+         Note: including file:    c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:    c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:    c:\objectarx 2013\inc\dbbody.h
+         Note: including file:   c:\objectarx 2013\inc\acdbGeomRef.h
+         Note: including file:    c:\objectarx 2013\inc\AcDbAssocGlobal.h
+         Note: including file:     c:\objectarx 2013\inc\acdb.h
+         Note: including file:    c:\objectarx 2013\inc\gemat3d.h
+         Note: including file:    c:\objectarx 2013\inc\AcDbCompoundObjectId.h
+         Note: including file:  c:\objectarx 2013\inc\db3dProfile.h
+         dllmain.cpp
+         Note: including file: C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxwin.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afx.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\new.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\sal.h
+         Note: including file:      c:\program files (x86)\microsoft visual studio 10.0\vc\include\codeanalysis\sourceannotations.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\vadefs.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxver_.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxv_w32.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winsdkver.h
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\sdkddkver.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\windows.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\excpt.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdarg.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\windef.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winnt.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ctype.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\specstrings.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\sal_supp.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\specstrings_supp.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\specstrings_strict.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\specstrings_undef.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\driverspecs.h
+         Note: including file:          c:\program files (x86)\microsoft sdks\windows\v7.0a\include\sdv_driverspecs.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\kernelspecs.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\basetsd.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\guiddef.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack4.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack4.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack4.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack2.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack2.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack8.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ktmtypes.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winbase.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winerror.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wingdi.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack4.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack4.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winuser.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\tvout.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winnls.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wincon.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winver.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\verrsrc.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winreg.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\reason.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winnetwk.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wnnc.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\stralign.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winsvc.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\mcx.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\imm.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ime_cmodes.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\zmouse.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\commctrl.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\prsht.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\tchar.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxv_cpu.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxv_dll.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\swprintf.inl
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\limits.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\time.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\wtime.inl
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\time.inl
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stddef.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\errno.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\malloc.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdbg.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atltrace.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atldef.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlrc.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlconv.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlalloc.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ole2.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\objbase.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpc.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcdce.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcdcep.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcnsi.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcnterr.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcasync.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcndr.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcnsip.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcsal.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wtypes.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\guiddef.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\unknwn.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\objidl.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\guiddef.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\cguid.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\urlmon.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\oleidl.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\servprov.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\msxml.h
+         Note: including file:          c:\program files (x86)\microsoft sdks\windows\v7.0a\include\oaidl.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\propidl.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\oleauto.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atldebugapi.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxstr.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\mbstring.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlcore.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlchecked.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlexcept.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\wchar.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlsimpcoll.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\cstringt.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlsimpstr.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlmem.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlcommem.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlcomcli.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\olectl.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ocidl.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\cstringt.inl
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atltransactionmanager.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ktmw32.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atltime.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\oledb.h
+         Note: including file:     c:\program files (x86)\microsoft sdks\windows\v7.0a\include\transact.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\accctrl.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxcoll.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxstat_.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atltypes.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxtls_.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afx.inl
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\shellapi.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxres.h
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\commdlg.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\prsht.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxctrlcontainer.h
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\shobjidl.h
+         Note: including file:   c:\program files (x86)\microsoft sdks\windows\v7.0a\include\docobj.h
+         Note: including file:   c:\program files (x86)\microsoft sdks\windows\v7.0a\include\shtypes.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:   c:\program files (x86)\microsoft sdks\windows\v7.0a\include\comcat.h
+         Note: including file:   c:\program files (x86)\microsoft sdks\windows\v7.0a\include\prsht.h
+         Note: including file:   c:\program files (x86)\microsoft sdks\windows\v7.0a\include\propsys.h
+         Note: including file:    c:\program files (x86)\microsoft sdks\windows\v7.0a\include\StructuredQueryCondition.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\propkeydef.h
+         Note: including file:   c:\program files (x86)\microsoft sdks\windows\v7.0a\include\ObjectArray.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\sherrors.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\prsht.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\thumbcache.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlhandler.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\filter.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlstr.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlbase.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winsock2.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ws2def.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\inaddr.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\qos.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atliface.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\oleacc.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\process.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\shlwapi.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\statreg.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winnls.h
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\tpcshrd.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxcomctl32.h
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\vssym32.h
+         Note: including file:   c:\program files (x86)\microsoft sdks\windows\v7.0a\include\VSStyle.h
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ws2ipdef.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\in6addr.h
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\windns.h
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\iphlpapi.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\iprtrmib.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\mprapi.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\lmcons.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ras.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack4.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wincrypt.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\bcrypt.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ncrypt.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\bcrypt.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ipifcons.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ipmib.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ifmib.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ifdef.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\nldef.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\tcpmib.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\udpmib.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ipexport.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\packon.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\packoff.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\iptypes.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\tcpestats.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\netioapi.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ntddndis.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\devpkey.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\devpropdef.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pciprop.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\windot11.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\WlanTypes.h
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\htmlhelp.h
+         Note: including file:  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\UIAnimation.h
+         Note: including file:  c:\program files (x86)\microsoft visual studio 10.0\vc\atlmfc\include\afxanimationcontroller.h
+         Note: including file:   c:\program files (x86)\microsoft visual studio 10.0\vc\atlmfc\include\afxanimationhelper.h
+         Note: including file:   c:\program files (x86)\microsoft visual studio 10.0\vc\atlmfc\include\afxtempl.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxplex_.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxmsg_.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxdd_.h
+         Note: including file:  c:\program files (x86)\microsoft visual studio 10.0\vc\atlmfc\include\afxrendertarget.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\d2d1.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\dcommon.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\D2DErr.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\D2DBaseTypes.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\dxgiformat.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\d3d10_1.h
+         Note: including file:     c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10.h
+         Note: including file:      c:\program files (x86)\microsoft sdks\windows\v7.0a\include\dxgi.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\dxgitype.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\dxgiformat.h
+         Note: including file:      c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10sdklayers.h
+         Note: including file:      c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10misc.h
+         Note: including file:      c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10shader.h
+         Note: including file:      c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10effect.h
+         Note: including file:     c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10_1shader.h
+         Note: including file:      c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10shader.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\d2d1helper.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\dwrite.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\dcommon.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxdll_.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxcomctl32.inl
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxwin4.inl
+         MenuLMAMain.cpp
+         Note: including file: c:\users\chgu\dropbox\master\autocad\arx\linemanageassitant\linemanageassistant\arxdemo\MenuLMAMain.h
+         Note: including file:  C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxwin.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afx.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\new.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\sal.h
+         Note: including file:       c:\program files (x86)\microsoft visual studio 10.0\vc\include\codeanalysis\sourceannotations.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\vadefs.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxver_.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxv_w32.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winsdkver.h
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\sdkddkver.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\windows.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\excpt.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdarg.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\windef.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winnt.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ctype.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\specstrings.h
+         Note: including file:          c:\program files (x86)\microsoft sdks\windows\v7.0a\include\sal_supp.h
+         Note: including file:          c:\program files (x86)\microsoft sdks\windows\v7.0a\include\specstrings_supp.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\specstrings_strict.h
+         Note: including file:           C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\specstrings_undef.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\driverspecs.h
+         Note: including file:           c:\program files (x86)\microsoft sdks\windows\v7.0a\include\sdv_driverspecs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\kernelspecs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\basetsd.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\guiddef.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack4.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack4.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack4.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack2.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack2.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\pshpack8.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\poppack.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ktmtypes.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winbase.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winerror.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wingdi.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack4.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack4.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winuser.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack2.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\tvout.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winnls.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wincon.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winver.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\verrsrc.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winreg.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\reason.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winnetwk.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wnnc.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\stralign.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winsvc.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\mcx.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\imm.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ime_cmodes.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\zmouse.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\commctrl.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\prsht.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\tchar.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxv_cpu.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxv_dll.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\swprintf.inl
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\limits.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\time.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\wtime.inl
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\time.inl
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stddef.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\errno.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\malloc.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdbg.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atltrace.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atldef.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlrc.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlconv.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlalloc.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ole2.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\objbase.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpc.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcdce.h
+         Note: including file:           C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcdcep.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcnsi.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcnterr.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcasync.h
+         Note: including file:           C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:           C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcndr.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcnsip.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\rpcsal.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wtypes.h
+         Note: including file:          c:\program files (x86)\microsoft sdks\windows\v7.0a\include\guiddef.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\unknwn.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\objidl.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\guiddef.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\cguid.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\urlmon.h
+         Note: including file:          c:\program files (x86)\microsoft sdks\windows\v7.0a\include\oleidl.h
+         Note: including file:          c:\program files (x86)\microsoft sdks\windows\v7.0a\include\servprov.h
+         Note: including file:          c:\program files (x86)\microsoft sdks\windows\v7.0a\include\msxml.h
+         Note: including file:           c:\program files (x86)\microsoft sdks\windows\v7.0a\include\oaidl.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\propidl.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\oleauto.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atldebugapi.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxstr.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\mbstring.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlcore.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlchecked.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlexcept.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\wchar.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlsimpcoll.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\cstringt.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlsimpstr.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlmem.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlcommem.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlcomcli.h
+         Note: including file:          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\olectl.h
+         Note: including file:           C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:           C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ocidl.h
+         Note: including file:           C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\cstringt.inl
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atltransactionmanager.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ktmw32.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atltime.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\oledb.h
+         Note: including file:      c:\program files (x86)\microsoft sdks\windows\v7.0a\include\transact.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\accctrl.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxcoll.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxstat_.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atltypes.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxtls_.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afx.inl
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\shellapi.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxres.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\commdlg.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\prsht.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxctrlcontainer.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\shobjidl.h
+         Note: including file:    c:\program files (x86)\microsoft sdks\windows\v7.0a\include\docobj.h
+         Note: including file:    c:\program files (x86)\microsoft sdks\windows\v7.0a\include\shtypes.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    c:\program files (x86)\microsoft sdks\windows\v7.0a\include\comcat.h
+         Note: including file:    c:\program files (x86)\microsoft sdks\windows\v7.0a\include\prsht.h
+         Note: including file:    c:\program files (x86)\microsoft sdks\windows\v7.0a\include\propsys.h
+         Note: including file:     c:\program files (x86)\microsoft sdks\windows\v7.0a\include\StructuredQueryCondition.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\propkeydef.h
+         Note: including file:    c:\program files (x86)\microsoft sdks\windows\v7.0a\include\ObjectArray.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\sherrors.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\prsht.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack1.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\thumbcache.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlhandler.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\filter.h
+         Note: including file:    C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlstr.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atlbase.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winsock2.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ws2def.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\inaddr.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\qos.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\atliface.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\oleacc.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\process.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\shlwapi.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack8.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\statreg.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\winnls.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\tpcshrd.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxcomctl32.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\vssym32.h
+         Note: including file:    c:\program files (x86)\microsoft sdks\windows\v7.0a\include\VSStyle.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ws2ipdef.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\in6addr.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\windns.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\iphlpapi.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\iprtrmib.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\mprapi.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\lmcons.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ras.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pshpack4.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\poppack.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\wincrypt.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\bcrypt.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ncrypt.h
+         Note: including file:        C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\bcrypt.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ipifcons.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ipmib.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ifmib.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ifdef.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\nldef.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\tcpmib.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\udpmib.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ipexport.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\packon.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\packoff.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\iptypes.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\tcpestats.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\netioapi.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\ntddndis.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\devpkey.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\devpropdef.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\pciprop.h
+         Note: including file:      C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\windot11.h
+         Note: including file:       C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\WlanTypes.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\htmlhelp.h
+         Note: including file:   C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\UIAnimation.h
+         Note: including file:   c:\program files (x86)\microsoft visual studio 10.0\vc\atlmfc\include\afxanimationcontroller.h
+         Note: including file:    c:\program files (x86)\microsoft visual studio 10.0\vc\atlmfc\include\afxanimationhelper.h
+         Note: including file:    c:\program files (x86)\microsoft visual studio 10.0\vc\atlmfc\include\afxtempl.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxplex_.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxmsg_.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxdd_.h
+         Note: including file:   c:\program files (x86)\microsoft visual studio 10.0\vc\atlmfc\include\afxrendertarget.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\d2d1.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\dcommon.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\D2DErr.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\D2DBaseTypes.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\dxgiformat.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\d3d10_1.h
+         Note: including file:      c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\dxgi.h
+         Note: including file:        c:\program files (x86)\microsoft sdks\windows\v7.0a\include\dxgitype.h
+         Note: including file:         c:\program files (x86)\microsoft sdks\windows\v7.0a\include\dxgiformat.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10sdklayers.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10misc.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10shader.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10effect.h
+         Note: including file:      c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10_1shader.h
+         Note: including file:       c:\program files (x86)\microsoft sdks\windows\v7.0a\include\d3d10shader.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\d2d1helper.h
+         Note: including file:    C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\dwrite.h
+         Note: including file:     C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\include\dcommon.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxdll_.h
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxcomctl32.inl
+         Note: including file:   C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include\afxwin4.inl
+         Note: including file:  C:\ObjectARX 2013\inc\aced.h
+         Note: including file:   c:\objectarx 2013\inc\adesk.h
+         Note: including file:    c:\objectarx 2013\inc\AdAChar.h
+         Note: including file:   c:\objectarx 2013\inc\rxnames.h
+         Note: including file:   c:\objectarx 2013\inc\rxevent.h
+         Note: including file:    c:\objectarx 2013\inc\acarray.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\memory.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     c:\objectarx 2013\inc\adesk.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\type_traits
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\limits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\ymath.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\yvals.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\use_ansi.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cfloat
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\float.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtwrn.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\climits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cmath
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\math.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cwchar
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xstddef
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\cstddef
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xtr1common
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xfwrap1
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\xxtype_traits
+         Note: including file:     c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:    c:\objectarx 2013\inc\rxobject.h
+         Note: including file:     c:\objectarx 2013\inc\acbasedefs.h
+         Note: including file:     c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\rxdefs.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\rxboiler.h
+         Note: including file:      c:\objectarx 2013\inc\rxnames.h
+         Note: including file:     c:\objectarx 2013\inc\acadstrc.h
+         Note: including file:     c:\objectarx 2013\inc\acdbport.h
+         Note: including file:     c:\objectarx 2013\inc\rxclass.h
+         Note: including file:      c:\objectarx 2013\inc\rxobject.h
+         Note: including file:     c:\objectarx 2013\inc\rxdict.h
+         Note: including file:      c:\objectarx 2013\inc\rxobject.h
+         Note: including file:    c:\objectarx 2013\inc\dbid.h
+         Note: including file:     c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\dbhandle.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:   c:\objectarx 2013\inc\acedinpt.h
+         Note: including file:    c:\objectarx 2013\inc\rxobject.h
+         Note: including file:    c:\objectarx 2013\inc\dbmain.h
+         Note: including file:     c:\objectarx 2013\inc\adesk.h
+         Note: including file:     C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\share.h
+         Note: including file:     c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:      c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:       c:\objectarx 2013\inc\adesk.h
+         Note: including file:       c:\objectarx 2013\inc\gegbl.h
+         Note: including file:        c:\objectarx 2013\inc\gedll.h
+         Note: including file:         c:\objectarx 2013\inc\adesk.h
+         Note: including file:        c:\objectarx 2013\inc\adesk.h
+         Note: including file:        c:\objectarx 2013\inc\getol.h
+         Note: including file:         c:\objectarx 2013\inc\gedll.h
+         Note: including file:         c:\objectarx 2013\inc\gedblar.h
+         Note: including file:          c:\objectarx 2013\inc\adesk.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:           C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:          c:\objectarx 2013\inc\acarray.h
+         Note: including file:        c:\objectarx 2013\inc\gegblge.h
+         Note: including file:         c:\objectarx 2013\inc\gelibver.h
+         Note: including file:          c:\objectarx 2013\inc\adesk.h
+         Note: including file:          c:\objectarx 2013\inc\gedll.h
+         Note: including file:       c:\objectarx 2013\inc\gegblabb.h
+         Note: including file:        c:\objectarx 2013\inc\gegbl.h
+         Note: including file:       c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:      c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:     c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:     c:\objectarx 2013\inc\geline3d.h
+         Note: including file:      c:\objectarx 2013\inc\gelent3d.h
+         Note: including file:       c:\objectarx 2013\inc\gecurv3d.h
+         Note: including file:        c:\objectarx 2013\inc\adesk.h
+         Note: including file:        c:\objectarx 2013\inc\geent3d.h
+         Note: including file:         c:\objectarx 2013\inc\gegbl.h
+         Note: including file:         c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:         c:\objectarx 2013\inc\geent2d.h
+         Note: including file:          c:\objectarx 2013\inc\gegbl.h
+         Note: including file:          c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:           c:\objectarx 2013\inc\gevec2d.h
+         Note: including file:            c:\objectarx 2013\inc\adesk.h
+         Note: including file:            c:\objectarx 2013\inc\gegbl.h
+         Note: including file:            c:\objectarx 2013\inc\gegblabb.h
+         Note: including file:            c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:           c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:          c:\objectarx 2013\inc\geintrvl.h
+         Note: including file:           c:\objectarx 2013\inc\gegbl.h
+         Note: including file:          c:\objectarx 2013\inc\gegblnew.h
+         Note: including file:         c:\objectarx 2013\inc\geintrvl.h
+         Note: including file:         c:\objectarx 2013\inc\gegblnew.h
+         Note: including file:        c:\objectarx 2013\inc\geponc3d.h
+         Note: including file:         c:\objectarx 2013\inc\gepent3d.h
+         Note: including file:          c:\objectarx 2013\inc\adesk.h
+         Note: including file:          c:\objectarx 2013\inc\geent3d.h
+         Note: including file:        c:\objectarx 2013\inc\gept3dar.h
+         Note: including file:         c:\objectarx 2013\inc\adesk.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:         c:\objectarx 2013\inc\acarray.h
+         Note: including file:        c:\objectarx 2013\inc\gevc3dar.h
+         Note: including file:         c:\objectarx 2013\inc\adesk.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:         c:\objectarx 2013\inc\acarray.h
+         Note: including file:        c:\objectarx 2013\inc\gedblar.h
+         Note: including file:        c:\objectarx 2013\inc\gevptar.h
+         Note: including file:         c:\objectarx 2013\inc\adesk.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         c:\objectarx 2013\inc\acarray.h
+         Note: including file:        c:\objectarx 2013\inc\geintarr.h
+         Note: including file:         c:\objectarx 2013\inc\adesk.h
+         Note: including file:         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:         c:\objectarx 2013\inc\acarray.h
+         Note: including file:       c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:       c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:     c:\objectarx 2013\inc\AcHeapOpers.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\rxobject.h
+         Note: including file:     c:\objectarx 2013\inc\rxdlinkr.h
+         Note: including file:      c:\objectarx 2013\inc\rxobject.h
+         Note: including file:     c:\objectarx 2013\inc\rxiter.h
+         Note: including file:      c:\objectarx 2013\inc\rxobject.h
+         Note: including file:     c:\objectarx 2013\inc\rxditer.h
+         Note: including file:      c:\objectarx 2013\inc\rxobject.h
+         Note: including file:      c:\objectarx 2013\inc\rxiter.h
+         Note: including file:     c:\objectarx 2013\inc\rxsrvice.h
+         Note: including file:      c:\objectarx 2013\inc\rxobject.h
+         Note: including file:     c:\objectarx 2013\inc\dbptrar.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      c:\objectarx 2013\inc\acarray.h
+         Note: including file:     c:\objectarx 2013\inc\dbcolor.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:      c:\objectarx 2013\inc\acadstrc.h
+         Note: including file:      c:\objectarx 2013\inc\rxobject.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      c:\objectarx 2013\inc\acarrayhelper.h
+         Note: including file:     c:\objectarx 2013\inc\dbidar.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      c:\objectarx 2013\inc\dbidapps.h
+         Note: including file:       c:\objectarx 2013\inc\adesk.h
+         Note: including file:       c:\objectarx 2013\inc\dbid.h
+         Note: including file:       c:\objectarx 2013\inc\dbid_ops.h
+         Note: including file:        c:\objectarx 2013\inc\adesk.h
+         Note: including file:      c:\objectarx 2013\inc\acarray.h
+         Note: including file:     c:\objectarx 2013\inc\drawable.h
+         Note: including file:      c:\objectarx 2013\inc\rxobject.h
+         Note: including file:      c:\objectarx 2013\inc\rxoverrule.h
+         Note: including file:       c:\objectarx 2013\inc\rxobject.h
+         Note: including file:       c:\objectarx 2013\inc\acarray.h
+         Note: including file:      c:\objectarx 2013\inc\dbid.h
+         Note: including file:     c:\objectarx 2013\inc\dbsecurity.h
+         Note: including file:     c:\objectarx 2013\inc\acdb.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:      c:\objectarx 2013\inc\rxobject.h
+         Note: including file:      c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:      c:\objectarx 2013\inc\dbidapps.h
+         Note: including file:      c:\objectarx 2013\inc\dbboiler.h
+         Note: including file:       c:\objectarx 2013\inc\rxboiler.h
+         Note: including file:      c:\objectarx 2013\inc\acadstrc.h
+         Note: including file:     c:\objectarx 2013\inc\dbhandle.h
+         Note: including file:     c:\objectarx 2013\inc\dbfiler.h
+         Note: including file:      c:\objectarx 2013\inc\acdb.h
+         Note: including file:      c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:      c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:      c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:      c:\objectarx 2013\inc\gescl3d.h
+         Note: including file:       c:\objectarx 2013\inc\adesk.h
+         Note: including file:       c:\objectarx 2013\inc\gegbl.h
+         Note: including file:      c:\objectarx 2013\inc\adsdef.h
+         Note: including file:     c:\objectarx 2013\inc\ads.h
+         Note: including file:      c:\objectarx 2013\inc\adsmigr.h
+         Note: including file:      c:\objectarx 2013\inc\acedads.h
+         Note: including file:       c:\objectarx 2013\inc\adsdef.h
+         Note: including file:       c:\objectarx 2013\inc\accoredefs.h
+         Note: including file:       c:\objectarx 2013\inc\acmem.h
+         Note: including file:      c:\objectarx 2013\inc\acdbads.h
+         Note: including file:       c:\objectarx 2013\inc\adsdef.h
+         Note: including file:       c:\objectarx 2013\inc\acmem.h
+         Note: including file:      c:\objectarx 2013\inc\acutads.h
+         Note: including file:       c:\objectarx 2013\inc\adsdef.h
+         Note: including file:     c:\objectarx 2013\inc\gept3dar.h
+         Note: including file:     c:\objectarx 2013\inc\dbintar.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:      C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:      c:\objectarx 2013\inc\acarray.h
+         Note: including file:     c:\objectarx 2013\inc\dbsubeid.h
+         Note: including file:      c:\objectarx 2013\inc\acdb.h
+         Note: including file:      c:\objectarx 2013\inc\dbidar.h
+         Note: including file:     c:\objectarx 2013\inc\dbaudita.h
+         Note: including file:     c:\objectarx 2013\inc\acgidefs.h
+         Note: including file:      c:\objectarx 2013\inc\adesk.h
+         Note: including file:     c:\objectarx 2013\inc\dbdimvar.h
+         Note: including file:   c:\objectarx 2013\inc\accmd.h
+         Note: including file:    c:\objectarx 2013\inc\adesk.h
+         Note: including file:    c:\objectarx 2013\inc\dbmain.h
+         Note: including file:    c:\objectarx 2013\inc\rxobject.h
+         Note: including file:   c:\objectarx 2013\inc\dbjig.h
+         Note: including file:    c:\objectarx 2013\inc\acdb.h
+         Note: including file:    c:\objectarx 2013\inc\dbdimdata.h
+         Note: including file:     c:\objectarx 2013\inc\acdb.h
+         Note: including file:     c:\objectarx 2013\inc\acarray.h
+         Note: including file:     c:\objectarx 2013\inc\dbdim.h
+         Note: including file:      c:\objectarx 2013\inc\dbmain.h
+         Note: including file:      c:\objectarx 2013\inc\dbmtext.h
+         Note: including file:       c:\objectarx 2013\inc\dbmain.h
+         Note: including file:      c:\objectarx 2013\inc\acgi.h
+         Note: including file:       c:\objectarx 2013\inc\adesk.h
+         Note: including file:       c:\objectarx 2013\inc\acgidefs.h
+         Note: including file:       c:\objectarx 2013\inc\rxobject.h
+         Note: including file:       c:\objectarx 2013\inc\dbpl.h
+         Note: including file:        c:\objectarx 2013\inc\dbmain.h
+         Note: including file:        c:\objectarx 2013\inc\dbcurve.h
+         Note: including file:         c:\objectarx 2013\inc\dbmain.h
+         Note: including file:         c:\objectarx 2013\inc\gept3dar.h
+         Note: including file:         c:\objectarx 2013\inc\gedblar.h
+         Note: including file:         c:\objectarx 2013\inc\geplane.h
+         Note: including file:          c:\objectarx 2013\inc\geplanar.h
+         Note: including file:           c:\objectarx 2013\inc\gesurf.h
+         Note: including file:            c:\objectarx 2013\inc\geent3d.h
+         Note: including file:            c:\objectarx 2013\inc\gevc3dar.h
+         Note: including file:           c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:         c:\objectarx 2013\inc\dbptrar.h
+         Note: including file:        c:\objectarx 2013\inc\gelnsg2d.h
+         Note: including file:         c:\objectarx 2013\inc\geline2d.h
+         Note: including file:          c:\objectarx 2013\inc\gelent2d.h
+         Note: including file:           c:\objectarx 2013\inc\gecurv2d.h
+         Note: including file:            c:\objectarx 2013\inc\adesk.h
+         Note: including file:            c:\objectarx 2013\inc\geent2d.h
+         Note: including file:            c:\objectarx 2013\inc\geponc2d.h
+         Note: including file:             c:\objectarx 2013\inc\gepent2d.h
+         Note: including file:              c:\objectarx 2013\inc\adesk.h
+         Note: including file:              c:\objectarx 2013\inc\geent2d.h
+         Note: including file:              c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:            c:\objectarx 2013\inc\gept2dar.h
+         Note: including file:             c:\objectarx 2013\inc\adesk.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:              C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:             c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:             c:\objectarx 2013\inc\acarray.h
+         Note: including file:            c:\objectarx 2013\inc\gevc2dar.h
+         Note: including file:             c:\objectarx 2013\inc\adesk.h
+         Note: including file:             C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:              C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:             c:\objectarx 2013\inc\gevec2d.h
+         Note: including file:             c:\objectarx 2013\inc\acarray.h
+         Note: including file:            c:\objectarx 2013\inc\gedblar.h
+         Note: including file:            c:\objectarx 2013\inc\gevptar.h
+         Note: including file:            c:\objectarx 2013\inc\geintarr.h
+         Note: including file:           c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:           c:\objectarx 2013\inc\gevec2d.h
+         Note: including file:        c:\objectarx 2013\inc\gelnsg3d.h
+         Note: including file:         c:\objectarx 2013\inc\geline3d.h
+         Note: including file:         c:\objectarx 2013\inc\geplane.h
+         Note: including file:        c:\objectarx 2013\inc\gearc2d.h
+         Note: including file:         c:\objectarx 2013\inc\gecurv2d.h
+         Note: including file:         c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:         c:\objectarx 2013\inc\gevec2d.h
+         Note: including file:        c:\objectarx 2013\inc\gearc3d.h
+         Note: including file:         c:\objectarx 2013\inc\gecurv3d.h
+         Note: including file:         c:\objectarx 2013\inc\gevec3d.h
+         Note: including file:         c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:         c:\objectarx 2013\inc\geplane.h
+         Note: including file:         c:\objectarx 2013\inc\gegblabb.h
+         Note: including file:        c:\objectarx 2013\inc\gept2dar.h
+         Note: including file:        c:\objectarx 2013\inc\dbboiler.h
+         Note: including file:       c:\objectarx 2013\inc\gemat3d.h
+         Note: including file:        c:\objectarx 2013\inc\gegbl.h
+         Note: including file:        c:\objectarx 2013\inc\gemat2d.h
+         Note: including file:         c:\objectarx 2013\inc\gegbl.h
+         Note: including file:         c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:        c:\objectarx 2013\inc\gepnt3d.h
+         Note: including file:       c:\objectarx 2013\inc\gemat2d.h
+         Note: including file:       c:\objectarx 2013\inc\gepnt2d.h
+         Note: including file:       c:\objectarx 2013\inc\dbcolor.h
+         Note: including file:       c:\objectarx 2013\inc\acdb.h
+         Note: including file:       c:\objectarx 2013\inc\AcGiStyleAttributes.h
+         Note: including file:        c:\objectarx 2013\inc\AcGiLineAttributes.h
+         Note: including file:         c:\objectarx 2013\inc\acdb.h
+         Note: including file:         c:\objectarx 2013\inc\AcGiLineAttrUtils.h
+         Note: including file:          c:\objectarx 2013\inc\acdb.h
+         Note: including file:       C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\assert.h
+         Note: including file:        C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\crtdefs.h
+         Note: including file:       c:\objectarx 2013\inc\AcGiParameter.h
+         Note: including file:        c:\objectarx 2013\inc\rxcopyonwriteobject.h
+         Note: including file:      c:\objectarx 2013\inc\dbdimvar.h
+         Note: including file: c:\users\chgu\dropbox\master\autocad\arx\linemanageassitant\linemanageassistant\arxdemo\resource.h
+         Note: including file: C:\ObjectARX 2013\inc\acdocman.h
+         Note: including file:  c:\objectarx 2013\inc\adesk.h
+         Note: including file:  c:\objectarx 2013\inc\acdb.h
+         MenuManager.cpp
+         Note: including file: c:\users\chgu\dropbox\master\autocad\arx\linemanageassitant\linemanageassistant\arxdemo\MenuManager.h
+         stdafx.cpp
+         Note: including file: c:\users\chgu\dropbox\master\autocad\arx\linemanageassitant\linemanageassistant\arxdemo\stdafx.h
+         Generating Code...
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _AFXDLL /l"0x0409" /nologo /fo"x64\Debug\LMAMenu.res" LMAMenu.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\lma.arx" /NOLOGO /LIBPATH:"C:\ObjectARX 2013\lib-x64" ac1st19.lib acad.lib acapp.lib acapp_crx.lib AcCamera.lib accore.lib acdb19.lib acdbmgd.lib AcDbPointCloudObj.lib AcFdEval.lib AcFdUi.lib acge19.lib acgiapi.lib acismobj19.lib acModelDocObj.lib AcMPolygonObj19.lib AcPublish_crx.lib AcSceneOE.lib AcTc.lib AcTcUi.lib acui19.lib AdApplicationFrame.lib adui19.lib aNav.lib aseapi19.lib asiapi19.lib axdb.lib rxapi.lib /DEF:"C:\ObjectARX 2013\inc\AcRxDefault.def" /MANIFEST /ManifestFile:"x64\Debug\lma.arx.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\lma.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\lma.lib" /MACHINE:X64 /DLL x64\Debug\LMAMenu.res
+         x64\Debug\LineManageAssistant.obj
+         x64\Debug\CutCommandMgr.obj
+         x64\Debug\dllmain.obj
+         x64\Debug\MenuLMAMain.obj
+         x64\Debug\MenuManager.obj
+         x64\Debug\stdafx.obj
+     1>mfcs100d.lib(dllmodul.obj) : error LNK2005: DllMain already defined in dllmain.obj
+            Creating library C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\lma.lib and object C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\lma.exp
+     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+     1>C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\x64\Debug\lma.arx : fatal error LNK1169: one or more multiply defined symbols found
+     1>Done Building Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\LineManageAssistant\ARXDemo\ARXDemo.vcxproj" (rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:19.10
