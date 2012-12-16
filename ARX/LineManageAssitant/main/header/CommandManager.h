@@ -23,10 +23,11 @@ public:
 
 	static const WCHAR* CMD_GROUP;
 
-private:
-
 	static const WCHAR* CMD_LINE_CONFIG; 
 	static const WCHAR* CMD_LINE_INPUT;
+	static const WCHAR* CMD_LIEN_CUT;
+
+private:
 
 	CommandManager(void);
 	~CommandManager(void);

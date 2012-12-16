@@ -151,6 +151,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\header\AsdkAcUiDialogSample.h" />
+    <ClInclude Include="..\header\CAcadApplication.h" />
+    <ClInclude Include="..\header\CAcadDocument.h" />
+    <ClInclude Include="..\header\CAcadMenuBar.h" />
+    <ClInclude Include="..\header\CAcadMenuGroup.h" />
+    <ClInclude Include="..\header\CAcadMenuGroups.h" />
+    <ClInclude Include="..\header\CAcadModelSpace.h" />
+    <ClInclude Include="..\header\CAcadPopupMenu.h" />
+    <ClInclude Include="..\header\CAcadPopupMenus.h" />
     <ClInclude Include="..\header\LineManageAssitant.h" />
     <ClInclude Include="..\header\MenuLMAMain.h" />
     <ClInclude Include="..\header\MenuManager.h" />

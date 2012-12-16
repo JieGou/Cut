@@ -35,32 +35,10 @@ extern "C" HWND adsw_acadMainWnd();
 
 /////////////////////////////////////////////////////////////////////////////
 // Define the sole extension module object.
-
 AC_IMPLEMENT_EXTENSION_MODULE(theArxDLL);
-
-void dialogCreate()
-{
- 
-    // Modal
-    AsdkAcUiDialogSample dlg(CWnd::FromHandle(adsw_acadMainWnd()));
-    INT_PTR nReturnValue = dlg.DoModal();
-    
-}
 
 static void initApp(void* appId)
 {
-
-  CAcModuleResourceOverride resOverride;
-
-  acedRegCmds->addCommand(_T("ASDK_ACUI_SAMPLE"), 
-                          _T("ASDKACUISAMPLE"), 
-                          _T("ACUISAMPLE"), 
-                          ACRX_CMD_MODAL, 
-                          dialogCreate,
-                          NULL,
-                          -1,
-                          theArxDLL.ModuleResourceInstance());
-
   // 注册菜单
   MenuManager::CreateMenu(appId);
 
@@ -70,9 +48,6 @@ static void initApp(void* appId)
 
 static void unloadApp()
 {
-  // Do other cleanup tasks here  
-  acedRegCmds->removeGroup(_T("ASDK_ACUI_SAMPLE"));  
-
   // 移除默认上下文菜单
   MenuManager::unRegister();
 
@@ -87,6 +62,8 @@ static void unloadApp()
 //
 //////////////////////////////////////////////////////////////
 
+static AFX_EXTENSION_MODULE MyAsdkMfcComSampDLL = { NULL, NULL };
+
 extern "C" int APIENTRY
 DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
 {
@@ -96,13 +73,38 @@ DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
     if (dwReason == DLL_PROCESS_ATTACH)
     {
         theArxDLL.AttachInstance(hInstance);
+
+		// Extension DLL one-time initialization
+		if (!AfxInitExtensionModule(MyAsdkMfcComSampDLL, hInstance))
+			return 0;
+
+		// Insert this DLL into the resource chain
+		// NOTE: If this Extension DLL is being implicitly linked to by
+		//  an MFC Regular DLL (such as an ActiveX Control)
+		//  instead of an MFC application, then you will want to
+		//  remove this line from DllMain and put it in a separate
+		//  function exported from this Extension DLL.  The Regular DLL
+		//  that uses this Extension DLL should then explicitly call that
+		//  function to initialize this Extension DLL.  Otherwise,
+		//  the CDynLinkLibrary object will not be attached to the
+		//  Regular DLL's resource chain, and serious problems will
+		//  result.
+
+		new CDynLinkLibrary(MyAsdkMfcComSampDLL);
+
     }
     else if (dwReason == DLL_PROCESS_DETACH)
     {
         theArxDLL.DetachInstance();  
+		
+		TRACE0("MyAsdkMfcComSamp.DLL Terminating!\n");
+
+		// Terminate the library before destructors are called
+		AfxTermExtensionModule(MyAsdkMfcComSampDLL);
     }
     return 1;   // ok
 }
+
 
 
 extern "C" AcRx::AppRetCode acrxEntryPoint( AcRx::AppMsgCode msg, void* appId)

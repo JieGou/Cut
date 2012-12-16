@@ -42,6 +42,30 @@
     <ClInclude Include="CommandManager.h">
       <Filter>inc</Filter>
     </ClInclude>
+    <ClInclude Include="..\header\CAcadApplication.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\CAcadDocument.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\CAcadMenuBar.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\CAcadMenuGroup.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\CAcadMenuGroups.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\CAcadModelSpace.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\CAcadPopupMenu.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\CAcadPopupMenus.h">
+      <Filter>inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resource\res\AsdkAcUiSample.rc2">

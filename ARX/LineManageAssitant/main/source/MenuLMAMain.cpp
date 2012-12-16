@@ -6,6 +6,8 @@
 
 #include "StdAfx.h"
 
+#include <CommandManager.h>
+
 extern HINSTANCE _hdllInstance = NULL;//全局变量
 
 MenuLMAMain::MenuLMAMain(void)
@@ -43,14 +45,16 @@ void MenuLMAMain::onCommand(Adesk::UInt32 cmdIndex)
 	strPrompt.Format(L"\n您已经选取了菜单:%s\n",strMenuTitle);
 	acutPrintf(strPrompt); // 我们的例子显示哪一个菜单项被选择
 
+	CommandManager::ShowConfigDialog();
+
     acedPostCommandPrompt();
 	acDocManager->pushResourceHandle(_hdllInstance); // 切换当前使用的资源
 }
 
 void MenuLMAMain::OnUpdateMenu()
 {
-	mpMenu->EnableMenuItem(ID_LINE_CONFIG,MF_GRAYED); // 使菜单变灰
-	mpMenu->EnableMenuItem(ID_INPUT_POINT,MF_ENABLED); // 使能菜单项
-	mpMenu->CheckMenuItem(ID_GENERATE_CUT, MF_BYCOMMAND|MF_CHECKED); // 复选菜单项 
+	//mpMenu->EnableMenuItem(ID_LINE_CONFIG,MF_GRAYED); // 使菜单变灰
+	//mpMenu->EnableMenuItem(ID_INPUT_POINT,MF_ENABLED); // 使能菜单项
+	//mpMenu->CheckMenuItem(ID_GENERATE_CUT, MF_BYCOMMAND|MF_CHECKED); // 复选菜单项 
 }
 
