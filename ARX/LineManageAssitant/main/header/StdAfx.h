@@ -22,6 +22,7 @@
 #undef _DEBUG
 #endif
 
+#include <afxcontrolbars.h>
 
 #if _MSC_VER >= 1000
 #pragma once

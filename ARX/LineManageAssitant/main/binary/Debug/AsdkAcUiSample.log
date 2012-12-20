@@ -1,35 +1,30 @@
-﻿Build started 2012/12/16 21:56:32.
-     1>Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\project\AsdkAcUiSample.vcxproj" on node 2 (rebuild target(s)).
-     1>_PrepareForClean:
-         Deleting file "..\binary\Debug\LineManageAssistant.lastbuildstate".
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppClean.targets(74,5): warning : Access to the path 'C:\USERS\CHGU\DROPBOX\MASTER\AUTOCAD\ARX\LINEMANAGEASSITANT\MAIN\BINARY\DEBUG\X64\LMA.ARX' is denied.
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppClean.targets(74,5): warning : Access to the path 'C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\binary\Debug\x64\lma.arx' is denied.
-       InitializeBuildStatus:
-         Creating "..\binary\Debug\LineManageAssistant.unsuccessfulbuild" because "AlwaysCreate" was specified.
+﻿Build started 2012/12/21 5:56:24.
+     1>Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\project\AsdkAcUiSample.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "..\binary\Debug\LineManageAssistant.unsuccessfulbuild".
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I..\include\inc /I..\header /I"..\..\..\inc-x64" /I"..\..\..\..\inc-x64" /I"..\..\..\..\..\inc-x64" /AI"..\..\..\inc-x64" /AI"..\..\..\..\inc-x64" /AI"..\..\..\..\..\inc-x64" /AI..\..\..\inc /AI..\..\..\..\inc /AI..\..\..\..\..\inc /Zi /nologo /W3 /WX /Od /D _WIN32_IE=0x0600 /D WIN /D WIN32 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT=1 /D _AFXDLL /D _UNICODE /D _UNICODE /D _WINDLL /GF /Gm- /EHsc /RTCc /RTC1 /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Yc"stdafx.h" /Fp"..\binary\Debug\LineManageAssistant.pch" /Fo"..\binary\Debug\\" /Fd"..\binary\Debug\lma.pdb" /Gd /TP /errorReport:prompt ..\source\StdAfx.cpp
-         StdAfx.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I..\include\inc /I..\header /I"..\..\..\inc-x64" /I"..\..\..\..\inc-x64" /I"..\..\..\..\..\inc-x64" /AI"..\..\..\inc-x64" /AI"..\..\..\..\inc-x64" /AI"..\..\..\..\..\inc-x64" /AI..\..\..\inc /AI..\..\..\..\inc /AI..\..\..\..\..\inc /Zi /nologo /W3 /WX /Od /D _WIN32_IE=0x0600 /D WIN /D WIN32 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT=1 /D _AFXDLL /D _UNICODE /D _UNICODE /D _WINDLL /GF /Gm- /EHsc /RTCc /RTC1 /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"..\binary\Debug\\" /Fd"..\binary\Debug\lma.pdb" /Gd /TP /errorReport:prompt ..\source\AsdkAcUiDialogSample.cpp ..\source\LineManageAssitant.cpp ..\source\MenuLMAMain.cpp ..\source\MenuManager.cpp CommandManager.cpp LMALineConfigManagerDialog.cpp
-         AsdkAcUiDialogSample.cpp
-         LineManageAssitant.cpp
-         MenuLMAMain.cpp
-         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
-         MenuManager.cpp
-         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I..\include\inc /I..\header /I"..\..\..\inc-x64" /I"..\..\..\..\inc-x64" /I"..\..\..\..\..\inc-x64" /AI"..\..\..\inc-x64" /AI"..\..\..\..\inc-x64" /AI"..\..\..\..\..\inc-x64" /AI..\..\..\inc /AI..\..\..\..\inc /AI..\..\..\..\..\inc /Zi /nologo /W3 /WX /Od /D _WIN32_IE=0x0600 /D WIN /D WIN32 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT=1 /D _AFXDLL /D _UNICODE /D _UNICODE /D _WINDLL /GF /Gm- /EHsc /RTCc /RTC1 /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"..\binary\Debug\\" /Fd"..\binary\Debug\lma.pdb" /Gd /TP /errorReport:prompt ..\source\CommandManager.cpp ..\source\LineConfigDialog.cpp ..\source\LMALineConfigManagerDialog.cpp
          CommandManager.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         LineConfigDialog.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
          LMALineConfigManagerDialog.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
          Generating Code...
        ResourceCompile:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /l"0x0409" /I..\header /nologo /fo"..\binary\Debug\AsdkAcUiSample.res" ..\resource\AsdkAcUiSample.rc 
+         All outputs are up-to-date.
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"..\binary\Debug\x64\lma.arx" /INCREMENTAL:NO /NOLOGO /LIBPATH:"..\library\lib-x64" /LIBPATH:"..\..\..\lib-x64" /LIBPATH:"..\..\..\..\lib-x64" /LIBPATH:"..\..\..\..\..\lib-x64" accore.lib acad.lib acui19.lib adui19.lib ac1st19.lib acdb19.lib acge19.lib acgiapi.lib acISMobj19.lib rxapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"..\include\inc\AcRxDefault.def" /MANIFEST /ManifestFile:"..\binary\Debug\lma.arx.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"..\binary\Debug\x64\lma.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\binary\Debug\lma.lib" /MACHINE:X64 /CLRTHREADATTRIBUTE:STA /CLRIMAGETYPE:IJW /CLRUNMANAGEDCODECHECK /DLL ..\binary\Debug\AsdkAcUiSample.res
+         ..\binary\Debug\AddLineDialog.obj
          ..\binary\Debug\AsdkAcUiDialogSample.obj
+         ..\binary\Debug\CommandManager.obj
+         ..\binary\Debug\LineConfigDialog.obj
          ..\binary\Debug\LineManageAssitant.obj
+         ..\binary\Debug\LMALineConfigManagerDialog.obj
          ..\binary\Debug\MenuLMAMain.obj
          ..\binary\Debug\MenuManager.obj
          ..\binary\Debug\StdAfx.obj
-         ..\binary\Debug\CommandManager.obj
-         ..\binary\Debug\LMALineConfigManagerDialog.obj
             Creating library ..\binary\Debug\lma.lib and object ..\binary\Debug\lma.exp
      1>rxapi.lib(libinit.obj) : warning LNK4099: PDB 'rxapi_cl.pdb' was not found with 'rxapi.lib(libinit.obj)' or at 'C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\binary\Debug\x64\rxapi_cl.pdb'; linking object as if no debug info
          AsdkAcUiSample.vcxproj -> C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\project\..\binary\Debug\x64\lma.arx
@@ -40,8 +35,8 @@
        FinalizeBuildStatus:
          Deleting file "..\binary\Debug\LineManageAssistant.unsuccessfulbuild".
          Touching "..\binary\Debug\LineManageAssistant.lastbuildstate".
-     1>Done Building Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\project\AsdkAcUiSample.vcxproj" (rebuild target(s)).
+     1>Done Building Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\project\AsdkAcUiSample.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:01:00.88
+Time Elapsed 00:00:51.10

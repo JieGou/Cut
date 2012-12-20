@@ -16,17 +16,20 @@
     <ClCompile Include="..\source\StdAfx.cpp">
       <Filter>src\Application</Filter>
     </ClCompile>
-    <ClCompile Include="CommandManager.cpp">
+    <ClCompile Include="..\source\LineConfigDialog.cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\CommandManager.cpp">
       <Filter>src\Command</Filter>
     </ClCompile>
-    <ClCompile Include="LMALineConfigManagerDialog.cpp">
+    <ClCompile Include="..\source\LMALineConfigManagerDialog.cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\AddLineDialog.cpp">
       <Filter>src\Dialog</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\header\MenuLMAMain.h">
-      <Filter>inc</Filter>
-    </ClInclude>
     <ClInclude Include="..\header\AsdkAcUiDialogSample.h">
       <Filter>inc</Filter>
     </ClInclude>
@@ -69,7 +72,16 @@
     <ClInclude Include="..\resource\resource.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="LMALineConfigManagerDialog.h">
+    <ClInclude Include="LineConfigDialog.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\AddLineDialog.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\LMALineConfigManagerDialog.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\MenuLMAMain.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>

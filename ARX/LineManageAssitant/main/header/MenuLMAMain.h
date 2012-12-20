@@ -1,6 +1,6 @@
+#pragma once
 #include "afxwin.h"
 
-#pragma once
 #include "aced.h"
 
 class MenuLMAMain : public AcEdUIContext
@@ -12,7 +12,7 @@ public:
 
     virtual void* getMenuContext(const AcRxClass *pClass, const AcDbObjectIdArray& ids) ;
     virtual void  onCommand(Adesk::UInt32 cmdIndex);
-    virtual void OnUpdateMenu();
+    virtual void  OnUpdateMenu();
 
 private:
 
