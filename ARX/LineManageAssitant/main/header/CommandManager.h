@@ -21,6 +21,8 @@ public:
 
 	static void ShowConfigDialog();
 
+	static void ShowAddLineDialog();
+
 	static const WCHAR* CMD_GROUP;
 
 	static const WCHAR* CMD_LINE_CONFIG; 

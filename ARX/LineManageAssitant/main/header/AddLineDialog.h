@@ -18,7 +18,7 @@ public:
 	virtual ~AddLineDialog();
 
 // Dialog Data
-	enum { IDD = IDD_DIALOG_LINE_ADD };
+	enum { IDD = IDD_DIALOG_LINE_CONFIG_ADD };
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support

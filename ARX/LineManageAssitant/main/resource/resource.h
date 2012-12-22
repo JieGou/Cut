@@ -4,9 +4,9 @@
 //
 #define IDD_DIALOG1                     129
 #define IDR_MENU1                       131
-#define IDD_DIALOG2                     132
 #define IDD_DIALOG_LINE_CONFIG          132
-#define IDD_DIALOG_LINE_ADD             133
+#define IDD_DIALOG_LINE_CONFIG_ADD      133
+#define IDD_DIALOG_LINE_ADD             135
 #define IDC_EDIT_XPT                    1000
 #define IDC_EDIT_ANGLE                  1001
 #define IDC_BUTTON_POINT                1002
@@ -28,9 +28,13 @@
 #define IDC_EDIT2                       1030
 #define IDC_EDIT3                       1031
 #define IDC_EDIT4                       1032
+#define IDC_BUTTON1                     1032
 #define IDC_EDIT5                       1033
+#define IDC_BUTTON2                     1033
 #define IDC_LIST2                       1034
+#define IDC_BUTTON3                     1034
 #define IDC_LIST3                       1035
+#define IDC_TREE1                       1035
 #define ID_32771                        32771
 #define ID_32772                        32772
 #define ID_INPUT_POINT                  32773
@@ -42,9 +46,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        135
+#define _APS_NEXT_RESOURCE_VALUE        136
 #define _APS_NEXT_COMMAND_VALUE         32777
-#define _APS_NEXT_CONTROL_VALUE         1032
+#define _APS_NEXT_CONTROL_VALUE         1036
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

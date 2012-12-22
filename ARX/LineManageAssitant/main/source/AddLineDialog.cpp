@@ -8,7 +8,7 @@
 
 // AddLineDialog dialog
 
-IMPLEMENT_DYNAMIC(AddLineDialog, CDialogEx)
+IMPLEMENT_DYNAMIC(AddLineDialog, CAcUiDialog)
 
 AddLineDialog::AddLineDialog(CWnd* pParent /*=NULL*/)
 	: CAcUiDialog(AddLineDialog::IDD, pParent)

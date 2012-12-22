@@ -6,7 +6,8 @@
 #define IDR_MENU1                       131
 #define IDD_DIALOG2                     132
 #define IDD_DIALOG_LINE_CONFIG          132
-#define IDD_DIALOG_LINE_ADD             133
+#define IDD_DIALOG_LINE_CONFIG_ADD      133
+#define IDD_DIALOG_LINE_ADD             135
 #define IDC_EDIT_XPT                    1000
 #define IDC_EDIT_ANGLE                  1001
 #define IDC_BUTTON_POINT                1002

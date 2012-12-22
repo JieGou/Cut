@@ -22,9 +22,6 @@
     <ClCompile Include="..\source\CommandManager.cpp">
       <Filter>src\Command</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\LMALineConfigManagerDialog.cpp">
-      <Filter>src\Dialog</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\AddLineDialog.cpp">
       <Filter>src\Dialog</Filter>
     </ClCompile>
@@ -72,16 +69,13 @@
     <ClInclude Include="..\resource\resource.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="LineConfigDialog.h">
-      <Filter>inc</Filter>
-    </ClInclude>
     <ClInclude Include="..\header\AddLineDialog.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\header\LMALineConfigManagerDialog.h">
+    <ClInclude Include="..\header\MenuLMAMain.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\header\MenuLMAMain.h">
+    <ClInclude Include="..\header\LineConfigDialog.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>

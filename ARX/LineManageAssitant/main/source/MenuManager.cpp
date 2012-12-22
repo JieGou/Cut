@@ -21,9 +21,9 @@
 
 #include <CommandManager.h>
 
-#define MAIN_MENU_NAME L"管线系统"
-#define MAIN_MENU_LINE_CONFIG L"管线定义"
-#define MAIN_MENU_LINE_INPUT L"管线录入"
+#define MAIN_MENU_NAME L"管线辅助系统"
+#define MAIN_MENU_LINE_CONFIG L"类型定义"
+#define MAIN_MENU_LINE_INPUT L"位置录入"
 #define MAIN_MENU_LINE_CUT L"生成切面"
 
 MenuManager* MenuManager::gMenuManager = NULL;

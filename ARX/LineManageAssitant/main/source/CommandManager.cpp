@@ -76,8 +76,10 @@ void CommandManager::UnRegisterCommand() const
 void CommandManager::ShowConfigDialog()
 {
 	// Modal
-	//LMALineConfigManagerDialog dlg(CWnd::FromHandle(adsw_acadMainWnd()));
 	LineConfigDialog dlg(CWnd::FromHandle(adsw_acadMainWnd()));
 	INT_PTR nReturnValue = dlg.DoModal();
 }
 
+void CommandManager::ShowAddLineDialog()
+{
+}
