@@ -14,6 +14,8 @@ public:
     virtual void  onCommand(Adesk::UInt32 cmdIndex);
     virtual void  OnUpdateMenu();
 
+	void onAction(const CString& menuName);
+
 private:
 
 	HMENU m_tempHMenu;

@@ -79,8 +79,8 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </Midl>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include\inc;..\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\include\inc;..\header;..\resource;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEMO_DATA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ResourceCompile>
@@ -93,11 +93,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEMO_DATA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </Midl>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include\inc;..\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\include\inc;..\header;..\resource;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEMO_DATA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ResourceCompile>
@@ -107,13 +107,16 @@
       <AdditionalLibraryDirectories>..\library\lib-$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>..\include\inc\AcRxDefault.def</ModuleDefinitionFile>
       <TargetMachine>MachineX64</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>false</GenerateMapFile>
+      <MapExports>false</MapExports>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\include\inc;..\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\include\inc;..\header;..\resource;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEMO_DATA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\library\lib-$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -123,8 +126,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\include\inc;..\header;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\include\inc;..\header;..\resource;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEMO_DATA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\library\lib-$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -136,6 +139,9 @@
     <ClCompile Include="..\source\AddLineDialog.cpp" />
     <ClCompile Include="..\source\AsdkAcUiDialogSample.cpp" />
     <ClCompile Include="..\source\CommandManager.cpp" />
+    <ClCompile Include="..\source\data\GlobalDataConfig.cpp" />
+    <ClCompile Include="..\source\data\LineCategoryItemData.cpp" />
+    <ClCompile Include="..\source\data\LineConfigDataManager.cpp" />
     <ClCompile Include="..\source\LineConfigDialog.cpp" />
     <ClCompile Include="..\source\LineManageAssitant.cpp" />
     <ClCompile Include="..\source\MenuLMAMain.cpp" />
@@ -163,6 +169,9 @@
     <ClInclude Include="..\header\CAcadModelSpace.h" />
     <ClInclude Include="..\header\CAcadPopupMenu.h" />
     <ClInclude Include="..\header\CAcadPopupMenus.h" />
+    <ClInclude Include="..\header\GlobalDataConfig.h" />
+    <ClInclude Include="..\header\LineCategoryItemData.h" />
+    <ClInclude Include="..\header\LineConfigDataManager.h" />
     <ClInclude Include="..\header\LineConfigDialog.h" />
     <ClInclude Include="..\header\LineManageAssitant.h" />
     <ClInclude Include="..\header\MenuLMAMain.h" />

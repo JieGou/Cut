@@ -25,6 +25,15 @@
     <ClCompile Include="..\source\AddLineDialog.cpp">
       <Filter>src\Dialog</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\data\GlobalDataConfig.cpp">
+      <Filter>src\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\data\LineCategoryItemData.cpp">
+      <Filter>src\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\data\LineConfigDataManager.cpp">
+      <Filter>src\Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\header\AsdkAcUiDialogSample.h">
@@ -78,6 +87,15 @@
     <ClInclude Include="..\header\LineConfigDialog.h">
       <Filter>inc</Filter>
     </ClInclude>
+    <ClInclude Include="..\header\GlobalDataConfig.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\LineCategoryItemData.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\LineConfigDataManager.h">
+      <Filter>inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resource\res\AsdkAcUiSample.rc2">
@@ -111,6 +129,9 @@
     </Filter>
     <Filter Include="src\Command">
       <UniqueIdentifier>{49f1a170-c035-417b-bf04-c2b3c9620c24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Data">
+      <UniqueIdentifier>{c8fa926f-50a7-4414-8851-a36effb897a6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

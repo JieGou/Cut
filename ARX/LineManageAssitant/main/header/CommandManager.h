@@ -7,6 +7,11 @@
 
 using namespace std;
 
+#define MAIN_MENU_NAME L"管线辅助系统"
+#define MAIN_MENU_LINE_CONFIG L"类型定义"
+#define MAIN_MENU_LINE_INPUT L"位置录入"
+#define MAIN_MENU_LINE_CUT L"生成切图"
+
 class CommandManager
 {
 public:
@@ -22,6 +27,8 @@ public:
 	static void ShowConfigDialog();
 
 	static void ShowAddLineDialog();
+
+	static void GenerateCut();
 
 	static const WCHAR* CMD_GROUP;
 

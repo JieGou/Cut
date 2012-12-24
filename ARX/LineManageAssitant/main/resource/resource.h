@@ -35,6 +35,11 @@
 #define IDC_BUTTON3                     1034
 #define IDC_LIST3                       1035
 #define IDC_TREE1                       1035
+#define IDC_TREE_LINES                  1035
+#define IDC_LIST_LINE_DETAIL            1036
+#define IDC_EDIT1                       1037
+#define IDC_EDIT6                       1038
+#define IDC_EDIT7                       1040
 #define ID_32771                        32771
 #define ID_32772                        32772
 #define ID_INPUT_POINT                  32773
@@ -48,7 +53,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        136
 #define _APS_NEXT_COMMAND_VALUE         32777
-#define _APS_NEXT_CONTROL_VALUE         1036
+#define _APS_NEXT_CONTROL_VALUE         1038
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

@@ -45,7 +45,7 @@ void MenuLMAMain::onCommand(Adesk::UInt32 cmdIndex)
 	strPrompt.Format(L"\n您已经选取了菜单:%s\n",strMenuTitle);
 	acutPrintf(strPrompt); // 我们的例子显示哪一个菜单项被选择
 
-	CommandManager::ShowConfigDialog();
+	onAction(strMenuTitle);
 
     acedPostCommandPrompt();
 	acDocManager->pushResourceHandle(_hdllInstance); // 切换当前使用的资源
@@ -56,5 +56,21 @@ void MenuLMAMain::OnUpdateMenu()
 	//mpMenu->EnableMenuItem(ID_LINE_CONFIG,MF_GRAYED); // 使菜单变灰
 	//mpMenu->EnableMenuItem(ID_INPUT_POINT,MF_ENABLED); // 使能菜单项
 	//mpMenu->CheckMenuItem(ID_GENERATE_CUT, MF_BYCOMMAND|MF_CHECKED); // 复选菜单项 
+}
+
+void MenuLMAMain::onAction(const CString& menuName)
+{
+	if( menuName == MAIN_MENU_LINE_CONFIG )
+	{
+		CommandManager::ShowConfigDialog();
+	}
+	else if( menuName == MAIN_MENU_LINE_INPUT )
+	{
+		CommandManager::ShowAddLineDialog();
+	}
+	else if( menuName == MAIN_MENU_LINE_CUT )
+	{
+		CommandManager::GenerateCut();
+	}
 }
 

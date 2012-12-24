@@ -11,6 +11,20 @@
 
 // LineConfigDialog dialog
 
+using namespace std;
+
+namespace com
+{
+
+namespace guch
+{
+
+namespace assistent
+{
+
+namespace config
+{
+
 class LineConfigDialog : public CAcUiDialog
 {
 	DECLARE_DYNAMIC(LineConfigDialog)
@@ -32,8 +46,27 @@ protected:
 	afx_msg void OnBnClickedButtonAdd();
 
 	DECLARE_MESSAGE_MAP()
+
+	BOOL InsertLine(const int index,
+					const wstring& rID,
+					const wstring& rName,
+					const wstring& rKind,
+					const wstring& rCategory,
+					const wstring& rShape,
+					const wstring& rSize,
+					const wstring& rEffetSize,
+					const wstring& rUnit,
+					const wstring& rComment);
+
 public:
-	
-	//CListCtrl m_lineConfig;
+
 	CAcUiListCtrl m_lineConfig;
 };
+
+} // end of config
+
+} // end of assistant
+
+} // end of guch
+
+} // end of com

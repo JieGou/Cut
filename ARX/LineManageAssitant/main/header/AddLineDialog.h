@@ -18,10 +18,20 @@ public:
 	virtual ~AddLineDialog();
 
 // Dialog Data
-	enum { IDD = IDD_DIALOG_LINE_CONFIG_ADD };
+	enum { IDD = IDD_DIALOG_LINE_ADD };
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+	virtual BOOL OnInitDialog();
+
+	BOOL InitLineList();
+	BOOL InitLineDetailHeader();
+	BOOL InitLineDetailData();
 
 	DECLARE_MESSAGE_MAP()
+
+
+public:
+	CTreeCtrl m_LinesTree;
+	CListCtrl m_LineDetailList;
 };

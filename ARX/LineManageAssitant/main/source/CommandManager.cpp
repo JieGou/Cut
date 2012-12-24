@@ -8,6 +8,27 @@
 
 #include "LMALineConfigManagerDialog.h"
 #include "LineConfigDialog.h"
+#include "AddLineDialog.h"
+
+#include "acedads.h"
+#include "accmd.h"
+#include <adscodes.h>
+
+#include <adsdlg.h>
+
+#include <dbapserv.h>
+
+#include <dbregion.h>
+
+#include <gepnt3d.h>
+
+//symbol table
+#include <dbsymtb.h>
+
+//3D Object
+#include <dbsol3d.h>
+
+using namespace com::guch::assistent::config;
 
 typedef map<wstring,AcRxFunctionPtr>::const_iterator CommandIterator;
 
@@ -40,8 +61,8 @@ void CommandManager::Release()
 CommandManager::CommandManager(void)
 {
 	mSupportCommands[CMD_LINE_CONFIG] = ShowConfigDialog;
-	mSupportCommands[CMD_LINE_INPUT] = ShowConfigDialog;
-	mSupportCommands[CMD_LIEN_CUT] = ShowConfigDialog;
+	mSupportCommands[CMD_LINE_INPUT] = ShowAddLineDialog;
+	mSupportCommands[CMD_LIEN_CUT] = GenerateCut;
 }
 
 CommandManager::~CommandManager(void)
@@ -82,4 +103,65 @@ void CommandManager::ShowConfigDialog()
 
 void CommandManager::ShowAddLineDialog()
 {
+	AddLineDialog dlg(CWnd::FromHandle(adsw_acadMainWnd()));
+	INT_PTR nReturnValue = dlg.DoModal();
+}
+
+AcDbObjectId PostToModelSpace(AcDbEntity* pEnt)
+{
+	AcDbBlockTable *pBlockTable;
+	acdbHostApplicationServices()->workingDatabase()
+		->getBlockTable(pBlockTable, AcDb::kForRead);
+
+	AcDbBlockTableRecord *pBlockTableRecord;
+	pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRecord,
+	AcDb::kForWrite);
+
+	AcDbObjectId entId;
+	pBlockTableRecord->appendAcDbEntity(entId, pEnt);
+
+	pBlockTable->close();
+	pBlockTableRecord->close();
+	pEnt->close();
+
+	return entId;
+}
+
+void moveToBottom(AcDbEntity* pEntry)
+{
+	AcGeVector3d vec(-8,10,0);
+
+	AcGeMatrix3d moveMatrix;
+	moveMatrix.setToTranslation(vec);
+
+	pEntry->transformBy(moveMatrix);
+}
+
+void drawCylinder()
+{
+	// 创建特定参数的圆柱体（实际上最后一个参数决定了实体是一个圆锥体还是圆柱） 
+	AcDb3dSolid *pSolid = new AcDb3dSolid(); 
+	pSolid->createFrustum(30, 10, 10, 10);
+
+	// 将圆锥体添加到模型空间
+	PostToModelSpace(pSolid);
+
+	//创建切面
+	AcGePlane plane;
+    plane.set(AcGePoint3d(8,0,0),AcGeVector3d(1,0,0));
+
+	//得到实体与切面相切的截面
+	AcDbRegion *pSelectionRegion = NULL;
+	pSolid->getSection(plane, pSelectionRegion);
+
+	//将其移动到YZ平面
+	//moveToBottom(pSelectionRegion);
+	
+	//将截面加入到模型空间
+	PostToModelSpace(pSelectionRegion);
+}
+
+void CommandManager::GenerateCut()
+{
+	drawCylinder();
 }

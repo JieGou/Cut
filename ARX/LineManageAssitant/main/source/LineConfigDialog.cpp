@@ -9,6 +9,20 @@
 
 #include "AddLineDialog.h"
 
+#include <LineConfigDataManager.h>
+
+namespace com
+{
+
+namespace guch
+{
+
+namespace assistent
+{
+
+namespace config
+{
+
 // LineConfigDialog dialog
 
 IMPLEMENT_DYNAMIC(LineConfigDialog, CAcUiDialog)
@@ -43,7 +57,7 @@ BOOL LineConfigDialog::OnInitDialog()
 
 BOOL LineConfigDialog::InitLineHeader()
 {
-	acutPrintf(L"初始化管线数据.\n");
+	acutPrintf(L"初始化管线配置数据.\n");
 	int index = 0;
 
 	LVCOLUMN lvColumn;
@@ -51,13 +65,19 @@ BOOL LineConfigDialog::InitLineHeader()
 	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
 	lvColumn.fmt = LVCFMT_CENTER;
 	lvColumn.cx = 40;
-	lvColumn.pszText = L"类型";
+	lvColumn.pszText = L"序号";
 	m_lineConfig.InsertColumn(index++, &lvColumn);
 
 	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
 	lvColumn.fmt = LVCFMT_LEFT;
 	lvColumn.cx = 40;
 	lvColumn.pszText = L"名称";
+	m_lineConfig.InsertColumn(index++, &lvColumn);
+
+	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
+	lvColumn.fmt = LVCFMT_CENTER;
+	lvColumn.cx = 40;
+	lvColumn.pszText = L"类型";
 	m_lineConfig.InsertColumn(index++, &lvColumn);
 
 	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
@@ -74,20 +94,20 @@ BOOL LineConfigDialog::InitLineHeader()
 
 	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
 	lvColumn.fmt = LVCFMT_LEFT;
-	lvColumn.cx = 100;
-	lvColumn.pszText = L"描述";
+	lvColumn.cx = 80;
+	lvColumn.pszText = L"有效范围";
 	m_lineConfig.InsertColumn(index++, &lvColumn);
 
 	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
 	lvColumn.fmt = LVCFMT_LEFT;
-	lvColumn.cx = 50;
+	lvColumn.cx = 40;
 	lvColumn.pszText = L"单位";
 	m_lineConfig.InsertColumn(index++, &lvColumn);
 
 	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
 	lvColumn.fmt = LVCFMT_LEFT;
 	lvColumn.cx = 80;
-	lvColumn.pszText = L"有效范围";
+	lvColumn.pszText = L"描述";
 	m_lineConfig.InsertColumn(index++, &lvColumn);
 
 	m_lineConfig.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES );
@@ -95,28 +115,70 @@ BOOL LineConfigDialog::InitLineHeader()
 	return TRUE;
 }
 
+/**
+ *
+ **/
+BOOL LineConfigDialog::InsertLine(const int index,
+	const wstring& rID,
+	const wstring& rName,
+	const wstring& rKind,
+	const wstring& rCategory,
+	const wstring& rShape,
+	const wstring& rSize,
+	const wstring& rEffectSize,
+	const wstring& rUnit,
+	const wstring& rComment)
+{
+	LVITEM lvItem;
+	int nItem;
+	
+	lvItem.mask = LVIF_TEXT;
+	lvItem.iItem = index;
+	lvItem.iSubItem = 0;
+	lvItem.pszText = const_cast<wchar_t*>(rID.c_str());
+	nItem = m_lineConfig.InsertItem(&lvItem);
+
+	m_lineConfig.SetItemText(nItem, 1, rName.c_str());
+
+	m_lineConfig.SetItemText(nItem, 2, rCategory.c_str());
+	m_lineConfig.SetItemText(nItem, 3, rShape.c_str());
+
+	m_lineConfig.SetItemText(nItem, 4, rSize.c_str());
+	m_lineConfig.SetItemText(nItem, 6, rEffectSize.c_str());
+	m_lineConfig.SetItemText(nItem, 5, rUnit.c_str());
+
+	m_lineConfig.SetItemText(nItem, 7, rComment.c_str());
+
+	return TRUE;
+}
+
 BOOL LineConfigDialog::InitLineData()
 {
-	const int MAX_ITEM = 10;
+	const LineCategoryVecotr lineCategoryData
+		 = LineConfigDataManager::Instance()->GetData();
 
-	for( int i = 0; i < MAX_ITEM; i++)
-	{
-		LVITEM lvItem;
-		int nItem;
+	typedef vector<LineCategoryItemData*>::const_iterator DataIterator;
 	
-		lvItem.mask = LVIF_TEXT;
-		lvItem.iItem = i;
-		lvItem.iSubItem = 0;
-		lvItem.pszText = L"管线";
-		nItem = m_lineConfig.InsertItem(&lvItem);
+	int index = 0;
+	for( DataIterator iter = lineCategoryData->begin(); 
+			iter != lineCategoryData->end(); 
+			iter++,index++)
+	{
+		LineCategoryItemData* data = *iter;
 
-		m_lineConfig.SetItemText(nItem, 1, L"上水");
-		m_lineConfig.SetItemText(nItem, 2, L"圆形");
-		m_lineConfig.SetItemText(nItem, 3, L"10");
-
-		m_lineConfig.SetItemText(nItem, 4, L"测试管线");
-		m_lineConfig.SetItemText(nItem, 5, L"厘米");
-		m_lineConfig.SetItemText(nItem, 6, L"30");
+		if( data )
+		{
+			InsertLine(index,
+					data->mID,
+					data->mName,
+					data->mKind,
+					data->mCategory,
+					data->mShape,
+					data->mSize,
+					data->mEffectSize,
+					data->mUnit,
+					data->mComment);
+		}
 	}
 
 	UpdateData(FALSE);
@@ -135,5 +197,13 @@ void LineConfigDialog::OnBnClickedButtonAdd()
 	INT_PTR nReturnValue = dlg.DoModal();
 }
 
+
+} // end of config
+
+} // end of assistant
+
+} // end of guch
+
+} // end of com
 
 // LineConfigDialog message handlers
