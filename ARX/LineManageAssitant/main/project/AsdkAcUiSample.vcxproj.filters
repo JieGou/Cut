@@ -1,12 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\source\MenuLMAMain.cpp">
-      <Filter>src\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\MenuManager.cpp">
-      <Filter>src\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\LineManageAssitant.cpp">
       <Filter>src\Application</Filter>
     </ClCompile>
@@ -22,9 +16,6 @@
     <ClCompile Include="..\source\CommandManager.cpp">
       <Filter>src\Command</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\AddLineDialog.cpp">
-      <Filter>src\Dialog</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\data\GlobalDataConfig.cpp">
       <Filter>src\Data</Filter>
     </ClCompile>
@@ -34,12 +25,24 @@
     <ClCompile Include="..\source\data\LineConfigDataManager.cpp">
       <Filter>src\Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\dialog\LineCutPosDialog.cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\dialog\LineTypeConfigPropertySheet.cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\dialog\AddLineDialog.cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\menu\MenuManager.cpp">
+      <Filter>src\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\menu\MenuLMAMain.cpp">
+      <Filter>src\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\header\AsdkAcUiDialogSample.h">
-      <Filter>inc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\header\MenuManager.h">
       <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\header\StdAfx.h">
@@ -78,12 +81,6 @@
     <ClInclude Include="..\resource\resource.h">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="..\header\AddLineDialog.h">
-      <Filter>inc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\header\MenuLMAMain.h">
-      <Filter>inc</Filter>
-    </ClInclude>
     <ClInclude Include="..\header\LineConfigDialog.h">
       <Filter>inc</Filter>
     </ClInclude>
@@ -94,6 +91,21 @@
       <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\header\LineConfigDataManager.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\LineCutPosDialog.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\LineTypeConfigPropertySheet.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\AddLineDialog.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\MenuManager.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\MenuLMAMain.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>

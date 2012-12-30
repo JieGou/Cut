@@ -58,7 +58,7 @@
 
 
 #ifdef WAS_DEBUG
-#define _DEBUG
+//#define _DEBUG
 #undef WAS_DEBUG
 #endif
 

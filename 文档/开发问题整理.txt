@@ -1,0 +1,8 @@
+1.使用CComboBox作为下拉框，而不是listbox
+
+2.AutoCAD调试时，有时用VC attach之后并不能加载arx的module，也就不能调试。因此可以在VC启动debug之后，不detach，而是用脚本去编译。
+	可以省去重复加载的时间。因为AutoCAD的Arx加载时动态加载的。
+	
+3.CDialog Domodal之前，不要操作数据和控件。一定要在doModal之后操作，否则会奔溃。包括向控件SetWindowTextW等。
+
+4.CDialog上的控件可以通过GetDlgItem(UINT id)来得到。

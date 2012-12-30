@@ -7,6 +7,7 @@
 #define IDD_DIALOG_LINE_CONFIG          132
 #define IDD_DIALOG_LINE_CONFIG_ADD      133
 #define IDD_DIALOG_LINE_ADD             135
+#define IDD_DIALOG_CUT_POS              136
 #define IDC_EDIT_XPT                    1000
 #define IDC_EDIT_ANGLE                  1001
 #define IDC_BUTTON_POINT                1002
@@ -26,11 +27,15 @@
 #define IDC_LIST_LINE_CONFIG            1027
 #define IDC_LIST1                       1029
 #define IDC_EDIT2                       1030
+#define IDC_EDIT_NAME                   1030
 #define IDC_EDIT3                       1031
+#define IDC_EDIT_DESC                   1031
 #define IDC_EDIT4                       1032
 #define IDC_BUTTON1                     1032
+#define IDC_EDIT_SAFESIZE               1032
 #define IDC_EDIT5                       1033
 #define IDC_BUTTON2                     1033
+#define IDC_EDIT_SIZE                   1033
 #define IDC_LIST2                       1034
 #define IDC_BUTTON3                     1034
 #define IDC_LIST3                       1035
@@ -39,7 +44,21 @@
 #define IDC_LIST_LINE_DETAIL            1036
 #define IDC_EDIT1                       1037
 #define IDC_EDIT6                       1038
+#define IDC_X                           1038
+#define IDC_Y                           1039
 #define IDC_EDIT7                       1040
+#define IDC_Z                           1040
+#define IDC_OFFSET                      1041
+#define IDC_TAB1                        1042
+#define IDC_COMBO_KIND                  1044
+#define IDC_COMBO_SHAPE                 1045
+#define IDC_COMBO3                      1046
+#define IDC_COMBO_UNIT                  1046
+#define IDC_BUTTON_LINETYPE_ADD         0x2001
+#define IDC_BUTTON_LINETYPE_MOD         0x2002
+#define IDC_BUTTON_LINETYPE_DEL         0x2003
+#define IDC_BUTTON_LINETYPE_APL         0x2004
+#define IDC_BUTTON_LINETYPE_OK          0x2005
 #define ID_32771                        32771
 #define ID_32772                        32772
 #define ID_INPUT_POINT                  32773
@@ -51,9 +70,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        136
+#define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32777
-#define _APS_NEXT_CONTROL_VALUE         1038
+#define _APS_NEXT_CONTROL_VALUE         1047
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
