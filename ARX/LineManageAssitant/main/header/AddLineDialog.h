@@ -1,14 +1,18 @@
 #pragma once
+#include "afxcmn.h"
 
 #include <resource.h>
+
 #include <dbsymtb.h>
 #include <dbapserv.h>
 #include <adslib.h>
-//#include <acui.h>
-//#include <adui.h>
+#include <adui.h>
+#include <acui.h>
 
 #include <string>
 using namespace std;
+
+#include <LineCategoryItemData.h>
 
 // AddLineConfigDialog dialog
 
@@ -23,20 +27,6 @@ namespace assistent
 
 namespace config
 {
-
-typedef struct _LineConfigData
-{
-	int mIndex;
-	UINT mID;
-	wstring mName;
-	wstring mKind;
-	wstring mCategory;
-	wstring mShape;
-	wstring mSize;
-	wstring mSafeSize;
-	wstring mUnit;
-	wstring mDesc;
-} LineConfigData;
 
 class AddLineConfigDialog : public CDialog
 {
@@ -54,7 +44,7 @@ public:
 	void SetOperType( OPER_TYPE type ){ m_OperType = type; };
 	OPER_TYPE GetOperType() const { return m_OperType;}
 
-	void fillData(LineConfigData& configData);
+	void FillUpdateData();
 
 protected:
 
@@ -72,14 +62,30 @@ private:
 	CComboBox m_LineUnit;
 
 	CEdit m_LineName;
-	CEdit m_LineSize;
+	
+	CStatic m_StaticRadius;
+	CEdit m_LineRadius;
+
+	CStatic m_StaticLength;
+	CEdit m_LineLength;
+
+	CStatic m_StaticWidth;
+	CEdit m_LineWidth;
+
+	CEdit m_LineWallSize;
 	CEdit m_LineSafeSize;
+	
 	CEdit m_LineDesc;
 
 	OPER_TYPE m_OperType;
+
 	int m_lineIndex;
+	UINT m_lineID;
 
 	afx_msg void OnBnClickedOk();
+	afx_msg void OnCbnShapeChange();
+
+	void ShowControlDynamic();
 };
 
 // AddLineDialog dialog

@@ -32,4 +32,12 @@ const wstring GlobalData::LINE_UNIT_MM = L"毫米";
 const wstring GlobalData::LINE_UNIT_CM = L"厘米";
 const wstring GlobalData::LINE_UNIT_M = L"米";
 
+/**
+* 字符长度
+**/
 const UINT GlobalData::ITEM_TEXT_MAX_LENGTH = 250;
+
+/**
+* 出错标题
+**/
+const wstring GlobalData::ERROR_DIALOG_CAPTION = L"管线辅助系统告警";

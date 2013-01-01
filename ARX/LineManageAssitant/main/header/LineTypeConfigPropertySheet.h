@@ -61,11 +61,11 @@ private:
 	static const int BTN_MARGIN;
 
 	LineConfigDialog m_LineConfigDlg;
+	LineConfigDialog m_BlockConfigDlg;
 
 	CButton m_ButtonAdd;
 	CButton m_ButtonMod;
 	CButton m_ButtonDel;
-	CButton m_ButtonApl;
 };
 
 } // end of config

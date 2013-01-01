@@ -7,7 +7,10 @@
 #include "resource.h"
 
 #include <LineConfigDataManager.h>
-#include "LineTypeConfigPropertySheet.h"
+#include <LineTypeConfigPropertySheet.h>
+#include <LMAUtils.h>
+
+#include <acutads.h>
 
 namespace com
 {
@@ -71,12 +74,8 @@ BOOL LineTypeConfigPropertySheet::InitPages()
 	m_psh.dwFlags |= PSH_NOAPPLYNOW;    // Lose the Apply Now button
 	m_psh.dwFlags &= ~PSH_HASHELP;  // Lose the Help button
 
-	if( this->GetDlgItem(IDOK) )
-	{
-		this->GetDlgItem(IDOK)->SetWindowTextW(L"确定");
-	}
-
 	this->AddPage(&this->m_LineConfigDlg);
+	this->AddPage(&this->m_BlockConfigDlg);
 
 	return TRUE;
 }
@@ -126,6 +125,17 @@ BOOL LineTypeConfigPropertySheet::InitButtons()
 	m_ButtonDel.SetFont(GetFont());
 	index++;
 
+	//修改确定按钮
+	SetControlText(this,IDOK,L"关闭");
+
+	SetControlText(this,IDHELP,L"帮助");
+
+	//覆盖按钮
+	//OverControl(this,IDOK,IDCANCEL);
+
+	//删除取消
+	ShowControl(this,IDCANCEL,false);
+
 	return TRUE;
 }
 
@@ -134,7 +144,7 @@ BEGIN_MESSAGE_MAP(LineTypeConfigPropertySheet, CPropertySheet)
 	ON_BN_CLICKED(IDC_BUTTON_LINETYPE_MOD, OnBnClickedButtonModify)
 	ON_BN_CLICKED(IDC_BUTTON_LINETYPE_DEL, OnBnClickedButtonDelete)
 	ON_BN_CLICKED(IDC_BUTTON_LINETYPE_APL, OnBnClickedButtonApply)
-	ON_BN_CLICKED(IDC_BUTTON_LINETYPE_OK, OnBnClickedButtonOK)
+	ON_BN_CLICKED(IDOK, OnBnClickedButtonOK)
 END_MESSAGE_MAP()
 
 void LineTypeConfigPropertySheet::OnBnClickedButtonAdd()
@@ -199,13 +209,21 @@ void LineTypeConfigPropertySheet::OnBnClickedButtonDelete()
 void LineTypeConfigPropertySheet::OnBnClickedButtonApply()
 {
 	// TODO: Add your control notification handler code here
-
 }
 
 void LineTypeConfigPropertySheet::OnBnClickedButtonOK()
 {
 	// TODO: Add your control notification handler code here
 
+	//clear all the lines
+	//LineConfigDataManager::Instance()->ClearAllLines();
+
+	//m_LineConfigDlg.OnBnClickedButtonOK();
+
+	//acutPrintf(L"保存数据到文件.\n");
+	//LineConfigDataManager::Instance()->Persistent();
+
+	CPropertySheet::OnClose();
 }
 
 } // end of config

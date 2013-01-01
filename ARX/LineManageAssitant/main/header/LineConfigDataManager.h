@@ -3,6 +3,8 @@
 #include <vector>
 #include <LineCategoryItemData.h>
 
+using namespace std;
+
 namespace com
 {
 
@@ -15,26 +17,42 @@ namespace assistent
 namespace config
 {
 
-typedef vector<LineCategoryItemData*>* LineCategoryVecotr;
+typedef vector<LineCategoryItemData*> LineCategoryVecotr;
+typedef LineCategoryVecotr::iterator LineIterator;
 
 class LineConfigDataManager
 {
+
 public:
+
+	static LineConfigDataManager* Instance();
+
 	LineConfigDataManager(void);
 	~LineConfigDataManager(void);
 
-	static LineConfigDataManager* Instance();
-	static const string PERSISTENT_FILE;
+	UINT GetNextID();
+
+	LineCategoryItemData* FindLine( const wstring& lineName ) const;
+
+	LineCategoryItemData* FindLine( UINT ID ) const;
+
+	void AddLine(const LineCategoryItemData* newLine);
+
+	BOOL UpdateLine(const LineCategoryItemData* updateLine);
+
+	BOOL DeleteLine( UINT ID );
+
+	bool ClearAllLines();
 
 	/**
 	 * Save the configuration data to file
 	 **/
-	bool persistent();
+	bool Persistent();
 
 	/**
 	 * Save the configuration data to file
 	 **/
-	const LineCategoryVecotr GetData() const;
+	const LineCategoryVecotr* GetData() const;
 
 protected:
 
@@ -43,8 +61,9 @@ protected:
 private:
 
 	static LineConfigDataManager* instance;
+	static const LPCWSTR PERSISTENT_FILE;
 
-	LineCategoryVecotr mLineConfigData;
+	LineCategoryVecotr* mLineConfigData;
 };
 
 } // end of data

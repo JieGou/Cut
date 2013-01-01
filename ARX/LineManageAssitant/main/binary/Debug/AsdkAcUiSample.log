@@ -1,16 +1,49 @@
-﻿Build started 2012/12/30 10:41:05.
+﻿Build started 2012/12/31 16:42:54.
      1>Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\project\AsdkAcUiSample.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Touching "..\binary\Debug\LineManageAssistant.unsuccessfulbuild".
+         Creating "..\binary\Debug\LineManageAssistant.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I..\include\inc /I..\header /I..\resource /IC:\Users\chgu\Work\library\boost /I"..\..\..\inc-x64" /I"..\..\..\..\inc-x64" /I"..\..\..\..\..\inc-x64" /AI"..\..\..\inc-x64" /AI"..\..\..\..\inc-x64" /AI"..\..\..\..\..\inc-x64" /AI..\..\..\inc /AI..\..\..\..\inc /AI..\..\..\..\..\inc /Z7 /nologo /W3 /WX /Od /D _WIN32_IE=0x0600 /D WIN /D WIN32 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT=1 /D _AFXDLL /D _UNICODE /D _UNICODE /D _WINDLL /D _MBCS /GF /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Yc"stdafx.h" /Fp"..\binary\Debug\LineManageAssistant.pch" /Fo"..\binary\Debug\\" /Fd"..\binary\Debug\lma.pdb" /Gd /TP /errorReport:prompt ..\source\StdAfx.cpp
+         StdAfx.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I..\include\inc /I..\header /I..\resource /IC:\Users\chgu\Work\library\boost /I"..\..\..\inc-x64" /I"..\..\..\..\inc-x64" /I"..\..\..\..\..\inc-x64" /AI"..\..\..\inc-x64" /AI"..\..\..\..\inc-x64" /AI"..\..\..\..\..\inc-x64" /AI..\..\..\inc /AI..\..\..\..\inc /AI..\..\..\..\..\inc /Z7 /nologo /W3 /WX /Od /D _WIN32_IE=0x0600 /D WIN /D WIN32 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT=1 /D _AFXDLL /D _UNICODE /D _UNICODE /D _WINDLL /D _MBCS /GF /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"..\binary\Debug\\" /Fd"..\binary\Debug\lma.pdb" /Gd /TP /errorReport:prompt ..\source\AsdkAcUiDialogSample.cpp ..\source\CommandManager.cpp ..\source\data\GlobalDataConfig.cpp ..\source\data\LineCategoryItemData.cpp ..\source\data\LineConfigDataManager.cpp ..\source\dialog\AddLineDialog.cpp ..\source\dialog\LineCutPosDialog.cpp ..\source\dialog\LineTypeConfigPropertySheet.cpp ..\source\exception\LMAException.cpp ..\source\LineConfigDialog.cpp ..\source\LineManageAssitant.cpp ..\source\utils\LMAUtils.cpp
+         AsdkAcUiDialogSample.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         CommandManager.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         GlobalDataConfig.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         LineCategoryItemData.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         LineConfigDataManager.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         AddLineDialog.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         LineCutPosDialog.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         LineTypeConfigPropertySheet.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         LMAException.cpp
+         LineConfigDialog.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         LineManageAssitant.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         LMAUtils.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+         Generating Code...
          All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I..\include\inc /I..\header /I..\resource /IC:\Users\chgu\Work\library\boost /I"..\..\..\inc-x64" /I"..\..\..\..\inc-x64" /I"..\..\..\..\..\inc-x64" /AI"..\..\..\inc-x64" /AI"..\..\..\..\inc-x64" /AI"..\..\..\..\..\inc-x64" /AI..\..\..\inc /AI..\..\..\..\inc /AI..\..\..\..\..\inc /Z7 /nologo /W3 /WX /Od /D _ITERATOR_DEBUG_LEVEL=0 /D _WIN32_IE=0x0600 /D WIN /D WIN32 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT=1 /D _AFXDLL /D _UNICODE /D _UNICODE /D _WINDLL /D _MBCS /GF /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"..\binary\Debug\\" /Fd"..\binary\Debug\lma.pdb" /Gd /TP /errorReport:prompt ..\source\menu\MenuLMAMain.cpp
+         MenuLMAMain.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
          All outputs are up-to-date.
-         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I..\include\inc /I..\header /I..\resource /IC:\Users\chgu\Work\library\boost /I"..\..\..\inc-x64" /I"..\..\..\..\inc-x64" /I"..\..\..\..\..\inc-x64" /AI"..\..\..\inc-x64" /AI"..\..\..\..\inc-x64" /AI"..\..\..\..\..\inc-x64" /AI..\..\..\inc /AI..\..\..\..\inc /AI..\..\..\..\..\inc /Z7 /nologo /W3 /WX /Od /D _ITERATOR_DEBUG_LEVEL=0 /D _WIN32_IE=0x0600 /D WIN /D WIN32 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1 /D _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT=1 /D _AFXDLL /D _UNICODE /D _UNICODE /D _WINDLL /D _MBCS /GF /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"..\binary\Debug\\" /Fd"..\binary\Debug\lma.pdb" /Gd /TP /errorReport:prompt ..\source\menu\MenuManager.cpp
+         MenuManager.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
        ResourceCompile:
          All outputs are up-to-date.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"..\binary\Debug\x64\lma.arx" /INCREMENTAL:NO /NOLOGO /LIBPATH:"..\library\lib-x64" /LIBPATH:"..\..\..\lib-x64" /LIBPATH:"..\..\..\..\lib-x64" /LIBPATH:"..\..\..\..\..\lib-x64" accore.lib acad.lib acui19.lib adui19.lib ac1st19.lib acdb19.lib acge19.lib acgiapi.lib acISMobj19.lib rxapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"..\include\inc\AcRxDefault.def" /MANIFEST /ManifestFile:"..\binary\Debug\lma.arx.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"..\binary\Debug\x64\lma.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\binary\Debug\lma.lib" /MACHINE:X64 /CLRTHREADATTRIBUTE:STA /CLRIMAGETYPE:IJW /CLRUNMANAGEDCODECHECK /DLL ..\binary\Debug\AsdkAcUiSample.res
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"..\binary\Debug\x64\lma.arx" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\chgu\Work\library\boost\bin.v2\libs\serialization\build\msvc-10.0\release\link-static\threading-multi" /LIBPATH:"..\library\lib-x64" /LIBPATH:"..\..\..\lib-x64" /LIBPATH:"..\..\..\..\lib-x64" /LIBPATH:"..\..\..\..\..\lib-x64" "libboost_serialization-vc100-mt-1_52.lib" accore.lib acad.lib acui19.lib adui19.lib accore.lib acad.lib acui19.lib adui19.lib ac1st19.lib acdb19.lib acge19.lib acgiapi.lib acISMobj19.lib rxapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"..\include\inc\AcRxDefault.def" /MANIFEST /ManifestFile:"..\binary\Debug\lma.arx.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"..\binary\Debug\x64\lma.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\binary\Debug\lma.lib" /MACHINE:X64 /CLRTHREADATTRIBUTE:STA /CLRIMAGETYPE:IJW /CLRUNMANAGEDCODECHECK /DLL ..\binary\Debug\AsdkAcUiSample.res
          ..\binary\Debug\AsdkAcUiDialogSample.obj
          ..\binary\Debug\CommandManager.obj
          ..\binary\Debug\GlobalDataConfig.obj
@@ -19,21 +52,16 @@
          ..\binary\Debug\AddLineDialog.obj
          ..\binary\Debug\LineCutPosDialog.obj
          ..\binary\Debug\LineTypeConfigPropertySheet.obj
+         ..\binary\Debug\LMAException.obj
          ..\binary\Debug\LineConfigDialog.obj
          ..\binary\Debug\LineManageAssitant.obj
          ..\binary\Debug\MenuLMAMain.obj
          ..\binary\Debug\MenuManager.obj
          ..\binary\Debug\StdAfx.obj
-            Creating library ..\binary\Debug\lma.lib and object ..\binary\Debug\lma.exp
-     1>rxapi.lib(libinit.obj) : warning LNK4099: PDB 'rxapi_cl.pdb' was not found with 'rxapi.lib(libinit.obj)' or at 'C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\binary\Debug\x64\rxapi_cl.pdb'; linking object as if no debug info
-         AsdkAcUiSample.vcxproj -> C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\project\..\binary\Debug\x64\lma.arx
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"..\binary\Debug\x64\lma.arx;#2" /manifest ..\binary\Debug\lma.arx.intermediate.manifest
-       FinalizeBuildStatus:
-         Deleting file "..\binary\Debug\LineManageAssistant.unsuccessfulbuild".
-         Touching "..\binary\Debug\LineManageAssistant.lastbuildstate".
-     1>Done Building Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\project\AsdkAcUiSample.vcxproj" (build target(s)).
+         ..\binary\Debug\LMAUtils.obj
+     1>LINK : fatal error LNK1104: cannot open file '..\binary\Debug\x64\lma.arx'
+     1>Done Building Project "C:\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\project\AsdkAcUiSample.vcxproj" (build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:03.96
+Time Elapsed 00:02:08.82

@@ -10,6 +10,7 @@
 #include <acui.h>
 
 #include <AddLineDialog.h>
+#include <LMAException.h>
 
 // LineConfigDialog dialog
 
@@ -42,30 +43,13 @@ public:
 	afx_msg void OnBnClickedButtonAdd();
 	afx_msg void OnBnClickedButtonMod();
 	afx_msg void OnBnClickedButtonDel();
-	
-	BOOL InsertLine(const int index,
-					const wstring& rID,
-					const wstring& rName,
-					const wstring& rKind,
-					const wstring& rCategory,
-					const wstring& rShape,
-					const wstring& rSize,
-					const wstring& rEffetSize,
-					const wstring& rUnit,
-					const wstring& rComment);
+	afx_msg void OnBnClickedButtonOK();
 
-	BOOL UpdateLine(const int index,
-					const wstring& rID,
-					const wstring& rName,
-					const wstring& rKind,
-					const wstring& rCategory,
-					const wstring& rShape,
-					const wstring& rSize,
-					const wstring& rEffectSize,
-					const wstring& rUnit,
-					const wstring& rComment);
+	BOOL InsertLine(LineCategoryItemData& itemData, BOOL initialize = false);
+	BOOL UpdateLine(const LineCategoryItemData& itemData);
 
-	BOOL GetSelectData(LineConfigData& configData );
+	BOOL GetSelectData(LineCategoryItemData& configData );
+	void CheckValid( const LineCategoryItemData& item, BOOL bNew );
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
@@ -78,8 +62,11 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 
+	BOOL LineConfigDialog::GetItemData( int item, LineCategoryItemData& configData);
+
 private:
-	int FindLine( const wstring& rName );
+	
+	void UpdateUILineData(const LineCategoryItemData& itemData);
 
 public:
 

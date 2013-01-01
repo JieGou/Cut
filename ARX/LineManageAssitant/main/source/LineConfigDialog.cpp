@@ -3,15 +3,15 @@
 
 #include "stdafx.h"
 #include "afxdialogex.h"
-
 #include "resource.h"
 
-#include <LineConfigDialog.h>
-
-#include <LineConfigDataManager.h>
 #include <GlobalDataConfig.h>
+#include <LineConfigDialog.h>
+#include <LineConfigDataManager.h>
+#include <LMAException.h>
 
 using namespace com::guch::assistent::data;
+using namespace com::guch::assistent::exception;
 
 namespace com
 {
@@ -79,7 +79,7 @@ BOOL LineConfigDialog::InitLineHeader()
 
 	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
 	lvColumn.fmt = LVCFMT_LEFT;
-	lvColumn.cx = 100;
+	lvColumn.cx = 120;
 	lvColumn.pszText = L"名称";
 	m_lineConfig.InsertColumn(index++, &lvColumn);
 
@@ -91,31 +91,37 @@ BOOL LineConfigDialog::InitLineHeader()
 
 	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
 	lvColumn.fmt = LVCFMT_LEFT;
-	lvColumn.cx = 60;
-	lvColumn.pszText = L"断面形状";
+	lvColumn.cx = 80;
+	lvColumn.pszText = L"形状";
 	m_lineConfig.InsertColumn(index++, &lvColumn);
 
 	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
 	lvColumn.fmt = LVCFMT_LEFT;
 	lvColumn.cx = 60;
-	lvColumn.pszText = L"断面大小";
+	lvColumn.pszText = L"大小";
 	m_lineConfig.InsertColumn(index++, &lvColumn);
 
 	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
 	lvColumn.fmt = LVCFMT_LEFT;
 	lvColumn.cx = 60;
-	lvColumn.pszText = L"有效范围";
-	m_lineConfig.InsertColumn(index++, &lvColumn);
-
-	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
-	lvColumn.fmt = LVCFMT_LEFT;
-	lvColumn.cx = 40;
-	lvColumn.pszText = L"单位";
+	lvColumn.pszText = L"壁厚";
 	m_lineConfig.InsertColumn(index++, &lvColumn);
 
 	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
 	lvColumn.fmt = LVCFMT_LEFT;
 	lvColumn.cx = 80;
+	lvColumn.pszText = L"安全范围";
+	m_lineConfig.InsertColumn(index++, &lvColumn);
+
+	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
+	lvColumn.fmt = LVCFMT_LEFT;
+	lvColumn.cx = 80;
+	lvColumn.pszText = L"长度单位";
+	m_lineConfig.InsertColumn(index++, &lvColumn);
+
+	lvColumn.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH;
+	lvColumn.fmt = LVCFMT_LEFT;
+	lvColumn.cx = 150;
 	lvColumn.pszText = L"描述";
 	m_lineConfig.InsertColumn(index++, &lvColumn);
 
@@ -127,42 +133,34 @@ BOOL LineConfigDialog::InitLineHeader()
 /**
  *
  **/
-BOOL LineConfigDialog::InsertLine(const int index,
-									const wstring& rID,
-									const wstring& rName,
-									const wstring& rKind,
-									const wstring& rCategory,
-									const wstring& rShape,
-									const wstring& rSize,
-									const wstring& rEffectSize,
-									const wstring& rUnit,
-									const wstring& rComment)
+BOOL LineConfigDialog::InsertLine(LineCategoryItemData& itemData,BOOL initialize)
 {
+	//新线段得到其ID
+	if( !initialize )
+	{
+		itemData.mID = LineConfigDataManager::Instance()->GetNextID();
+	}
+
+	//得到其ID
+	itemData.mID = itemData.mID;
+
 	LVITEM lvItem;
-	int nItem;
 
-	int columIndex = 0;
-	
+	//插入新行
 	lvItem.mask = LVIF_TEXT;
-	lvItem.iItem = index;
-	lvItem.iSubItem = columIndex++;
-	lvItem.pszText = const_cast<wchar_t*>(rName.c_str());
-	nItem = m_lineConfig.InsertItem(&lvItem);
+	lvItem.iItem = itemData.mIndex;
+	lvItem.iSubItem = 0;
+	lvItem.pszText = const_cast<wchar_t*>(itemData.mName.c_str());
+	m_lineConfig.InsertItem(&lvItem);
 
-	m_lineConfig.SetItemData(index,index);
+	//更新其他列的数据
+	BOOL toInsert = !initialize;
 
-	//m_lineConfig.SetItemText(nItem, columIndex++, rName.c_str());
+	UpdateUILineData(itemData);
 
-	m_lineConfig.SetItemText(nItem, columIndex++, rCategory.c_str());
-	m_lineConfig.SetItemText(nItem, columIndex++, rShape.c_str());
-
-	m_lineConfig.SetItemText(nItem, columIndex++, rSize.c_str());
-	m_lineConfig.SetItemText(nItem, columIndex++, rEffectSize.c_str());
-	m_lineConfig.SetItemText(nItem, columIndex++, rUnit.c_str());
-
-	m_lineConfig.SetItemText(nItem, columIndex++, rComment.c_str());
-
-	UpdateData(FALSE);
+	//非初始化阶段，插入新数据
+	if( !initialize )
+		LineConfigDataManager::Instance()->AddLine(&itemData);
 
 	return TRUE;
 }
@@ -170,76 +168,95 @@ BOOL LineConfigDialog::InsertLine(const int index,
 /**
  *
  **/
-BOOL LineConfigDialog::UpdateLine(const int index,
-									const wstring& rID,
-									const wstring& rName,
-									const wstring& rKind,
-									const wstring& rCategory,
-									const wstring& rShape,
-									const wstring& rSize,
-									const wstring& rEffectSize,
-									const wstring& rUnit,
-									const wstring& rComment)
+BOOL LineConfigDialog::UpdateLine(const LineCategoryItemData& itemData)
 {
-	int nItem = index;
+	UpdateUILineData(itemData);
 
+	//更新数据结构
+	LineConfigDataManager::Instance()->UpdateLine(&itemData);
+
+	return TRUE;
+}
+
+void LineConfigDialog::UpdateUILineData(const LineCategoryItemData& itemData)
+{
+	int nItem = itemData.mIndex;
 	int columIndex = 0;
-	m_lineConfig.SetItemText(nItem,columIndex++, rName.c_str());
 
-	m_lineConfig.SetItemText(nItem, columIndex++, rCategory.c_str());
-	m_lineConfig.SetItemText(nItem, columIndex++, rShape.c_str());
+	//更新页面数据
+	m_lineConfig.SetItemText(nItem, columIndex++, itemData.mName.c_str());
 
-	m_lineConfig.SetItemText(nItem, columIndex++, rSize.c_str());
-	m_lineConfig.SetItemText(nItem, columIndex++, rEffectSize.c_str());
-	m_lineConfig.SetItemText(nItem, columIndex++, rUnit.c_str());
+	m_lineConfig.SetItemText(nItem, columIndex++, itemData.mKind.c_str());
+	m_lineConfig.SetItemText(nItem, columIndex++, itemData.mShape.c_str());
 
-	m_lineConfig.SetItemText(nItem, columIndex++, rComment.c_str());
+	wstring size;
+	
+	if( itemData.mShape == GlobalData::LINE_SHAPE_CIRCLE )
+	{
+		size = itemData.mRadius;
+	}
+	else if( itemData.mShape == GlobalData::LINE_SHAPE_SQUARE )
+	{
+		size = itemData.mLength + L"x" + itemData.mWidth;
+	}
+
+	m_lineConfig.SetItemText(nItem, columIndex++, size.c_str());
+	m_lineConfig.SetItemText(nItem, columIndex++, itemData.mWallSize.c_str());
+	m_lineConfig.SetItemText(nItem, columIndex++, itemData.mSafeSize.c_str());
+	m_lineConfig.SetItemText(nItem, columIndex++, itemData.mUnit.c_str());
+
+	m_lineConfig.SetItemText(nItem, columIndex++, itemData.mComment.c_str());
+
+	m_lineConfig.SetItemData(0,itemData.mID);
 
 	UpdateData(FALSE);
-
-	return TRUE;
 }
 
 /**
  *
  **/
-int LineConfigDialog::FindLine( const wstring& rName )
+void LineConfigDialog::CheckValid( const LineCategoryItemData& item, BOOL bNew )
 {
-	int index = m_lineConfig.GetSelectedColumn();
-	return index;
+	//检验新行是否可用
+	const LineCategoryVecotr* lineCategoryData
+		 = LineConfigDataManager::Instance()->GetData();
+
+	typedef vector<LineCategoryItemData*>::const_iterator DataIterator;
+
+	for( DataIterator iter = lineCategoryData->begin(); 
+			iter != lineCategoryData->end(); 
+			iter++)
+	{
+		if( bNew && (*iter)->mName == item.mName
+			|| !bNew && (*iter)->mID != item.mID && (*iter)->mName == item.mName )
+		{
+			CString msg;
+			msg.Format(L"管线类型【%s】已存在，请换个名字吧。",item.mName);
+			throw ErrorException(msg.GetBuffer());
+		}
+	}
 }
 
 BOOL LineConfigDialog::InitLineData()
 {
-	const LineCategoryVecotr lineCategoryData
+	const LineCategoryVecotr* lineCategoryData
 		 = LineConfigDataManager::Instance()->GetData();
 
 	typedef vector<LineCategoryItemData*>::const_iterator DataIterator;
-	
-	int index = 0;
+
 	for( DataIterator iter = lineCategoryData->begin(); 
 			iter != lineCategoryData->end(); 
-			iter++,index++)
+			iter++)
 	{
 		LineCategoryItemData* data = *iter;
 
 		if( data )
 		{
-			InsertLine(index,
-					data->mID,
-					data->mName,
-					data->mKind,
-					data->mCategory,
-					data->mShape,
-					data->mSize,
-					data->mEffectSize,
-					data->mUnit,
-					data->mComment);
+			InsertLine(*data,true);
 		}
 	}
 
 	UpdateData(FALSE);
-
 	return TRUE;
 }
 
@@ -268,19 +285,29 @@ void LineConfigDialog::OnBnClickedButtonMod()
 	dlg.DoModal();
 }
 
-BOOL LineConfigDialog::GetSelectData( LineConfigData& configData )
+BOOL LineConfigDialog::GetSelectData( LineCategoryItemData& configData )
 {
 	//选择的行
 	int item = m_lineConfig.GetSelectionMark();
 	if( item == -1 )
 		return FALSE;
 
+	GetItemData(item,configData);
+
+	return TRUE;
+}
+
+BOOL LineConfigDialog::GetItemData( int item, LineCategoryItemData& configData)
+{
 	//得到要填充的数据
 	configData.mIndex = item;
 
 	//得到行的ID
 	DWORD_PTR itemData = m_lineConfig.GetItemData(item);
 	configData.mID = (UINT)itemData;
+
+	//为管线类型
+	configData.mCategory = GlobalData::KIND_LINE;
 
 	//得到每一列的数据
 	int columIndex = 0;
@@ -296,34 +323,57 @@ BOOL LineConfigDialog::GetSelectData( LineConfigData& configData )
 	lvItem.pszText = szBuffer;
 	lvItem.cchTextMax = cchBuf;
 
+	//名字
 	if( m_lineConfig.GetItem(&lvItem) )
 		configData.mName = lvItem.pszText;
 
-	configData.mKind = GlobalData::KIND_LINE;
-
+	//类型
 	lvItem.iSubItem = columIndex++;
 	if( m_lineConfig.GetItem(&lvItem) )
-		configData.mCategory = lvItem.pszText;
+		configData.mKind = lvItem.pszText;
 
+	//形状
 	lvItem.iSubItem = columIndex++;
 	if( m_lineConfig.GetItem(&lvItem) )
 		configData.mShape = lvItem.pszText;
 
+	//大小
 	lvItem.iSubItem = columIndex++;
 	if( m_lineConfig.GetItem(&lvItem) )
-		configData.mSize = lvItem.pszText;
+	{
+		if( configData.mShape == GlobalData::LINE_SHAPE_CIRCLE )
+		{
+			configData.mRadius = lvItem.pszText;
+		}
+		else if( configData.mShape == GlobalData::LINE_SHAPE_SQUARE )
+		{
+			wstring size = lvItem.pszText;
+			size_t xPos = size.find_first_of(L"x");
 
+			configData.mLength = size.substr(0,xPos);
+			configData.mWidth = size.substr(xPos+1);
+		}
+	}
+	
+	//壁厚
+	lvItem.iSubItem = columIndex++;
+	if( m_lineConfig.GetItem(&lvItem) )
+		configData.mWallSize = lvItem.pszText;
+
+	//安全范围
 	lvItem.iSubItem = columIndex++;
 	if( m_lineConfig.GetItem(&lvItem) )
 		configData.mSafeSize = lvItem.pszText;
 
+	//长度单位
 	lvItem.iSubItem = columIndex++;
 	if( m_lineConfig.GetItem(&lvItem) )
 		configData.mUnit = lvItem.pszText;
 
+	//备注
 	lvItem.iSubItem = columIndex++;
 	if( m_lineConfig.GetItem(&lvItem) )
-		configData.mDesc = lvItem.pszText;
+		configData.mComment = lvItem.pszText;
 
 	return TRUE;
 }
@@ -360,10 +410,40 @@ void LineConfigDialog::OnBnClickedButtonDel()
 		int result = MessageBoxW(message, caption, MB_OKCANCEL);
 		if ( result == IDOK )
 		{
+			//Delete from the list
+			LineConfigDataManager::Instance()->DeleteLine( (UINT)m_lineConfig.GetItemData(item) );
+
 			// Closes the parent form. 
 			m_lineConfig.DeleteItem(item);
 		}
 	}
+}
+
+void LineConfigDialog::OnBnClickedButtonOK()
+{
+	//acutPrintf(L"保存管线类型数据到文件.\n");
+
+	/*
+	for(int i = 0; i < m_lineConfig.GetItemCount(); i++)
+	{
+		LineConfigData configData;
+		GetItemData(i,configData);
+
+		LineCategoryItemData* newData = new LineCategoryItemData();
+
+		newData->mID = configData.mID;
+		newData->mName = configData.mName;
+		newData->mKind = configData.mKind;
+		newData->mCategory = configData.mCategory;
+		newData->mShape = configData.mShape;
+		newData->mSize = configData.mSize;
+		newData->mEffectSize = configData.mSafeSize;
+		newData->mUnit = configData.mUnit;
+		newData->mComment = configData.mDesc;
+
+		LineConfigDataManager::Instance()->AddLine(newData);
+	}
+	*/
 }
 
 } // end of config

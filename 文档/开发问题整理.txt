@@ -6,3 +6,28 @@
 3.CDialog Domodal之前，不要操作数据和控件。一定要在doModal之后操作，否则会奔溃。包括向控件SetWindowTextW等。
 
 4.CDialog上的控件可以通过GetDlgItem(UINT id)来得到。
+
+5.error C2220: warning treated as error 把这个warning去掉。
+http://www.cnblogs.com/xiaoyixy/archive/2006/04/12/372770.html
+pragma warning (disable : 2220)
+
+6. CFile archiveFile(PERSISTENT_FILE,CFile::modeCreate|CFile::modeWrite);
+已可写方式打开，放置写崩溃。
+
+7. 安装插件可以使notepad++进行HEX模式编辑。http://sourceforge.net/projects/npp-plugins/files/Hex%20Editor/
+
+8. 理解宽、窄字符。其可以来回转换。std::string 与 std::wstring 可以来回转换。但不可交叉使用
+
+9. std::string std::wstring 的 find_first_of 往前加一。substr 的第二个参数是长度。
+
+10. CString ID;
+	ID.Format(L"%d",mID);
+	return wstring(ID.GetBuffer()) + L"\t" 
+	在UINT转换为宽字符的问题上纠结了很久，依然没弄清楚_itow _wtoi _itow_s 的用法。
+	
+11. EnableWindow() EnableWindow() MoveWindow()
+
+12. 注意： 	HideControl(this,IDCANCEL,false); OverControl(this,IDOK,IDCANCEL); 
+
+13. 窗口位移问题未解决
+	

@@ -52,6 +52,11 @@ public:
 	* 字符长度
 	**/
 	static const UINT ITEM_TEXT_MAX_LENGTH;
+
+	/**
+	* 出错标题
+	**/
+	static const wstring ERROR_DIALOG_CAPTION;
 };
 
 

@@ -35,13 +35,16 @@
 #define IDC_EDIT_SAFESIZE               1032
 #define IDC_EDIT5                       1033
 #define IDC_BUTTON2                     1033
-#define IDC_EDIT_SIZE                   1033
+#define IDC_EDIT_RADIUS                 1033
 #define IDC_LIST2                       1034
 #define IDC_BUTTON3                     1034
+#define IDC_EDIT_WALLSIZE               1034
 #define IDC_LIST3                       1035
 #define IDC_TREE1                       1035
 #define IDC_TREE_LINES                  1035
+#define IDC_EDIT_SIZE_LENGTH            1035
 #define IDC_LIST_LINE_DETAIL            1036
+#define IDC_EDIT_SIZE_WIDTH             1036
 #define IDC_EDIT1                       1037
 #define IDC_EDIT6                       1038
 #define IDC_X                           1038
@@ -52,8 +55,10 @@
 #define IDC_TAB1                        1042
 #define IDC_COMBO_KIND                  1044
 #define IDC_COMBO_SHAPE                 1045
-#define IDC_COMBO3                      1046
 #define IDC_COMBO_UNIT                  1046
+#define IDC_STATIC_RADIUS               1047
+#define IDC_STATIC_LENGTH               1048
+#define IDC_STATIC_WIDTH                1049
 #define IDC_BUTTON_LINETYPE_ADD         0x2001
 #define IDC_BUTTON_LINETYPE_MOD         0x2002
 #define IDC_BUTTON_LINETYPE_DEL         0x2003
@@ -72,7 +77,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32777
-#define _APS_NEXT_CONTROL_VALUE         1047
+#define _APS_NEXT_CONTROL_VALUE         1050
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

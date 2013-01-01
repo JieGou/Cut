@@ -40,6 +40,12 @@
     <ClCompile Include="..\source\menu\MenuLMAMain.cpp">
       <Filter>src\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\exception\LMAException.cpp">
+      <Filter>src\Exception</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\utils\LMAUtils.cpp">
+      <Filter>src\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\header\AsdkAcUiDialogSample.h">
@@ -108,6 +114,12 @@
     <ClInclude Include="..\header\MenuLMAMain.h">
       <Filter>inc</Filter>
     </ClInclude>
+    <ClInclude Include="..\header\LMAException.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\LMAUtils.h">
+      <Filter>inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\resource\res\AsdkAcUiSample.rc2">
@@ -144,6 +156,12 @@
     </Filter>
     <Filter Include="src\Data">
       <UniqueIdentifier>{c8fa926f-50a7-4414-8851-a36effb897a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Exception">
+      <UniqueIdentifier>{2b0dce58-d22c-4bff-b4d5-865da06fefd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utils">
+      <UniqueIdentifier>{dcce8b75-2f56-45eb-8b95-70ce133f92bc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
