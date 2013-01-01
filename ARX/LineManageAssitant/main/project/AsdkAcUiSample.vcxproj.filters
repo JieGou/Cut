@@ -1,21 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\source\LineManageAssitant.cpp">
-      <Filter>src\Application</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\AsdkAcUiDialogSample.cpp">
-      <Filter>src\Dialog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\StdAfx.cpp">
-      <Filter>src\Application</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\LineConfigDialog.cpp">
-      <Filter>src\Dialog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\CommandManager.cpp">
-      <Filter>src\Command</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\data\GlobalDataConfig.cpp">
       <Filter>src\Data</Filter>
     </ClCompile>
@@ -45,6 +30,27 @@
     </ClCompile>
     <ClCompile Include="..\source\utils\LMAUtils.cpp">
       <Filter>src\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\dialog\BlockLineConfigDialog.cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\dialog\AddBlockDialog .cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\application\LineManageAssitant.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\command\CommandManager.cpp">
+      <Filter>src\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\application\StdAfx.cpp">
+      <Filter>src\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\dialog\LineConfigDialog.cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\dialog\AsdkAcUiDialogSample.cpp">
+      <Filter>src\sample</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,11 +128,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\resource\res\AsdkAcUiSample.rc2">
-      <Filter>res</Filter>
-    </None>
     <None Include="..\doc\ReadMe.txt">
       <Filter>doc</Filter>
+    </None>
+    <None Include="..\resource\res\LineManageAssistant.rc2">
+      <Filter>res</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -163,9 +169,12 @@
     <Filter Include="src\Utils">
       <UniqueIdentifier>{dcce8b75-2f56-45eb-8b95-70ce133f92bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\sample">
+      <UniqueIdentifier>{d049cc72-e8c0-4e7b-bf78-1e6ad43d34cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\resource\AsdkAcUiSample.rc">
+    <ResourceCompile Include="..\resource\LineManageAssistant.rc">
       <Filter>res</Filter>
     </ResourceCompile>
   </ItemGroup>

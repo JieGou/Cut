@@ -108,6 +108,7 @@ LineConfigDataManager::LineConfigDataManager(void)
 			size_t columnPos = wLine.find_first_of(L"\t",columnFrom);
 
 			LineCategoryItemData* newItem = new LineCategoryItemData();
+			newItem->mIndex = 0;
 
 			int indexCol = 0;
 			while( columnPos != wstring::npos )
@@ -119,23 +120,29 @@ LineConfigDataManager::LineConfigDataManager(void)
 				if( indexCol == 0 )
 					newItem->mID = _wtoi(rColumn.c_str());
 				else if( indexCol == 1 )
-					newItem->mName = rColumn;
+					newItem->mCategory = rColumn;
 				else if( indexCol == 2 )
-					newItem->mKind = rColumn;
+					newItem->mName = rColumn;
 				else if( indexCol == 3 )
-					newItem->mUnit = rColumn;
+					newItem->mKind = rColumn;
 				else if( indexCol == 4 )
-					newItem->mShape = rColumn;
+					newItem->mUnit = rColumn;
 				else if( indexCol == 5 )
-					newItem->mRadius = rColumn;
+					newItem->mShape = rColumn;
 				else if( indexCol == 6 )
-					newItem->mLength = rColumn;
+					newItem->mRadius = rColumn;
 				else if( indexCol == 7 )
-					newItem->mWidth = rColumn;
+					newItem->mLength = rColumn;
 				else if( indexCol == 8 )
-					newItem->mWallSize = rColumn;
+					newItem->mWidth = rColumn;
 				else if( indexCol == 9 )
+					newItem->mWallSize = rColumn;
+				else if( indexCol == 10 )
 					newItem->mSafeSize = rColumn;
+				else if( indexCol == 11 )
+					newItem->mCanThrough = rColumn;
+				else if( indexCol == 12 )
+					newItem->mThroughDirection = rColumn;
 
 				indexCol++;
 
@@ -144,7 +151,7 @@ LineConfigDataManager::LineConfigDataManager(void)
 				columnPos =  wLine.find_first_of(L'\t',columnFrom);
 			}
 
-			if( indexCol == 10 )
+			if( indexCol == 13 )
 			{
 				wstring& rColumn = wLine.substr(columnFrom);
 				newItem->mComment = rColumn;

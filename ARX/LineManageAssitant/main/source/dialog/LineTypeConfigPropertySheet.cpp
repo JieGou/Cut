@@ -136,6 +136,9 @@ BOOL LineTypeConfigPropertySheet::InitButtons()
 	//删除取消
 	ShowControl(this,IDCANCEL,false);
 
+	//默认删除、修改不可用
+	ChangeControlStatus(FALSE);
+
 	return TRUE;
 }
 
@@ -224,6 +227,12 @@ void LineTypeConfigPropertySheet::OnBnClickedButtonOK()
 	//LineConfigDataManager::Instance()->Persistent();
 
 	CPropertySheet::OnClose();
+}
+
+void LineTypeConfigPropertySheet::ChangeControlStatus(BOOL bEnable)
+{
+	m_ButtonMod.EnableWindow(bEnable);
+	m_ButtonDel.EnableWindow(bEnable);
 }
 
 } // end of config

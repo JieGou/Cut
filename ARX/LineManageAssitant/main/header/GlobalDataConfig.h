@@ -36,6 +36,21 @@ public:
 	static const wstring LINE_CATEGORY_TONGXIN;
 
 	/**
+	* 阻隔体种类
+	**/
+	static const wstring BLOCK_CATEGORY_WUSHUI;
+	static const wstring BLOCK_CATEGORY_HANGDAO;
+	static const wstring BLOCK_CATEGORY_NUANQIGUAN;
+	static const wstring BLOCK_CATEGORY_GUODAO;
+	static const wstring BLOCK_CATEGORY_CHEZHAN;
+
+	/**
+	* 穿越方向
+	**/
+	static const wstring BLOCK_CATEGORY_ABOVE;
+	static const wstring BLOCK_CATEGORY_BELLOW;
+
+	/**
 	* 管道形状
 	**/
 	static const wstring LINE_SHAPE_CIRCLE;

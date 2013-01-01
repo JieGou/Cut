@@ -8,6 +8,7 @@
 #define IDD_DIALOG_LINE_CONFIG_ADD      133
 #define IDD_DIALOG_LINE_ADD             135
 #define IDD_DIALOG_CUT_POS              136
+#define IDD_DIALOG_BLOCK_CONFIG_ADD     137
 #define IDC_EDIT_XPT                    1000
 #define IDC_EDIT_ANGLE                  1001
 #define IDC_BUTTON_POINT                1002
@@ -59,6 +60,9 @@
 #define IDC_STATIC_RADIUS               1047
 #define IDC_STATIC_LENGTH               1048
 #define IDC_STATIC_WIDTH                1049
+#define IDC_COMBO_THROUGH_DIRECTION     1051
+#define IDC_CHECK1                      1053
+#define IDC_CHECK_CAN_THROUGH           1053
 #define IDC_BUTTON_LINETYPE_ADD         0x2001
 #define IDC_BUTTON_LINETYPE_MOD         0x2002
 #define IDC_BUTTON_LINETYPE_DEL         0x2003
@@ -77,7 +81,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32777
-#define _APS_NEXT_CONTROL_VALUE         1050
+#define _APS_NEXT_CONTROL_VALUE         1054
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

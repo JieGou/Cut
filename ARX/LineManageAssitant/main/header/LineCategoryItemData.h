@@ -48,6 +48,10 @@ struct LineCategoryItemData
 
 	wstring mWallSize;
 	wstring mSafeSize;
+
+	wstring mCanThrough;
+	wstring mThroughDirection;
+
 	wstring mComment;
 
 	LineCategoryItemData(void);
@@ -63,6 +67,8 @@ struct LineCategoryItemData
 							const wstring& rWidth,
 							const wstring& rWallSize,
 							const wstring& rSafeSize,
+							const wstring& rCanThrough,
+							const wstring& rThroughDirection,
 							const wstring& rComment);
 
 	LineCategoryItemData( const LineCategoryItemData& rData);

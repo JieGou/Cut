@@ -142,33 +142,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\AsdkAcUiDialogSample.cpp" />
-    <ClCompile Include="..\source\CommandManager.cpp" />
+    <ClCompile Include="..\source\application\LineManageAssitant.cpp" />
+    <ClCompile Include="..\source\application\StdAfx.cpp" />
+    <ClCompile Include="..\source\command\CommandManager.cpp" />
     <ClCompile Include="..\source\data\GlobalDataConfig.cpp" />
     <ClCompile Include="..\source\data\LineCategoryItemData.cpp" />
     <ClCompile Include="..\source\data\LineConfigDataManager.cpp" />
+    <ClCompile Include="..\source\dialog\AddBlockDialog .cpp" />
     <ClCompile Include="..\source\dialog\AddLineDialog.cpp" />
+    <ClCompile Include="..\source\dialog\AsdkAcUiDialogSample.cpp" />
+    <ClCompile Include="..\source\dialog\BlockLineConfigDialog.cpp" />
+    <ClCompile Include="..\source\dialog\LineConfigDialog.cpp" />
     <ClCompile Include="..\source\dialog\LineCutPosDialog.cpp" />
     <ClCompile Include="..\source\dialog\LineTypeConfigPropertySheet.cpp" />
     <ClCompile Include="..\source\exception\LMAException.cpp" />
-    <ClCompile Include="..\source\LineConfigDialog.cpp" />
-    <ClCompile Include="..\source\LineManageAssitant.cpp" />
     <ClCompile Include="..\source\menu\MenuLMAMain.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">;_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="..\source\menu\MenuManager.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_ITERATOR_DEBUG_LEVEL=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <ClCompile Include="..\source\StdAfx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="..\source\utils\LMAUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\resource\AsdkAcUiSample.rc">
+    <ResourceCompile Include="..\resource\LineManageAssistant.rc">
       <AdditionalIncludeDirectories>..\header</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemGroup>
@@ -199,7 +196,7 @@
     <ClInclude Include="CommandManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\resource\res\AsdkAcUiSample.rc2" />
+    <None Include="..\resource\res\LineManageAssistant.rc2" />
     <None Include="..\doc\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

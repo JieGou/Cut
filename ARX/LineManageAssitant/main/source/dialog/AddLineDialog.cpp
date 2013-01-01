@@ -29,7 +29,12 @@ namespace config
 IMPLEMENT_DYNAMIC(AddLineConfigDialog, CDialog)
 
 AddLineConfigDialog::AddLineConfigDialog(CWnd* pParent /*=NULL*/)
-	: CDialog(AddLineConfigDialog::IDD, pParent)
+: CDialog(AddLineConfigDialog::IDD, pParent)
+{
+}
+
+AddLineConfigDialog::AddLineConfigDialog(UINT dlgID,CWnd* pParent /*=NULL*/)
+: CDialog(dlgID, pParent)
 {
 }
 

@@ -20,6 +20,21 @@ const wstring GlobalData::LINE_CATEGORY_YUSUI = L"雨水";
 const wstring GlobalData::LINE_CATEGORY_TONGXIN = L"通信";
 
 /**
+* 阻隔体种类
+**/
+const wstring GlobalData::BLOCK_CATEGORY_WUSHUI = L"污水管道";
+const wstring GlobalData::BLOCK_CATEGORY_HANGDAO = L"巷道";
+const wstring GlobalData::BLOCK_CATEGORY_NUANQIGUAN = L"暖气管";
+const wstring GlobalData::BLOCK_CATEGORY_GUODAO = L"过道";
+const wstring GlobalData::BLOCK_CATEGORY_CHEZHAN = L"车站";
+
+/**
+* 穿越方向
+**/
+const wstring GlobalData::BLOCK_CATEGORY_ABOVE = L"上方";
+const wstring GlobalData::BLOCK_CATEGORY_BELLOW = L"下方";
+
+/**
 * 管道形状
 **/
 const wstring GlobalData::LINE_SHAPE_CIRCLE = L"圆形";

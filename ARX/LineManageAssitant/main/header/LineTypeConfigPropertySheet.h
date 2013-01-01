@@ -37,6 +37,8 @@ public:
 
 	virtual ~LineTypeConfigPropertySheet();
 
+	void ChangeControlStatus(BOOL bEnable);
+
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	virtual BOOL OnInitDialog();
@@ -61,7 +63,7 @@ private:
 	static const int BTN_MARGIN;
 
 	LineConfigDialog m_LineConfigDlg;
-	LineConfigDialog m_BlockConfigDlg;
+	BlockConfigDialog m_BlockConfigDlg;
 
 	CButton m_ButtonAdd;
 	CButton m_ButtonMod;

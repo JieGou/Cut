@@ -14,8 +14,6 @@ using namespace std;
 
 #include <LineCategoryItemData.h>
 
-// AddLineConfigDialog dialog
-
 namespace com
 {
 
@@ -28,12 +26,16 @@ namespace assistent
 namespace config
 {
 
+// 增加管线配置类型
 class AddLineConfigDialog : public CDialog
 {
 	DECLARE_DYNAMIC(AddLineConfigDialog)
 
 public:
 	AddLineConfigDialog(CWnd* pParent = NULL);   // standard constructor
+
+	AddLineConfigDialog(UINT dlgID,CWnd* pParent = NULL);   // standard constructor
+
 	virtual ~AddLineConfigDialog();
 
 // Dialog Data
@@ -44,18 +46,18 @@ public:
 	void SetOperType( OPER_TYPE type ){ m_OperType = type; };
 	OPER_TYPE GetOperType() const { return m_OperType;}
 
-	void FillUpdateData();
+	virtual void FillUpdateData();
 
 protected:
 
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	virtual BOOL OnInitDialog();
 
-	BOOL InitConfigData();
+	virtual BOOL InitConfigData();
 
 	DECLARE_MESSAGE_MAP()
 
-private:
+protected:
 
 	CComboBox m_LineKind;
 	CComboBox m_LineShape;
@@ -82,13 +84,47 @@ private:
 	int m_lineIndex;
 	UINT m_lineID;
 
-	afx_msg void OnBnClickedOk();
-	afx_msg void OnCbnShapeChange();
+	virtual afx_msg void OnBnClickedOk();
+	virtual afx_msg void OnCbnShapeChange();
 
-	void ShowControlDynamic();
+	virtual void ShowControlDynamic();
 };
 
-// AddLineDialog dialog
+//增加阻隔体配置
+
+class AddBlockConfigDialog : public AddLineConfigDialog
+{
+	DECLARE_DYNAMIC(AddBlockConfigDialog)
+
+public:
+	AddBlockConfigDialog(CWnd* pParent = NULL);   // standard constructor
+	virtual ~AddBlockConfigDialog();
+
+// Dialog Data
+	enum { IDD = IDD_DIALOG_BLOCK_CONFIG_ADD };
+
+	void FillUpdateData();
+
+protected:
+
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+
+	BOOL InitConfigData();
+
+	DECLARE_MESSAGE_MAP()
+
+	virtual afx_msg void OnBnClickedOk();
+	virtual afx_msg void OnChkCanThroughChange();
+
+	virtual void ShowControlDynamic();
+
+private:
+
+	CButton m_CanThr;
+	CComboBox m_ThroughDirection;
+};
+
+// 增加线段实体
 
 class AddLineDialog : public CDialog
 {

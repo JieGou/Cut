@@ -29,6 +29,8 @@ mLength(L"0"),
 mWidth(L"0"),
 mWallSize(L"0"),
 mSafeSize(L"0"),
+mCanThrough(L"0"),
+mThroughDirection(L"0"),
 mComment(L"0")
 {
 }
@@ -45,6 +47,8 @@ LineCategoryItemData::LineCategoryItemData( int index,
 											const wstring& rWidth,
 											const wstring& rWallSize,
 											const wstring& rSafeSize,
+											const wstring& rCanThrough,
+											const wstring& rThroughDirection,
 											const wstring& rComment)
 :mIndex(index),
 mID(rID),
@@ -58,6 +62,8 @@ mLength(rLength),
 mWidth(rWidth),
 mWallSize(rWallSize),
 mSafeSize(rSafeSize),
+mCanThrough(rCanThrough),
+mThroughDirection(rThroughDirection),
 mComment(rComment)
 {}
 
@@ -74,6 +80,8 @@ mLength(rData.mLength),
 mWidth(rData.mWidth),
 mWallSize(rData.mWallSize),
 mSafeSize(rData.mSafeSize),
+mCanThrough(rData.mCanThrough),
+mThroughDirection(rData.mThroughDirection),
 mComment(rData.mComment)
 {
 }
@@ -84,7 +92,7 @@ wstring LineCategoryItemData::toString() const
 	ID.Format(L"%d",mID);
 
 	return wstring(ID.GetBuffer()) + L"\t" 
-			//+ mCategory + L"\t"
+			+ mCategory + L"\t"
 			+ mName + L"\t"
 			+ mKind + L"\t"
 			+ mUnit + L"\t"
@@ -94,6 +102,8 @@ wstring LineCategoryItemData::toString() const
 			+ mWidth + L"\t"
 			+ mWallSize + L"\t"
 			+ mSafeSize + L"\t"
+			+ mCanThrough + L"\t"
+			+ mThroughDirection + L"\t"
 			+ mComment + L"\n";
 }
 

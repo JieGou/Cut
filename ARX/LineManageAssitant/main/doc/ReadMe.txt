@@ -1,22 +1,6 @@
-Copyright 2012 Autodesk, Inc.  All rights reserved.
+@Copyright 2012-2013 
 
-Use of this software is subject to the terms of the Autodesk license 
-agreement provided at the time of installation or download, or which 
-otherwise accompanies this software in either electronic or hard copy form.   
-
-This sample demostrates some of the many uses of AcUi MFC dialog classes for AutoCAD. 
-
-To use this sample:
-
-1. Build the acuisamp project.
-2. Start AutoCAD.
-3. Load AsdkAcUiSample.arx.
-4. To run the sample, type ACUISAMPLE at the AutoCAD command prompt.
-
-A simple CAcUiDialog modal dialog box is shown.  This dialog box demonstrates the following control classes:
-
-CAcUiSymbolComboBox
-CAcUiListBox
-CAcUiPickButton
-CAcUiAngleEdit
-CAcUiNumericEdit
+本软件名称为“地铁车站市政管线改移辅助决策软件”。
+项目的提出方为北京交通大学杨成永老师，开发者为谷长海，用户是北京市轨道交通建设管理有限公司。
+该软件运行在用户的个人电脑或工作站之上，载体为Autodesk（欧特克）公司开发的AutoCAD软件。
+本软件最终发布方式为基于AutoCAD进行二次开发的扩展系统（plug-in）。

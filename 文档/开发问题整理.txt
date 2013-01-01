@@ -2,7 +2,8 @@
 
 2.AutoCAD调试时，有时用VC attach之后并不能加载arx的module，也就不能调试。因此可以在VC启动debug之后，不detach，而是用脚本去编译。
 	可以省去重复加载的时间。因为AutoCAD的Arx加载时动态加载的。
-	
+	(ARXLOAD "LMA") (ARXUNLOAD "LMA")
+
 3.CDialog Domodal之前，不要操作数据和控件。一定要在doModal之后操作，否则会奔溃。包括向控件SetWindowTextW等。
 
 4.CDialog上的控件可以通过GetDlgItem(UINT id)来得到。
@@ -30,4 +31,18 @@ pragma warning (disable : 2220)
 12. 注意： 	HideControl(this,IDCANCEL,false); OverControl(this,IDOK,IDCANCEL); 
 
 13. 窗口位移问题未解决
-	
+
+14. 确认：虚函数只需要在基类中声明即可。在子类中不声明不影响。
+
+15. 
+	BEGIN_MESSAGE_MAP(AddBlockConfigDialog, CDialog)
+		ON_BN_CLICKED(IDOK, &AddBlockConfigDialog::OnBnClickedOk)
+		ON_BN_CLICKED(IDC_CHECK_CAN_THROUGH, &AddBlockConfigDialog::OnChkCanThroughChange)
+		ON_CBN_SELCHANGE(IDC_COMBO_SHAPE, &AddLineConfigDialog::OnCbnShapeChange)
+	END_MESSAGE_MAP()
+
+	BOOL AddBlockConfigDialog::InitConfigData()
+
+	针对某一控件的相应方法，必须在每个类中定义。父类中声明的不能自动继承到子类中来。
+
+16. http://support.microsoft.com/kb/141487 动态更改每一个CPropertyPage的标题。
