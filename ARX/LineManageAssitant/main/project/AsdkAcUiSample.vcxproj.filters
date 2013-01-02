@@ -16,9 +16,6 @@
     <ClCompile Include="..\source\dialog\LineTypeConfigPropertySheet.cpp">
       <Filter>src\Dialog</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\dialog\AddLineDialog.cpp">
-      <Filter>src\Dialog</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\menu\MenuManager.cpp">
       <Filter>src\Menu</Filter>
     </ClCompile>
@@ -51,6 +48,15 @@
     </ClCompile>
     <ClCompile Include="..\source\dialog\AsdkAcUiDialogSample.cpp">
       <Filter>src\sample</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\dialog\EntryManageDialog.cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\dialog\AddLineDialog.cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\data\LineEntryData.cpp">
+      <Filter>src\Data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +130,12 @@
       <Filter>inc</Filter>
     </ClInclude>
     <ClInclude Include="..\header\LMAUtils.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\EntryManageDialog.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\LineEntryData.h">
       <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>

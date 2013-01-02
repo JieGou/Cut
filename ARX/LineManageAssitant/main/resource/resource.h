@@ -1,12 +1,13 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by AsdkAcUiSample.rc
+// Used by LineManageAssistant.rc
 //
 #define IDD_DIALOG1                     129
 #define IDR_MENU1                       131
 #define IDD_DIALOG_LINE_CONFIG          132
 #define IDD_DIALOG_LINE_CONFIG_ADD      133
 #define IDD_DIALOG_LINE_ADD             135
+#define IDD_DIALOG_ENTRY_MANAGE         135
 #define IDD_DIALOG_CUT_POS              136
 #define IDD_DIALOG_BLOCK_CONFIG_ADD     137
 #define IDC_EDIT_XPT                    1000
@@ -37,6 +38,7 @@
 #define IDC_EDIT5                       1033
 #define IDC_BUTTON2                     1033
 #define IDC_EDIT_RADIUS                 1033
+#define IDC_BUTTON_DEL                  1033
 #define IDC_LIST2                       1034
 #define IDC_BUTTON3                     1034
 #define IDC_EDIT_WALLSIZE               1034
@@ -47,11 +49,13 @@
 #define IDC_LIST_LINE_DETAIL            1036
 #define IDC_EDIT_SIZE_WIDTH             1036
 #define IDC_EDIT1                       1037
+#define IDC_EDIT_NO                     1037
 #define IDC_EDIT6                       1038
 #define IDC_X                           1038
 #define IDC_Y                           1039
 #define IDC_EDIT7                       1040
 #define IDC_Z                           1040
+#define IDC_EDIT_KIND                   1040
 #define IDC_OFFSET                      1041
 #define IDC_TAB1                        1042
 #define IDC_COMBO_KIND                  1044
@@ -63,6 +67,8 @@
 #define IDC_COMBO_THROUGH_DIRECTION     1051
 #define IDC_CHECK1                      1053
 #define IDC_CHECK_CAN_THROUGH           1053
+#define IDC_RADIO_FLAT                  1054
+#define IDC_RADIO_LEVEL                 1055
 #define IDC_BUTTON_LINETYPE_ADD         0x2001
 #define IDC_BUTTON_LINETYPE_MOD         0x2002
 #define IDC_BUTTON_LINETYPE_DEL         0x2003
@@ -81,7 +87,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32777
-#define _APS_NEXT_CONTROL_VALUE         1054
+#define _APS_NEXT_CONTROL_VALUE         1055
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

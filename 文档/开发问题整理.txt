@@ -46,3 +46,5 @@ pragma warning (disable : 2220)
 	针对某一控件的相应方法，必须在每个类中定义。父类中声明的不能自动继承到子类中来。
 
 16. http://support.microsoft.com/kb/141487 动态更改每一个CPropertyPage的标题。
+
+17. 加入头文件 #include "stdafx.h" 可解决atuodesk的头文件报错的问题

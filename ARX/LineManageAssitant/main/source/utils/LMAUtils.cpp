@@ -112,3 +112,37 @@ void SetControlText( CWnd* pWnd, int iControl, LPCTSTR lpszString )
 		 wnd_control->SetWindowTextW( lpszString ) ;
      }
 }
+
+wstrVector* vectorContructor( const wstring& data, const wstring& sep, size_t start, size_t end )
+{
+	if(data.length() == 0 || sep.length() == 0 )
+		return NULL;
+
+	wstrVector* wstrv = new wstrVector();
+
+	size_t columnFrom = (size_t)start;
+	size_t columnPos = data.find_first_of(sep,columnFrom);
+
+	int indexCol = 0;
+	while( columnPos != wstring::npos )
+	{
+		//得到一个分段
+		wstring& rColumn = data.substr(columnFrom,columnPos-columnFrom);
+		wstrv->push_back( rColumn );
+
+		//继续下一个column
+		columnFrom = columnPos + sep.length();
+		columnPos = data.find_first_of(sep,columnFrom);
+	}
+
+	if( end == 0 )
+	{
+		wstrv->push_back( data.substr(columnFrom) );
+	}
+	else
+	{
+		wstrv->push_back( data.substr(columnFrom,data.length() - columnFrom) );
+	}
+
+	return wstrv;
+}

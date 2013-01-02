@@ -7,11 +7,11 @@
 #include "AcExtensionModule.h"
 
 #include "LineTypeConfigPropertySheet.h"
-#include "LMALineConfigManagerDialog.h"
-#include "LineConfigDialog.h"
 #include "LineCutPosDialog.h"
+#include <EntryManageDialog.h>
 
 using namespace com::guch::assistent::config;
+using namespace com::guch::assistent::entry;
 
 typedef map<wstring,AcRxFunctionPtr>::const_iterator CommandIterator;
 
@@ -86,8 +86,8 @@ void CommandManager::ShowConfigDialog()
 
 void CommandManager::ShowAddLineDialog()
 {
-	//AddLineDialog dlg(CWnd::FromHandle(adsw_acadMainWnd()));
-	//INT_PTR nReturnValue = dlg.DoModal();
+	EntryManageDialog dlg(CWnd::FromHandle(adsw_acadMainWnd()));
+	INT_PTR nReturnValue = dlg.DoModal();
 }
 
 void CommandManager::GenerateCut()
