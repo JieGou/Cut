@@ -234,7 +234,7 @@ bool LineConfigDataManager::Persistent()
 
 bool LineConfigDataManager::ClearAllLines()
 {	
-	for( LineIterator iter = mLineConfigData->begin();
+	for( CategoryIterator iter = mLineConfigData->begin();
 			iter != mLineConfigData->end();
 			iter++)
 	{
@@ -260,7 +260,7 @@ void LineConfigDataManager::AddLine(const LineCategoryItemData* newLine)
 
 BOOL LineConfigDataManager::UpdateLine(const LineCategoryItemData* updateLine)
 {
-	for( LineIterator iter = mLineConfigData->begin();
+	for( CategoryIterator iter = mLineConfigData->begin();
 		iter != mLineConfigData->end();
 		iter++)
 	{
@@ -280,6 +280,21 @@ BOOL LineConfigDataManager::UpdateLine(const LineCategoryItemData* updateLine)
 	return FALSE;
 }
 
+const wstring LineConfigDataManager::FindCategory( const wstring& kind )
+{
+	for( CategoryIterator iter = mLineConfigData->begin();
+		iter != mLineConfigData->end();
+		iter++)
+	{
+		if( (*iter)->mKind == kind )
+		{
+			return (*iter)->mCategory;
+		}
+	}
+
+	return L"";
+}
+
 UINT LineConfigDataManager::GetNextID()
 {
 	UINT newID = (UINT)GetTickCount();
@@ -289,7 +304,7 @@ UINT LineConfigDataManager::GetNextID()
 
 LineCategoryItemData* LineConfigDataManager::FindLine( const wstring& lineName ) const
 {
-	for( LineIterator iter = mLineConfigData->begin();
+	for( CategoryIterator iter = mLineConfigData->begin();
 		iter != mLineConfigData->end();
 		iter++)
 	{
@@ -304,7 +319,7 @@ LineCategoryItemData* LineConfigDataManager::FindLine( const wstring& lineName )
 
 LineCategoryItemData* LineConfigDataManager::FindLine( UINT ID ) const
 {
-	for( LineIterator iter = mLineConfigData->begin();
+	for( CategoryIterator iter = mLineConfigData->begin();
 		iter != mLineConfigData->end();
 		iter++)
 	{
@@ -319,7 +334,7 @@ LineCategoryItemData* LineConfigDataManager::FindLine( UINT ID ) const
 
 BOOL LineConfigDataManager::DeleteLine( UINT ID )
 {
-	for( LineIterator iter = mLineConfigData->begin();
+	for( CategoryIterator iter = mLineConfigData->begin();
 		iter != mLineConfigData->end();
 		iter++)
 	{

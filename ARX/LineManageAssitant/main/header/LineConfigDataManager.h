@@ -18,7 +18,7 @@ namespace config
 {
 
 typedef vector<LineCategoryItemData*> LineCategoryVecotr;
-typedef LineCategoryVecotr::iterator LineIterator;
+typedef LineCategoryVecotr::iterator CategoryIterator;
 
 class LineConfigDataManager
 {
@@ -41,6 +41,8 @@ public:
 	BOOL UpdateLine(const LineCategoryItemData* updateLine);
 
 	BOOL DeleteLine( UINT ID );
+
+	const wstring FindCategory( const wstring& kind );
 
 	bool ClearAllLines();
 

@@ -10,8 +10,11 @@
 #include <acui.h>
 
 #include <string>
+#include <LineEntryData.h>
 
 using namespace std;
+
+using namespace com::guch::assistant::data;
 
 namespace com
 {
@@ -41,9 +44,12 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	virtual BOOL OnInitDialog();
 
-	BOOL InitLineList();
-	BOOL InitLineDetailHeader();
-	BOOL InitLineDetailData();
+	BOOL InitEntryList();
+	BOOL InitEntryDetailHeader();
+	BOOL InitEntryDetailData();
+
+	BOOL InsertLine( LineEntry* lineEntry, BOOL bInitialize = FALSE );
+	HTREEITEM GetKindNode( const wstring& category, const wstring& kind);
 
 	DECLARE_MESSAGE_MAP()
 
@@ -63,6 +69,11 @@ private:
 	CButton m_LineDelete;
 
 	wstring m_fileName;
+
+	LineEntryFile* m_EntryFile;
+
+	HTREEITEM m_lineRoot;
+	HTREEITEM m_blockRoot;
 };
 
 } // end of config

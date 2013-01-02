@@ -130,6 +130,8 @@ public:
 	void Init();
 	void Persistent() const;
 
+	LineList* GetList() const {return m_LineList;}
+
 private:
 
 	wstring m_FileName;
