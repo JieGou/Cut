@@ -10,6 +10,7 @@
 #define IDD_DIALOG_ENTRY_MANAGE         135
 #define IDD_DIALOG_CUT_POS              136
 #define IDD_DIALOG_BLOCK_CONFIG_ADD     137
+#define IDD_DIALOG_ADD_ENTRY            138
 #define IDC_EDIT_XPT                    1000
 #define IDC_EDIT_ANGLE                  1001
 #define IDC_BUTTON_POINT                1002
@@ -42,6 +43,7 @@
 #define IDC_LIST2                       1034
 #define IDC_BUTTON3                     1034
 #define IDC_EDIT_WALLSIZE               1034
+#define IDC_BUTTON_UPDATE               1034
 #define IDC_LIST3                       1035
 #define IDC_TREE1                       1035
 #define IDC_TREE_LINES                  1035
@@ -52,14 +54,18 @@
 #define IDC_EDIT_NO                     1037
 #define IDC_EDIT6                       1038
 #define IDC_X                           1038
+#define IDC_BUTTON_DEL_POINT            1038
 #define IDC_Y                           1039
 #define IDC_EDIT7                       1040
 #define IDC_Z                           1040
 #define IDC_EDIT_KIND                   1040
 #define IDC_OFFSET                      1041
+#define IDC_EDIT_KIND2                  1041
+#define IDC_EDIT_POINT                  1041
 #define IDC_TAB1                        1042
 #define IDC_COMBO_KIND                  1044
 #define IDC_COMBO_SHAPE                 1045
+#define IDC_COMBO_CATEGORY              1045
 #define IDC_COMBO_UNIT                  1046
 #define IDC_STATIC_RADIUS               1047
 #define IDC_STATIC_LENGTH               1048
@@ -85,9 +91,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        137
+#define _APS_NEXT_RESOURCE_VALUE        139
 #define _APS_NEXT_COMMAND_VALUE         32777
-#define _APS_NEXT_CONTROL_VALUE         1055
+#define _APS_NEXT_CONTROL_VALUE         1056
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

@@ -26,3 +26,4 @@ void OverControl( CWnd *pWnd, int iControlSrc, int iControlDst );
 void SetControlText( CWnd* pWnd, int iControl, LPCTSTR lpszString );
 
 wstrVector* vectorContructor( const wstring& data, const wstring& seq, size_t start = 0, size_t end = 0 );
+

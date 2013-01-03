@@ -58,6 +58,15 @@
     <ClCompile Include="..\source\data\LineEntryData.cpp">
       <Filter>src\Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\dialog\AddEntryDialog.cpp">
+      <Filter>src\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\controls\ListCtrlEx.cpp">
+      <Filter>src\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\controls\MsgHook.cpp">
+      <Filter>src\Control</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\header\AsdkAcUiDialogSample.h">
@@ -138,6 +147,15 @@
     <ClInclude Include="..\header\LineEntryData.h">
       <Filter>inc</Filter>
     </ClInclude>
+    <ClInclude Include="..\header\AddEntryDialog.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\ListCtrlEx.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\MsgHook.h">
+      <Filter>inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\doc\ReadMe.txt">
@@ -183,6 +201,9 @@
     </Filter>
     <Filter Include="src\sample">
       <UniqueIdentifier>{d049cc72-e8c0-4e7b-bf78-1e6ad43d34cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Control">
+      <UniqueIdentifier>{f14d3cdb-ed9d-4630-8df1-25c3c5a2deac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

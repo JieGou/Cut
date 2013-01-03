@@ -124,34 +124,6 @@ private:
 	CComboBox m_ThroughDirection;
 };
 
-// 增加线段实体
-
-class AddLineDialog : public CDialog
-{
-	DECLARE_DYNAMIC(AddLineDialog)
-
-public:
-	AddLineDialog(CWnd* pParent = NULL);   // standard constructor
-	virtual ~AddLineDialog();
-
-// Dialog Data
-	enum { IDD = IDD_DIALOG_LINE_ADD };
-
-protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	virtual BOOL OnInitDialog();
-
-	BOOL InitLineList();
-	BOOL InitLineDetailHeader();
-	BOOL InitLineDetailData();
-
-	DECLARE_MESSAGE_MAP()
-
-public:
-	//CTreeCtrl m_LinesTree;
-	//CListCtrl m_LineDetailList;
-};
-
 } // end of config
 
 } // end of assistant

@@ -131,7 +131,7 @@ BOOL AddLineConfigDialog::InitConfigData()
 void AddLineConfigDialog::FillUpdateData()
 {
 	//更改控件的标题
-	this->SetWindowTextW(L"管线更新");
+	this->SetWindowTextW(L"管线类型更新");
 
 	CWnd* pOKBtn = this->GetDlgItem(IDOK);
 	if( pOKBtn )

@@ -286,7 +286,8 @@ const wstring LineConfigDataManager::FindCategory( const wstring& kind )
 		iter != mLineConfigData->end();
 		iter++)
 	{
-		if( (*iter)->mKind == kind )
+		//不是按管线配置的种类查找，而是按用户新建管线的类型查找
+		if( (*iter)->mName == kind )
 		{
 			return (*iter)->mCategory;
 		}

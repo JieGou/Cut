@@ -145,11 +145,14 @@
     <ClCompile Include="..\source\application\LineManageAssitant.cpp" />
     <ClCompile Include="..\source\application\StdAfx.cpp" />
     <ClCompile Include="..\source\command\CommandManager.cpp" />
+    <ClCompile Include="..\source\controls\ListCtrlEx.cpp" />
+    <ClCompile Include="..\source\controls\MsgHook.cpp" />
     <ClCompile Include="..\source\data\GlobalDataConfig.cpp" />
     <ClCompile Include="..\source\data\LineCategoryItemData.cpp" />
     <ClCompile Include="..\source\data\LineConfigDataManager.cpp" />
     <ClCompile Include="..\source\data\LineEntryData.cpp" />
     <ClCompile Include="..\source\dialog\AddBlockDialog .cpp" />
+    <ClCompile Include="..\source\dialog\AddEntryDialog.cpp" />
     <ClCompile Include="..\source\dialog\AddLineDialog.cpp" />
     <ClCompile Include="..\source\dialog\EntryManageDialog.cpp" />
     <ClCompile Include="..\source\dialog\AsdkAcUiDialogSample.cpp" />
@@ -172,6 +175,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\header\AddEntryDialog.h" />
     <ClInclude Include="..\header\AddLineDialog.h" />
     <ClInclude Include="..\header\AsdkAcUiDialogSample.h" />
     <ClInclude Include="..\header\CAcadApplication.h" />
@@ -191,10 +195,12 @@
     <ClInclude Include="..\header\LineEntryData.h" />
     <ClInclude Include="..\header\LineManageAssitant.h" />
     <ClInclude Include="..\header\LineTypeConfigPropertySheet.h" />
+    <ClInclude Include="..\header\ListCtrlEx.h" />
     <ClInclude Include="..\header\LMAException.h" />
     <ClInclude Include="..\header\LMAUtils.h" />
     <ClInclude Include="..\header\MenuLMAMain.h" />
     <ClInclude Include="..\header\MenuManager.h" />
+    <ClInclude Include="..\header\MsgHook.h" />
     <ClInclude Include="..\header\StdAfx.h" />
     <ClInclude Include="..\resource\resource.h" />
     <ClInclude Include="CommandManager.h" />
@@ -208,7 +214,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="\Users\chgu\Dropbox\Master\AutoCAD\ARX\LineManageAssitant\main\resource\AsdkAcUiSample.rc" />
+      <UserProperties RESOURCE_FILE="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

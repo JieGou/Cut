@@ -85,10 +85,15 @@ public:
 	void UpdatePoint( const PointEntry& updatePoint );
 	void DeletePoint( const UINT& PointNO );
 
+	void SetPoints( PointList* newPoints);
+
 	PointIter FindPoint( const UINT& PointNO ) const;
 	ContstPointIter FindConstPoint( const UINT& PointNO ) const;
 
 	wstring toString();
+
+protected:
+	void ClearPoints();
 
 public:
 
@@ -117,15 +122,19 @@ public:
 	~LineEntryFile();
 
 	void InsertLine( LineEntry* lineEntry);
+	BOOL UpdateLine( LineEntry* lineEntry);
 	BOOL DeleteLine( const UINT& lineID );
 
 	LineIterator FindLinePos( const UINT& lineID ) const;
 	LineIterator FindLinePosByNO( const wstring& lineNO ) const;
 	LineIterator FindLinePosByName( const wstring& lineName ) const;
 
-	LineEntry* FindLine( const UINT& PointNO ) const;
-	LineEntry* FindLineByNO( const wstring& lineName  ) const;
+	LineEntry* FindLine( const UINT& lineID ) const;
+	LineEntry* FindLineByNO( const wstring& lineNO  ) const;
 	LineEntry* FindLineByName( const wstring& lineName  ) const;
+
+	LineEntry* HasAnotherLineByNO( const UINT& lineID, const wstring& lineNO  ) const;
+	LineEntry* HasAnotherLineByByName( const UINT& lineID, const wstring& lineName  ) const;
 
 	void Init();
 	void Persistent() const;

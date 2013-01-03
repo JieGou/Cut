@@ -48,3 +48,11 @@ pragma warning (disable : 2220)
 16. http://support.microsoft.com/kb/141487 动态更改每一个CPropertyPage的标题。
 
 17. 加入头文件 #include "stdafx.h" 可解决atuodesk的头文件报错的问题
+
+18. CComboBox选择改变时
+	
+	ON_CBN_SELCHANGE(IDC_COMBO_CATEGORY, &AddEntryDialog::OnSelchangeComboCategory)
+	int length = m_LineCategory.GetLBTextLen(selected);
+    m_LineCategory.GetLBText(selected, category.GetBuffer(length) );
+
+	ON_CBN_SELCHANGE   The selection in the list box of a combo box is about to be changed as a result of the user either clicking in the list box or changing the selection by using the arrow keys. When processing this message, the text in the edit control of the combo box can only be retrieved via GetLBText or another similar function. GetWindowText cannot be used.

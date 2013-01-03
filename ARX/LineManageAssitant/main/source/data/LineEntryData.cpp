@@ -103,7 +103,7 @@ PointEntry::PointEntry( const wstring& data )
 wstring PointEntry::toString() const
 {
 	CString temp;
-	temp.Format(L"%s%d%s%f%s%f%s%f%s%s%s%s%s%s",
+	temp.Format(L"%s%d%s%0.2f%s%0.2f%s%0.2f%s%s%s%s%s%s",
 				POINT_START,
 				m_PointNO, POINTS_SEP,
 				m_Point[X], POINTS_SEP,
@@ -128,6 +128,18 @@ LineEntry::LineEntry()
 	m_LineNO(L"0"),
 	m_LineName(L""),
 	m_LineKind(L""),
+	m_CurrentPointNO(0)
+{
+	m_PointList = new PointList();
+}
+
+LineEntry::LineEntry(const wstring& rLineNO,
+				const wstring& rLineName,
+				const wstring& rLineKind)
+	:m_LineID(0),
+	m_LineNO(rLineNO),
+	m_LineName(rLineName),
+	m_LineKind(rLineKind),
 	m_CurrentPointNO(0)
 {
 	m_PointList = new PointList();
@@ -171,6 +183,11 @@ LineEntry::LineEntry( const wstring& data)
 
 LineEntry::~LineEntry()
 {
+	ClearPoints();
+}
+
+void LineEntry::ClearPoints()
+{
 	if( m_PointList )
 	{
 		for( PointIter iter = m_PointList->begin();
@@ -182,6 +199,7 @@ LineEntry::~LineEntry()
 		}
 
 		delete m_PointList;
+		m_PointList = NULL;
 	}
 }
 
@@ -245,12 +263,24 @@ void LineEntry::DeletePoint( const UINT& PointNO )
 	}
 }
 
+
+void LineEntry::SetPoints( PointList* newPoints)
+{
+	ClearPoints();
+
+	m_PointList = newPoints;
+}
+
 wstring LineEntry::toString()
 {
 	wstring lineData;
 
 	CString temp;
 	temp.Format(L"%d\t%s\t%s\t%s\t%d",m_LineID,m_LineNO,m_LineName,m_LineKind,m_CurrentPointNO);
+
+#ifdef DEBUG
+	acutPrintf(L"实体数据【%s】\n",temp.GetBuffer());
+#endif
 
 	lineData = temp;
 
@@ -261,6 +291,9 @@ wstring LineEntry::toString()
 		lineData += L"\t";
 		lineData += (*iter)->toString();
 	}
+
+	//每行有回车
+	lineData += L"\n";
 
 	return lineData;
 }
@@ -327,6 +360,13 @@ void LineEntryFile::Init()
 		//得到一行数据
 		wstring& wLine = wContent.substr(lineFrom, linePos-lineFrom);
 
+#ifdef DEBUG
+		acutPrintf(L"得到一行管线实体数据【%s】\n",wLine.c_str());
+#endif
+
+		if(wLine.length() == 0)
+			break;
+
 		m_LineList->push_back( new LineEntry(wLine));
 
 		//从下一个字符开始查找另外一行
@@ -375,6 +415,24 @@ void LineEntryFile::InsertLine(LineEntry* lineEntry)
 {
 	if( lineEntry )
 		m_LineList->push_back(lineEntry);
+
+	this->Persistent();
+}
+
+BOOL LineEntryFile::UpdateLine(LineEntry* lineEntry)
+{
+	LineIterator iter = FindLinePos(lineEntry->m_LineID);
+
+	if( iter != this->m_LineList->end())
+	{
+		(*iter)->m_LineName = lineEntry->m_LineName;
+		(*iter)->m_LineNO = lineEntry->m_LineNO;
+
+		this->Persistent();
+		return TRUE;
+	}
+
+	return FALSE;
 }
 
 BOOL LineEntryFile::DeleteLine( const UINT& lineID )
@@ -384,11 +442,13 @@ BOOL LineEntryFile::DeleteLine( const UINT& lineID )
 	if( iter != this->m_LineList->end())
 	{
 		m_LineList->erase(iter);
+		this->Persistent();
 		return TRUE;
 	}
 	else
 		return FALSE;
 }
+
 
 LineIterator LineEntryFile::FindLinePos( const UINT& lineID ) const
 {
@@ -458,6 +518,33 @@ LineEntry* LineEntryFile::FindLineByNO( const wstring& lineNO ) const
 	else
 		return NULL;
 }
+
+LineEntry* LineEntryFile::HasAnotherLineByNO( const UINT& lineID, const wstring& lineNO  ) const
+{
+	for( LineIterator iter = this->m_LineList->begin();
+			iter != this->m_LineList->end();
+			iter++)
+	{
+		if( (*iter)->m_LineNO == lineNO && (*iter)->m_LineID != lineID)
+			return (*iter);
+	}
+
+	return NULL;
+}
+
+LineEntry* LineEntryFile::HasAnotherLineByByName( const UINT& lineID, const wstring& lineName  ) const
+{
+	for( LineIterator iter = this->m_LineList->begin();
+			iter != this->m_LineList->end();
+			iter++)
+	{
+		if( (*iter)->m_LineName == lineName && (*iter)->m_LineID != lineID)
+			return (*iter);
+	}
+
+	return NULL;
+}
+
 
 } // end of data
 

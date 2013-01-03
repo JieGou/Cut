@@ -194,6 +194,7 @@ BOOL BlockConfigDialog::InitLineData()
 
 BEGIN_MESSAGE_MAP(BlockConfigDialog, CPropertyPage)
 	ON_NOTIFY(LVN_ITEMCHANGED, IDC_LIST_LINE_CONFIG, OnItemChangedList)
+	ON_LBN_DBLCLK(IDC_LIST_LINE_CONFIG,OnBnClickedButtonMod)
 END_MESSAGE_MAP()
 
 void BlockConfigDialog::OnBnClickedButtonAdd()
