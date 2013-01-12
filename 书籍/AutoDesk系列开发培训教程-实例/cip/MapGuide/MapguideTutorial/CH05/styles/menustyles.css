@@ -1,0 +1,51 @@
+/*
+Copyright (C) 2004-2006  Autodesk, Inc.
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of version 2.1 of the GNU Lesser
+General Public License as published by the Free Software Foundation.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+
+div.PopupMenu
+{
+    position: absolute;
+    width: 200px;
+    background-color: white;
+    position: absolute;
+    left: -500px;
+    top: 1px;
+    border: solid 1px gray;
+    overflow: hidden;
+    z-index: -1;
+}
+div.PopupScrollUpArea
+{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+       height: 12px;
+       background: white;
+       width: 100%;
+       cursor: hand;
+       visibility: hidden;
+}
+div.PopupScrollDownArea
+{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+       height: 12px;
+       background: white;
+       width: 100%;
+       cursor: hand;
+       visibility: hidden;
+}

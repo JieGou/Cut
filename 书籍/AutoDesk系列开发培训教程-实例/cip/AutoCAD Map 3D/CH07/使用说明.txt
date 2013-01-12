@@ -1,0 +1,76 @@
+执行步骤：
+-------------------------------------------------------------------------------
+ 
+1) 在Microsoft Visual Studio 2005打开工程
+
+2)  添加以下文件的引用: acdbmgd.dll, acmgd.dll以及ManagedMapAPI.dll.
+   默认的为安装Map 3D软件的路径, 
+   C:\Program Files\AutoCAD Map 3D 2008.
+ 
+3) 编译工程，得到CH07.dll文件
+
+加载范例DLL
+-------------------------------------------------------------------------------
+1. 在AutoCAD Map 3D命令行中输入"NETLOAD".
+2  选择CH07.dll.
+
+范例的使用
+-------------------------------------------------------------------------------
+
+该范例演示了：
+
+ 1. 如何创建一个地图拓扑
+ 2. 如何执行拓扑分析
+ 3. 如何增加一个几何实体导已有的拓扑模型中
+
+使用范例DLL步骤:
+ 1. 在AutoCAD Map 3D加载 TopologyCS.dll.
+ 2. 运行命令行'DisplayTopologyInfo'
+    a. 打开图形文件: Display_Topology_Info.dwg
+    b. 输入'DisplayTopologyInfo' 命令.
+    c. 输入已有的拓扑名称
+    d. 关于拓扑的名称，类型以及描述等信息将会显示出来
+   
+ 3. 运行命令行'FindAreaByPoint'
+    a. 打开图形文件: Find_Polygon_Area_By_Point.dwg
+    b. 输入'FindAreaByPoint' 命令.
+    c. 输入已有的拓扑名称
+    d. 选择多边形中的节点
+    e. 多边形的面积和周长将会显示出。
+   
+ 4. 运行命令行'CreateMapTopology'
+    a. 打开图形文件: Create_Map_Topology.dwg
+    b. 输入'CreateMapTopology' 命令.
+    c. 输入新的拓扑名称，描述和类型。
+    d. 选择构建拓扑的实体.
+    e. 新的拓扑将被创建.
+
+ 5. 运行命令行 'ChangeTopologyName'
+    a. 在完成上面第4个命令的基础上
+    b. 输入'ChangeTopologyName'命令.
+    c. 输入当前拓扑名称.
+    d. 输入新的拓扑名称.
+    e. 当前拓扑名称将被动态的改变成新的拓扑名称.
+   
+ 
+ 6. 运行命令行 'FindShortestPath'
+    a. 打开图形文件: Find_Shortest_Path.dwg
+    b. 输入'FindShortestPath' 命令.
+    c. 输入已有的拓扑名称
+    d. 选择开始和结束节点
+    e. 一个新的拓扑名为"Result"将被创建，该拓扑为给定节点之间的最短路径.
+  
+ 7. 运行命令行'FindBestPath'
+    a. 打开图形文件: Find_Best_Path.dwg
+    b. 输入'FindBestPath' 命令.
+    c. 输入已有的拓扑名称
+    d. 选择开始和结束节点
+    e. 选择中间节点
+    f. 一个新的拓扑名为"Result"将被创建，该拓扑为连接给定定节点之间的最优路径.
+    
+ 8. 运行命令行 'PolygonUnion'
+    a. 打开图形文件: Polygon_Union_Overlay.dwg
+    b. 输入'PolygonUnion' 命令.
+    c. 输入待叠加拓扑名 (Phase1)  
+    d. 输入叠加拓扑名(Phase2) 
+    e. 一个新的拓扑名为"Result"将被创建，该拓扑并以红色高亮显示。

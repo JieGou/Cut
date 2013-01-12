@@ -56,3 +56,15 @@ pragma warning (disable : 2220)
     m_LineCategory.GetLBText(selected, category.GetBuffer(length) );
 
 	ON_CBN_SELCHANGE   The selection in the list box of a combo box is about to be changed as a result of the user either clicking in the list box or changing the selection by using the arrow keys. When processing this message, the text in the edit control of the combo box can only be retrieved via GetLBText or another similar function. GetWindowText cannot be used.
+	
+19. 更改UCS来更容易控制控件在不同的角度创建
+
+20。 static AcGeMatrix3d rotation(
+    double angle, 
+    const AcGeVector3d& axis, 
+    const AcGePoint3d& center = AcGePoint3d::kOrigin
+);
+    的角度为弧度。
+	
+21。 cust_obj工程的调试数据库格式是Zi，但依然可以加载pdb信息
+

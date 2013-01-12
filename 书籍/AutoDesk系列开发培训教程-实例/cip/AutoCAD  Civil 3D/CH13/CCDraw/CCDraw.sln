@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CCDraw", "CCDraw.vcproj", "{02AD31A3-730C-4EC6-8D26-25AC928B2C8E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C3DCustomDraw", "..\..\..\..\..\..\..\..\Program Files\AutoCAD Civil 3D 2008\Sample\Civil 3D API\VC++\CustomDraw\Sample\C3DCustomDraw.vcproj", "{87598190-4242-43ED-901D-2F6E7CEFE8F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02AD31A3-730C-4EC6-8D26-25AC928B2C8E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{02AD31A3-730C-4EC6-8D26-25AC928B2C8E}.Debug|Win32.Build.0 = Debug|Win32
+		{02AD31A3-730C-4EC6-8D26-25AC928B2C8E}.Release|Win32.ActiveCfg = Release|Win32
+		{02AD31A3-730C-4EC6-8D26-25AC928B2C8E}.Release|Win32.Build.0 = Release|Win32
+		{87598190-4242-43ED-901D-2F6E7CEFE8F0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{87598190-4242-43ED-901D-2F6E7CEFE8F0}.Debug|Win32.Build.0 = Debug|Win32
+		{87598190-4242-43ED-901D-2F6E7CEFE8F0}.Release|Win32.ActiveCfg = Release|Win32
+		{87598190-4242-43ED-901D-2F6E7CEFE8F0}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+  <Folder>
+    <name>MapGuide 网络链接</name>
+    <visibility>1</visibility>
+    <open>0</open>
+    <NetworkLink>
+      <name>Wheaton城市 - 市区边界</name>
+      <visibility>1</visibility>
+      <open>1</open>
+      <refreshVisibility>0</refreshVisibility>
+      <flyToView>1</flyToView>
+      <Url>
+        <href>http://localhost/MapguideTutorial/CH07_2/WheatonMuni.aspx</href>
+      </Url>
+    </NetworkLink>
+    <NetworkLink>
+      <name>Sheboygan 3D 建筑模型</name>
+      <visibility>1</visibility>
+      <open>1</open>
+      <refreshVisibility>0</refreshVisibility>
+      <flyToView>0</flyToView>
+      <Url>
+        <href>http://localhost/MapguideTutorial/CH07_2/Sheboygan3D.aspx</href>
+      </Url>
+    </NetworkLink>
+  </Folder>
+</kml>

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Navigation</title>
+
+    <script type="text/javascript">
+      //---------------------------------------------------------------------------------------
+      //
+      //        功能：通过ZoomToView可以将地图重新定位到指定中心位置
+      //                    并按照指定的比例缩放
+      //
+      //         作者：Qin H.X.
+      //
+      //         日期： 2007.08.23
+      //          
+      //         修改历史：无
+      //---------------------------------------------------------------------------------------   
+        function GoToView(x, y, scale, refresh) {
+            parent.ViewerFrame.GetMapFrame().ZoomToView(x,y,scale,refresh);
+        }
+    </script>
+
+    
+</head>
+<body>
+    <span>
+        </span><span style="font-size: 12pt; font-family: Arial">地图浏览</span><table width="100%" border="0" style="font-weight: bold; font-size: 12pt; font-family: Arial">
+        <tr>
+            <td>
+                <p onclick="GoToView(106.00,34.05, 51783343, true)" style="cursor:pointer; color: Blue;">
+                    <b>中华人民共和国</b></p>
+            </td>
+        </tr>
+
+    </table>
+</body>
+</html>

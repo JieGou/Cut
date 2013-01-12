@@ -10,8 +10,8 @@
 #include "LineCutPosDialog.h"
 #include <EntryManageDialog.h>
 
-using namespace com::guch::assistent::config;
-using namespace com::guch::assistent::entry;
+using namespace com::guch::assistant::config;
+using namespace com::guch::assistant::entry;
 
 typedef map<wstring,AcRxFunctionPtr>::const_iterator CommandIterator;
 

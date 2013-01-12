@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Google Maps和MapGuide集成</title>
+    <style type="text/css">
+	v\:* {
+	  behavior:url(#default#VML);
+	}
+	</style>
+
+    <script src="http://maps.google.com/maps?file=api&v=1&key=ABQIAAAAj5Jr7z5tVQszW68VXHtEjxQbocQ7flBUWf8LTAllHR3QfBpLUxRu2-Wf_YqHacj1LLzZlBjin3I-RA"
+        type="text/javascript"></script>
+
+    <script language="javascript">
+		function changedPlaces()
+		{
+		    var x=document.getElementById("Places");
+			switch(x.options[x.selectedIndex].text)
+				{
+					case "Sheboygan":
+						map.centerAndZoom(new GPoint(-87.714444, 43.750833), 2);
+						break;
+					case "Wheaton":
+						map.centerAndZoom(new GPoint(-88.106944, 41.866111), 7);
+						break;
+				}
+
+		}
+
+		// Create a marker whose info window displays the given number.
+		function createMarker(point, info) {
+		  var marker = new GMarker(point);
+
+		  // Show this marker's index in the info window when it is clicked.
+		  var html = '<table width="200" border="0" bordercolor="#0099FF"><tr><td><div align="left"><strong>Name: </strong>'+ info +'</div></td></tr><tr><td bordercolor="#990099"><div align="right""><a href="http://www.OSGeo.org"><font size="2" >Data Source : MapGuide<br/></a></div></td></tr></table>'
+		  GEvent.addListener(marker, 'click', function() {
+			marker.openInfoWindowHtml(html);
+		  });
+		  return marker;
+
+		}
+
+		function createPolygonOverlay(point_array, cent_x, cent_y)
+		{
+			var polygon = new GPolyline(point_array,"#0000ff",2)
+			return polygon;
+
+		}
+
+		function clearAllOverlays()
+		{
+			map.clearOverlays();
+		}
+
+		function addLayerToMap()
+		{
+		    var x=document.getElementById("Layers");
+			switch(x.options[x.selectedIndex].value)
+				{
+					case "Muni Markers":
+						var request = GXmlHttp.create();
+						request.open('GET', 'MuniMarkers.aspx', true);
+						request.onreadystatechange = function() {
+						  if (request.readyState == 4) {
+							var xmlDoc = request.responseXML;
+							var markers = xmlDoc.documentElement.getElementsByTagName("marker");
+							for (var i = 0; i < markers.length; i++) {
+							var point = new GPoint(parseFloat(markers[i].getAttribute("lng")),
+												   parseFloat(markers[i].getAttribute("lat")));
+							var marker = createMarker(point,markers[i].getAttribute("info"))
+							map.addOverlay(marker);
+							}
+						  }
+						}
+						request.send(null);
+						break;
+					case "Muni Boundary":
+						var request = GXmlHttp.create();
+						request.open('GET', 'MuniPolygons.aspx', true);
+						request.onreadystatechange = function() {
+						  if (request.readyState == 4) {
+							var xmlDoc = request.responseXML;
+							var polygons = xmlDoc.documentElement.getElementsByTagName("polygon");
+							for (var i = 0; i < polygons.length; i++) {
+								var points = polygons[i].getElementsByTagName("point");
+								var point_array = [];
+								for (var j = 0; j < points.length; j++) {
+
+									var point = new GPoint(parseFloat(points[j].getAttribute("lng")),
+														   parseFloat(points[j].getAttribute("lat")));
+									point_array.push(point);
+								}
+								var cent_x = polygons[i].getAttribute("cent_x");
+								var cent_y = polygons[i].getAttribute("cent_y");
+								var polygon = createPolygonOverlay(point_array, cent_x, cent_y);
+								map.addOverlay(polygon);
+							}
+						  }
+						}
+						request.send(null);
+						break;
+						break;
+					case "--":
+						alert("Please select Layer to overlay.");
+						break;
+				}
+		}
+
+		function addQueryToMap()
+		{
+		    var x=document.getElementById("QueryLayers");
+			switch(x.options[x.selectedIndex].value)
+				{
+					case "Sheboygan Parcels Type":
+						var request = GXmlHttp.create();
+						var QueryString = theForm.txtQuery.value;
+						request.open("GET", "SheboyganQuery.aspx?RTYPE=" + QueryString, true);
+							request.onreadystatechange = function() {
+						  	if (request.readyState == 4) {
+								var xmlDoc = request.responseXML;
+
+								var polygons = xmlDoc.documentElement.getElementsByTagName("polygon");
+								for (var i = 0; i < polygons.length; i++) {
+
+									var points = polygons[i].getElementsByTagName("point");
+									var point_array = [];
+									for (var j = 0; j < points.length; j++) {
+										var point = new GPoint(parseFloat(points[j].getAttribute("lng")),
+															   parseFloat(points[j].getAttribute("lat")));
+										point_array.push(point);
+									}
+									var cent_x = polygons[i].getAttribute("cent_x");
+									var cent_y = polygons[i].getAttribute("cent_y");
+									var polygon = createPolygonOverlay(point_array, cent_x, cent_y);
+									map.addOverlay(polygon);
+									var marker = createMarker(new GPoint(cent_x,cent_y),polygons[i].getAttribute("info"))
+									map.addOverlay(marker);
+
+								}
+							}
+						}
+						request.send(null);
+						break;
+					}
+				}
+    </script>
+
+    <link href="CSS/Styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <p>
+    </p>
+    <form id="theForm" method="post" action="">
+        <table width="508" border="0" bordercolor="#0033FF" class="toolbar">
+            <caption>
+                <strong class="descriptionText">Google Map和 MapGuide集成 </strong>
+            </caption>
+            <tr>
+                <td colspan="4">
+                    <div id="map" style="width: 640px; height: 480px;">
+                    </div>
+                </td>
+            </tr>
+            <tr class="descriptionText">
+                <td width="94">
+                    <div align="left">
+                        <strong>位置</strong></div>
+                </td>
+                <td colspan="2">
+                    <div align="left">
+                        <strong>
+                            <select name="Places" class="filledButton" onchange="javascript:changedPlaces();"
+                                id="Places">
+                                <option value="--" selected="selected">--Select--</option>
+                                <option value="Sheboygan">Sheboygan</option>
+                                <option value="Wheaton">Wheaton</option>
+                            </select>
+                        </strong>
+                    </div>
+                </td>
+                <td width="126">
+                    <input name="AddClear Overlays" type="button" id="AddClear Overlays" onclick="javascript:clearAllOverlays();"
+                        value="清理已有数据" size="200px" />
+                </td>
+            </tr>
+            <tr class="descriptionText">
+                <td>
+                    <div align="left">
+                        <strong>添加层 </strong>
+                    </div>
+                </td>
+                <td colspan="2">
+                    <div align="left">
+                        <strong>
+                            <select name="Layers" class="filledButton" id="Layers">
+                                <option value="--" selected="selected">--Select--</option>
+                                <option value="Muni Markers">Muni Markers - Wheaton</option>
+                                <option value="Muni Boundary">Muni Boundary - Wheaton</option>
+                            </select>
+                        </strong>
+                    </div>
+                </td>
+                <td>
+                    <input name="添加层到地图" type="button" id="AddToMapLayer" onclick="javascript:addLayerToMap();"
+                        value="添加到地图" /></td>
+            </tr>
+            <tr class="descriptionText">
+                <td>
+                    <strong>查询</strong></td>
+                <td width="257">
+                    <strong>
+                        <select name="QueryLayers" class="filledButton" id="QueryLayers">
+                            <option value="--">--Select--</option>
+                            <option value="Sheboygan Parcels Type">Sheboygan Parcels Type</option>
+                        </select>
+                    </strong>
+                </td>
+                <td width="61">
+                    <input name="txtQuery" type="text" class="toolbar" id="txtQuery" value="&lt;输入查询内容&gt;"
+                        onfocus="this.value=''" /></td>
+                <td>
+                    <input name="AddToMapQuery" type="button" id="AddToMapQuery" onclick="javascript:addQueryToMap();"
+                        value="添加到地图" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+<script type="text/javascript">
+
+var map = new GMap(document.getElementById("map"));
+map.addControl(new GSmallMapControl());
+map.addControl(new GMapTypeControl());
+map.centerAndZoom(new GPoint(-122.1419, 37.4419), 10);
+
+</script>
+
+</html>

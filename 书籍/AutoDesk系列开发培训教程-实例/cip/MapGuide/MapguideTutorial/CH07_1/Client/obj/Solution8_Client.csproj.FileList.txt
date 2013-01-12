@@ -1,0 +1,9 @@
+bin\Debug\Excercise8_Client.exe.config
+bin\Debug\Excercise8_Client.exe
+bin\Debug\Excercise8_Client.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Excercise8_Client.Form1.resources
+obj\Debug\Excercise8_Client.Properties.Resources.resources
+obj\Debug\Solution8_Client.csproj.GenerateResource.Cache
+obj\Debug\Excercise8_Client.exe
+obj\Debug\Excercise8_Client.pdb

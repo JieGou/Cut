@@ -1,0 +1,9 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Client.Form1.resources
+obj\Debug\Client.csproj.GenerateResource.Cache
+bin\Debug\Client.exe.config
+obj\Debug\Client.Properties.Resources.resources
+bin\Debug\Client.exe
+bin\Debug\Client.pdb
+obj\Debug\Client.exe
+obj\Debug\Client.pdb

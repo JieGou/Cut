@@ -1,0 +1,89 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{10EEE3A2-B6E4-491D-9F6E-68D69AAAD0E3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CH06</RootNamespace>
+    <AssemblyName>CH06</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="acdbmgd, Version=17.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\AutoCAD Civil 3D 2008\acdbmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="acmgd, Version=17.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\AutoCAD Civil 3D 2008\acmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="ModelessForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ModelessForm.Designer.cs">
+      <DependentUpon>ModelessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyModalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyModalForm.Designer.cs">
+      <DependentUpon>MyModalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyOptionPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyOptionPage.Designer.cs">
+      <DependentUpon>MyOptionPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ModelessForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ModelessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyModalForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MyModalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyOptionPage.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MyOptionPage.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

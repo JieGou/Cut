@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GlobalDataConfig.h"
 
-using namespace com::guch::assistent::data;
+using namespace com::guch::assistant::data;
 
 /**
 * 管线类型

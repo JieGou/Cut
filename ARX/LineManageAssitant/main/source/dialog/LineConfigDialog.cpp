@@ -11,8 +11,8 @@
 #include <LMAException.h>
 #include <LineTypeConfigPropertySheet.h>
 
-using namespace com::guch::assistent::data;
-using namespace com::guch::assistent::exception;
+using namespace com::guch::assistant::data;
+using namespace com::guch::assistant::exception;
 
 namespace com
 {
@@ -20,7 +20,7 @@ namespace com
 namespace guch
 {
 
-namespace assistent
+namespace assistant
 {
 
 namespace config

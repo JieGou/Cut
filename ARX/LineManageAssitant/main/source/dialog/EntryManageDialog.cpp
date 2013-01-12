@@ -12,9 +12,9 @@
 #include <LineConfigDataManager.h>
 #include <AddEntryDialog.h>
 
-using namespace com::guch::assistent::data;
-using namespace com::guch::assistent::exception;
-using namespace com::guch::assistent::config;
+using namespace com::guch::assistant::data;
+using namespace com::guch::assistant::exception;
+using namespace com::guch::assistant::config;
 
 namespace com
 {
@@ -22,7 +22,7 @@ namespace com
 namespace guch
 {
 
-namespace assistent
+namespace assistant
 {
 
 namespace entry
@@ -35,6 +35,7 @@ IMPLEMENT_DYNAMIC(EntryManageDialog, CDialog)
 EntryManageDialog::EntryManageDialog(CWnd* pParent /*=NULL*/)
 	: CDialog(EntryManageDialog::IDD, pParent)
 {
+	//得到当前管理的文档
 	m_fileName = L"Entry_Draw.txt";
 
 	//得到实体数据文件中的数据

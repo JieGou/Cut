@@ -17,7 +17,7 @@
 #include <assert.h>
 #include <acutads.h>
 
-using namespace com::guch::assistent::data;
+using namespace com::guch::assistant::data;
 
 #pragma warning(disable : 4267)
 #pragma warning(disable : 4244)
@@ -28,7 +28,7 @@ namespace com
 namespace guch
 {
 
-namespace assistent
+namespace assistant
 {
 
 namespace config
@@ -310,6 +310,21 @@ LineCategoryItemData* LineConfigDataManager::FindLine( const wstring& lineName )
 		iter++)
 	{
 		if( (*iter)->mName == lineName )
+		{
+			return *iter;
+		}
+	}
+
+	return NULL;
+}
+
+LineCategoryItemData* LineConfigDataManager::FindByKind( const wstring& lineKind ) const
+{
+	for( CategoryIterator iter = mLineConfigData->begin();
+		iter != mLineConfigData->end();
+		iter++)
+	{
+		if( (*iter)->mName == lineKind )
 		{
 			return *iter;
 		}

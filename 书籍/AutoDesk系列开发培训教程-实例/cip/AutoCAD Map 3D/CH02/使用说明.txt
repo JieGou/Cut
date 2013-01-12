@@ -1,0 +1,50 @@
+执行步骤：
+-------------------------------------------------------------------------------
+ 
+1) 在Microsoft Visual Studio 2005打开工程
+
+2) 向工程中添加以下文件的引用: acdbmgd.dll, acmgd.dll以及ManagedMapAPI.dll.
+   默认的为安装Map 3D软件的路径, 
+   C:\Program Files\AutoCAD Map 3D 2008.
+ 
+3) 编译工程，得到CH02.dll 文件.
+
+加载范例DLL
+-------------------------------------------------------------------------------
+1. 在AutoCAD Map 3D命令行中输入"NETLOAD".
+2  选择CH02.dll 
+
+范例的使用
+-------------------------------------------------------------------------------
+
+1. RegHandlers
+    - 添加事件监控到应用程序实例中,用于监控AutoCAD Map 3D图形集操作相关的事件。
+
+2. UnregHandlers
+    - 从AutoCAD Map 3D移除事件监控.
+
+3. PrintAliases
+    - 输出所有别名
+4. AddAliases
+    - 增加驱动器别名
+5. RemoveAliase
+    - 删除驱动器别名
+      
+6. 关于图形集以及附着图形的操作
+PrintDrawSet
+    -输出图形集信息
+AttachDraw
+    -附着原始图形文件
+DetachDraw
+    -分离附着图形
+ActivateDraw
+    -激活附着图形
+DeactivateDraw
+    -取消激活附着图形
+  
+
+5. RunQuery 
+    - 演示查询编辑的操作. 这将让你定义，执行一个查询，
+PrintQuery
+    - 输出查询库内容
+ 

@@ -26,6 +26,10 @@
 
 #include "CommandManager.h"
 
+#include <ArxCustomObject.h>
+
+using namespace com::guch::assistant::arx;
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -44,6 +48,9 @@ static void initApp(void* appId)
 
   // 注册命令
   CommandManager::instance()->RegisterCommand();
+
+  // 注册自定义类
+  LMADbObjectManager::RegisterClass();
 }
 
 static void unloadApp()
@@ -53,6 +60,9 @@ static void unloadApp()
 
   //删除命令
   CommandManager::instance()->UnRegisterCommand();
+
+  // 注销自定义类
+  LMADbObjectManager::RegisterClass();
 }
 
 

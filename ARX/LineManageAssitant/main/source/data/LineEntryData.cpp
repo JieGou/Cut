@@ -15,6 +15,9 @@
 #include <LineEntryData.h>
 #include <LMAUtils.h>
 
+#include <ArxWrapper.h>
+#include <acdocman.h>
+
 namespace com
 {
 
@@ -298,6 +301,143 @@ wstring LineEntry::toString()
 	return lineData;
 }
 
+
+// Files data in from a DWG file.
+//
+Acad::ErrorStatus
+LineEntry::dwgInFields(AcDbDwgFiler* pFiler)
+{
+    assertWriteEnabled();
+
+    AcDbObject::dwgInFields(pFiler);
+    // For wblock filing we wrote out our owner as a hard
+    // pointer ID so now we need to read it in to keep things
+    // in sync.
+    //
+    if (pFiler->filerType() == AcDb::kWblockCloneFiler) {
+        AcDbHardPointerId id;
+        pFiler->readItem(&id);
+    }
+
+	int lineID;
+    pFiler->readItem(&lineID);
+	m_LineID = (UINT)lineID;
+
+	ACHAR* buffer = new ACHAR[255];
+
+	memset(buffer,0,sizeof(ACHAR)*255);
+	pFiler->readItem(&buffer);
+	m_LineNO = wstring(buffer);
+
+	memset(buffer,0,sizeof(ACHAR)*255);
+	pFiler->readItem(&buffer);
+	m_LineName = wstring(buffer);
+
+	memset(buffer,0,sizeof(ACHAR)*255);
+	pFiler->readItem(&buffer);
+	m_LineKind = wstring(buffer);
+
+	CString filename;
+	dbToStr(this->database(),filename);
+
+#ifdef DEBUG
+	acutPrintf(L"从数据库文件【%s】读出管线实体 ID【%d】编号【%s】名称【%s】类型【%s】",
+				filename.GetBuffer(),m_LineID,m_LineNO,m_LineName,m_LineKind);
+#endif
+
+	wstring fileName(filename.GetBuffer());
+	LineEntryFile* entryFile = LineEntryFileManager::RegisterLine(fileName);
+
+	//向管线文件中加入管线line
+	entryFile->InsertLine(this);
+
+    return pFiler->filerStatus();
+}
+
+// Files data out to a DWG file.
+//
+Acad::ErrorStatus
+LineEntry::dwgOutFields(AcDbDwgFiler* pFiler) const
+{
+    assertReadEnabled();
+
+    AcDbObject::dwgOutFields(pFiler);
+    // Since objects of this class will be in the Named
+    // Objects Dictionary tree and may be hard referenced
+    // by some other object, to support wblock we need to
+    // file out our owner as a hard pointer ID so that it
+    // will be added to the list of objects to be wblocked.
+    //
+    if (pFiler->filerType() == AcDb::kWblockCloneFiler)
+        pFiler->writeHardPointerId((AcDbHardPointerId)ownerId());
+
+#ifdef DEBUG
+	acutPrintf(L"保存管线实体到数据库 ID【%d】编号【%s】名称【%s】类型【%s】",
+				m_LineID,m_LineNO,m_LineName,m_LineKind);
+#endif
+
+    pFiler->writeItem(int(m_LineID));
+
+	pFiler->writeItem(m_LineNO.c_str());
+	pFiler->writeItem(m_LineName.c_str());
+	pFiler->writeItem(m_LineKind.c_str());
+
+    return pFiler->filerStatus();
+}
+
+// Files data in from a DXF file.
+//
+Acad::ErrorStatus
+LineEntry::dxfInFields(AcDbDxfFiler* pFiler)
+{
+    assertWriteEnabled();
+
+    Acad::ErrorStatus es;
+    if ((es = AcDbObject::dxfInFields(pFiler))
+        != Acad::eOk)
+    {
+        return es;
+    }
+
+    // Check if we're at the right subclass getLineID marker.
+    //
+    if (!pFiler->atSubclassData(_T("LineEntryData"))) {
+        return Acad::eBadDxfSequence;
+    }
+
+    struct resbuf inbuf;
+    while (es == Acad::eOk) {
+        if ((es = pFiler->readItem(&inbuf)) == Acad::eOk) {
+
+			switch ( inbuf.restype )
+			{
+				case AcDb::kDxfInt16:
+					m_LineID = inbuf.resval.rint;
+				//case AcDb::kDxfInt16 + 1:
+					//mSequenceNO = inbuf.resval.rint;
+			}
+        }
+    }
+
+    return pFiler->filerStatus();
+}
+
+// Files data out to a DXF file.
+//
+Acad::ErrorStatus
+LineEntry::dxfOutFields(AcDbDxfFiler* pFiler) const
+{
+    assertReadEnabled();
+
+    AcDbObject::dxfOutFields(pFiler);
+    pFiler->writeItem(AcDb::kDxfSubclass, _T("LineEntryData"));
+    //pFiler->writeItem(AcDb::kDxfInt16, mLineID);
+	//pFiler->writeItem(AcDb::kDxfInt16 + 1, mSequenceNO);
+
+    return pFiler->filerStatus();
+}
+
+
 ///////////////////////////////////////////////////////////////////////////
 // Implementation LineEntryFile
 
@@ -367,7 +507,14 @@ void LineEntryFile::Init()
 		if(wLine.length() == 0)
 			break;
 
-		m_LineList->push_back( new LineEntry(wLine));
+		LineEntry *newLine = new LineEntry(wLine);
+		m_LineList->push_back( newLine );
+
+		//创建对应的图层
+		ArxWrapper::createNewLayer( newLine->m_LineName );
+
+		//创建相应的柱体
+		ArxWrapper::createLMALine(*newLine );
 
 		//从下一个字符开始查找另外一行
 		lineFrom = linePos + 1;
@@ -545,6 +692,72 @@ LineEntry* LineEntryFile::HasAnotherLineByByName( const UINT& lineID, const wstr
 	return NULL;
 }
 
+EntryFileList* LineEntryFileManager::pEntryFileList = NULL;
+
+LineEntryFile* LineEntryFileManager::GetLineEntryFile( const wstring& fileName )
+{
+	if( pEntryFileList == NULL )
+	{
+		pEntryFileList = new EntryFileList();
+#ifdef DEBUG
+		LOG(L"文件实体管理器还未创建。");
+#endif
+		return NULL;
+	}
+
+	for( EntryFileIter iter = pEntryFileList->begin();
+			iter != pEntryFileList->end();
+			iter++)
+	{
+		if( (*iter)->m_FileName == fileName )
+			return (*iter);
+	}
+
+#ifdef DEBUG
+	acutPrintf(L"没有找到文件【%s】对应的管线实体。",fileName.c_str());
+#endif
+
+	return NULL;
+}
+
+LineEntryFile* LineEntryFileManager::RegisterLine(const wstring& fileName)
+{
+	LineEntryFile* entryFile = GetLineEntryFile(fileName);
+	if( entryFile == NULL )
+	{
+		acutPrintf(L"创建【%s】对应的管线实体。",fileName.c_str());
+
+		entryFile = new LineEntryFile(fileName);
+	}
+
+	return entryFile;
+}
+
+bool LineEntryFileManager::RegisterLineSegment( const wstring& fileName, UINT lineID, UINT sequence, 
+										const AcGePoint3d start, const AcGePoint3d& end )
+{
+	//找到文件管理类
+	LineEntryFile* pFileEntry = GetLineEntryFile(fileName);
+
+	if( pFileEntry == NULL )
+	{
+#ifdef DEBUG
+		acutPrintf(L"创建新的管线实体文件管理器【%s】。",fileName.c_str());
+#endif
+		pFileEntry = new LineEntryFile(fileName);
+		pEntryFileList->push_back( pFileEntry );
+	}
+
+	//找到实体类
+	LineEntry* lineEntry = pFileEntry->FindLine(lineID);
+
+	if( lineEntry == NULL )
+	{
+		//lineEntry = new LineE
+	}
+
+	return true;
+}
 
 } // end of data
 

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <LayerDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="LayerDefinition-1.0.0.xsd" version="1.0.0">
+    <VectorLayerDefinition>
+      <ResourceId></ResourceId>
+      <FeatureName>tempParcel</FeatureName>
+      <FeatureNameType>FeatureClass</FeatureNameType>
+      <Geometry>GEOM</Geometry>
+      <VectorScaleRange>
+        <MaxScale>10000</MaxScale>
+        <AreaTypeStyle>
+          <AreaRule>
+            <LegendLabel>Zone:  AGR</LegendLabel>
+            <Filter>ZONE = &apos;AGR&apos;</Filter>
+            <AreaSymbolization2D>
+              <Fill>
+                <FillPattern>Solid</FillPattern>
+                <ForegroundColor>FFC19E6A</ForegroundColor>
+                <BackgroundColor>FF000000</BackgroundColor>
+              </Fill>
+              <Stroke>
+                <LineStyle>Solid</LineStyle>
+                <Thickness>0</Thickness>
+                <Color>FF808080</Color>
+                <Unit>Inches</Unit>
+              </Stroke>
+            </AreaSymbolization2D>
+          </AreaRule>
+          <AreaRule>
+            <LegendLabel>Zone:  EXM</LegendLabel>
+            <Filter>ZONE = &apos;EXM&apos;</Filter>
+            <AreaSymbolization2D>
+              <Fill>
+                <FillPattern>Solid</FillPattern>
+                <ForegroundColor>FFB9A670</ForegroundColor>
+                <BackgroundColor>FF000000</BackgroundColor>
+              </Fill>
+              <Stroke>
+                <LineStyle>Solid</LineStyle>
+                <Thickness>0</Thickness>
+                <Color>FF808080</Color>
+                <Unit>Inches</Unit>
+              </Stroke>
+            </AreaSymbolization2D>
+          </AreaRule>
+          <AreaRule>
+            <LegendLabel>Zone:  MER</LegendLabel>
+            <Filter>ZONE = &apos;MER&apos;</Filter>
+            <AreaSymbolization2D>
+              <Fill>
+                <FillPattern>Solid</FillPattern>
+                <ForegroundColor>FFB2AE77</ForegroundColor>
+                <BackgroundColor>FF000000</BackgroundColor>
+              </Fill>
+              <Stroke>
+                <LineStyle>Solid</LineStyle>
+                <Thickness>0</Thickness>
+                <Color>FF808080</Color>
+                <Unit>Inches</Unit>
+              </Stroke>
+            </AreaSymbolization2D>
+          </AreaRule>
+          <AreaRule>
+            <LegendLabel>Zone:  MFG</LegendLabel>
+            <Filter>ZONE = &apos;MFG&apos;</Filter>
+            <AreaSymbolization2D>
+              <Fill>
+                <FillPattern>Solid</FillPattern>
+                <ForegroundColor>FFABB67E</ForegroundColor>
+                <BackgroundColor>FF000000</BackgroundColor>
+              </Fill>
+              <Stroke>
+                <LineStyle>Solid</LineStyle>
+                <Thickness>0</Thickness>
+                <Color>FF808080</Color>
+                <Unit>Inches</Unit>
+              </Stroke>
+            </AreaSymbolization2D>
+          </AreaRule>
+          <AreaRule>
+            <LegendLabel>Zone:  RES</LegendLabel>
+            <Filter>ZONE = &apos;RES&apos;</Filter>
+            <AreaSymbolization2D>
+              <Fill>
+                <FillPattern>Solid</FillPattern>
+                <ForegroundColor>FFA4BE85</ForegroundColor>
+                <BackgroundColor>FF000000</BackgroundColor>
+              </Fill>
+              <Stroke>
+                <LineStyle>Solid</LineStyle>
+                <Thickness>0</Thickness>
+                <Color>FF808080</Color>
+                <Unit>Inches</Unit>
+              </Stroke>
+            </AreaSymbolization2D>
+          </AreaRule>
+          <AreaRule>
+            <LegendLabel>Zone:  S&amp;W</LegendLabel>
+            <Filter>ZONE = &apos;S&amp;W&apos;</Filter>
+            <AreaSymbolization2D>
+              <Fill>
+                <FillPattern>Solid</FillPattern>
+                <ForegroundColor>FF9DC68C</ForegroundColor>
+                <BackgroundColor>FF000000</BackgroundColor>
+              </Fill>
+              <Stroke>
+                <LineStyle>Solid</LineStyle>
+                <Thickness>0</Thickness>
+                <Color>FF808080</Color>
+                <Unit>Inches</Unit>
+              </Stroke>
+            </AreaSymbolization2D>
+          </AreaRule>
+          <AreaRule>
+            <LegendLabel>Zone:  WTC</LegendLabel>
+            <Filter>ZONE = &apos;WTC&apos;</Filter>
+            <AreaSymbolization2D>
+              <Fill>
+                <FillPattern>Solid</FillPattern>
+                <ForegroundColor>FF96CE93</ForegroundColor>
+                <BackgroundColor>FF000000</BackgroundColor>
+              </Fill>
+              <Stroke>
+                <LineStyle>Solid</LineStyle>
+                <Thickness>0</Thickness>
+                <Color>FF808080</Color>
+                <Unit>Inches</Unit>
+              </Stroke>
+            </AreaSymbolization2D>
+          </AreaRule>
+          <AreaRule>
+            <LegendLabel>Zone:  Other</LegendLabel>
+            <AreaSymbolization2D>
+              <Fill>
+                <FillPattern>Solid</FillPattern>
+                <ForegroundColor>FFD4D4D4</ForegroundColor>
+                <BackgroundColor>FF000000</BackgroundColor>
+              </Fill>
+              <Stroke>
+                <LineStyle>Solid</LineStyle>
+                <Thickness>0</Thickness>
+                <Color>FF000000</Color>
+                <Unit>Inches</Unit>
+              </Stroke>
+            </AreaSymbolization2D>
+          </AreaRule>
+        </AreaTypeStyle>
+      </VectorScaleRange>
+    </VectorLayerDefinition>
+  </LayerDefinition>

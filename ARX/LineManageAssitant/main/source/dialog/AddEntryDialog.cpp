@@ -10,8 +10,8 @@
 #include <EntryManageDialog.h>
 
 using namespace std;
-using namespace com::guch::assistent::config;
-using namespace com::guch::assistent::data;
+using namespace com::guch::assistant::config;
+using namespace com::guch::assistant::data;
 
 // AddEntryDialog dialog
 
@@ -21,7 +21,7 @@ namespace com
 namespace guch
 {
 
-namespace assistent
+namespace assistant
 {
 
 namespace entry

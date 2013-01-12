@@ -1,0 +1,13 @@
+﻿Build started 2013/1/9 22:47:53.
+     1>Project "C:\Users\chgu\Dropbox\Master\AutoCAD\书籍\AutoDesk系列开发培训教程-实例\cip\AutoCAD ObjectARX\CH02\CH02\CH02.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\CH02.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files\AutoCAD Civil 3D 2008" /ZI /nologo /W1 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D CH02_MODULE /D _ACRXAPP /D _WINDLL /D _UNICODE /D UNICODE /GF- /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Yc"StdAfx.h" /Fp"Debug\CH02.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt StdAfx.cpp
+         StdAfx.cpp
+     1>c:\users\chgu\dropbox\master\autocad\书籍\autodesk系列开发培训教程-实例\cip\autocad objectarx\ch02\ch02\stdafx.h(49): fatal error C1083: Cannot open include file: 'arxHeaders.h': No such file or directory
+     1>Done Building Project "C:\Users\chgu\Dropbox\Master\AutoCAD\书籍\AutoDesk系列开发培训教程-实例\cip\AutoCAD ObjectARX\CH02\CH02\CH02.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:21.56

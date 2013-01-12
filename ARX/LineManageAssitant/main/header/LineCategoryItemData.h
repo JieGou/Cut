@@ -23,7 +23,7 @@ namespace com
 namespace guch
 {
 
-namespace assistent
+namespace assistant
 {
 
 namespace config

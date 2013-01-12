@@ -67,6 +67,12 @@
     <ClCompile Include="..\source\controls\MsgHook.cpp">
       <Filter>src\Control</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\ARX\ArxWrapper.cpp">
+      <Filter>src\ARX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ARX\ArxCustomObject.cpp">
+      <Filter>src\ARX</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\header\AsdkAcUiDialogSample.h">
@@ -156,6 +162,12 @@
     <ClInclude Include="..\header\MsgHook.h">
       <Filter>inc</Filter>
     </ClInclude>
+    <ClInclude Include="..\header\ArxWrapper.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\header\ArxCustomObject.h">
+      <Filter>inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\doc\ReadMe.txt">
@@ -204,6 +216,9 @@
     </Filter>
     <Filter Include="src\Control">
       <UniqueIdentifier>{f14d3cdb-ed9d-4630-8df1-25c3c5a2deac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ARX">
+      <UniqueIdentifier>{82259ad8-fb6e-4c4b-b532-641ac55ea297}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

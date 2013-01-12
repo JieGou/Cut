@@ -1,0 +1,2 @@
+由于Geospatial Platform API 目前只是预览版本，所以没有提供相应示例代码。
+读者可以从http://usa.autodesk.com/adsk/servlet/index?siteID=123112&id=868220下载ObjectARX for AutoCAD Map 3D， 解压该开发包，在Map ObjectARX SDK 2008\Map Samples\Platform目录下有相关的示例程序。

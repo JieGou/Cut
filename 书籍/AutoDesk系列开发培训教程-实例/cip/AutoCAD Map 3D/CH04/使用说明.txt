@@ -1,0 +1,46 @@
+执行步骤：
+-------------------------------------------------------------------------------
+ 
+1) 在Microsoft Visual Studio 2005打开工程
+
+2)   添加以下文件的引用: acdbmgd.dll, acmgd.dll以及ManagedMapAPI.dll.
+   默认的为安装Map 3D软件的路径, 
+   C:\Program Files\AutoCAD Map 3D 2008.
+ 
+3) 编译工程，得到CH04.dll 文件.
+
+加载范例DLL
+-------------------------------------------------------------------------------
+1. 在AutoCAD Map 3D命令行中输入"NETLOAD".
+2  选择CH04.dll 
+
+范例的使用
+-------------------------------------------------------------------------------
+
+-    加载 dll 到 AutoCAD Map 3D.
+-    打开任何包含有对象数据表的图形文件.
+     (该范例演示了如何将对象数据表的字段值标注出来拉，因此可以使用范例提供的TestAnno.dwg).
+-    运行命令 'RunAnnoForm'.
+-    输入annotation模板名称.
+-    从下拉框中选择对象数据表名称
+-    从下拉框选择一个或多个字段名称.
+-    完成上述三步后，'Create New' 被激活。
+-    一旦'Create New'按钮被激活,点击按钮创建一个新的annotation 模板.
+-    点击 "Show Field Names'. 这将同时显示字段名称.
+-    如果注记模板创建成功，这将更新 
+     'Templates currently defined:' 下拉列表    
+-    从下拉列表'Template currently defined' 选择模板名称，然后可以进行以下操作
+    - 'Remove' 移除注记模板.
+        
+    - 'Show Info' 浏览注记模板的信息
+      这包括静态属性活表述值，比如图层，颜色，线宽，风格，高度，旋转，属性标签和属性值。
+        
+    - 'Insert Annotation (OD)':插入注记文本到选中的对象。
+    
+    - 'Insert using Override': 与 'Insert Annotation (OD)' 类似，不同的是，需要在
+      'AnnotationOverrides'定义好的需要重载的内容。
+        
+范例:
+FEATURE_ID='12345676'
+FEATURE_NAME='CA'
+FEATURE_ID 和 FEATURE_NAME 与我们在'Select Column Names'已经选择的列表中名称是一致。

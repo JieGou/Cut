@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/Mapguide/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://localhost/Mapguide/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/Mapguide/">
+      <s:element name="GetParcelList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="parcelType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="bufferDistance" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParcelListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetParcelListResult" type="tns:ArrayOfParcelProperty" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfParcelProperty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ParcelProperty" nillable="true" type="tns:ParcelProperty" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ParcelProperty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Acreage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingAddr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LotDimension" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LotSize" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Owner" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zoning" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetParcelListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParcelList" />
+  </wsdl:message>
+  <wsdl:message name="GetParcelListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParcelListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MapGuideWebServiceSoap">
+    <wsdl:operation name="GetParcelList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> MapGuide 封装网络服务</wsdl:documentation>
+      <wsdl:input message="tns:GetParcelListSoapIn" />
+      <wsdl:output message="tns:GetParcelListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MapGuideWebServiceSoap" type="tns:MapGuideWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetParcelList">
+      <soap:operation soapAction="http://localhost/Mapguide/GetParcelList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MapGuideWebServiceSoap12" type="tns:MapGuideWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetParcelList">
+      <soap12:operation soapAction="http://localhost/Mapguide/GetParcelList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MapGuideWebService">
+    <wsdl:port name="MapGuideWebServiceSoap" binding="tns:MapGuideWebServiceSoap">
+      <soap:address location="http://localhost/MapguideTutorial/CH07_1/MapGuideWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MapGuideWebServiceSoap12" binding="tns:MapGuideWebServiceSoap12">
+      <soap12:address location="http://localhost/MapguideTutorial/CH07_1/MapGuideWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

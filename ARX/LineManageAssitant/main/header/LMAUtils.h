@@ -4,9 +4,14 @@
 #include <string>
 #include <vector>
 
+#include <dbmain.h>
+#include <acdocman.h>
+
 using namespace std;
 
 typedef vector<wstring> wstrVector;
+
+#define LOG(log) acutPrintf(log);
 
 //½«string×ª»»³Éwstring
 wstring StringToWString(const string& str);
@@ -27,3 +32,4 @@ void SetControlText( CWnd* pWnd, int iControl, LPCTSTR lpszString );
 
 wstrVector* vectorContructor( const wstring& data, const wstring& seq, size_t start = 0, size_t end = 0 );
 
+LPCTSTR dbToStr(AcDbDatabase* db, CString& str);

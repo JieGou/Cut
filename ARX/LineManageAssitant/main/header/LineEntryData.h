@@ -67,9 +67,12 @@ typedef PointList::const_iterator ContstPointIter;
 /**
  * 管线实体
  */
-class LineEntry
+class LineEntry : public AcDbObject
 {
 public:
+
+	ACRX_DECLARE_MEMBERS(LineEntry);
+
 	LineEntry();
 	LineEntry( const wstring& rLineNO,
 				const wstring& rLineName,
@@ -91,6 +94,15 @@ public:
 	ContstPointIter FindConstPoint( const UINT& PointNO ) const;
 
 	wstring toString();
+
+
+	virtual Acad::ErrorStatus dwgInFields (AcDbDwgFiler*);
+    virtual Acad::ErrorStatus dwgOutFields(AcDbDwgFiler*)
+        const;
+
+    virtual Acad::ErrorStatus dxfInFields (AcDbDxfFiler*);
+    virtual Acad::ErrorStatus dxfOutFields(AcDbDxfFiler*)
+        const;
 
 protected:
 	void ClearPoints();
@@ -141,10 +153,33 @@ public:
 
 	LineList* GetList() const {return m_LineList;}
 
+	wstring m_FileName;
+
 private:
 
-	wstring m_FileName;
 	LineList* m_LineList;
+};
+
+/**
+ * 多文件管线实体管理对象
+ */
+
+typedef vector<LineEntryFile*> EntryFileList;
+typedef EntryFileList::iterator EntryFileIter;
+
+class LineEntryFileManager
+{
+public:
+
+	static LineEntryFile* GetLineEntryFile( const wstring& fileName );
+
+	static LineEntryFile* RegisterLine(const wstring& fileName);
+
+	static bool RegisterLineSegment( const wstring& fileName, UINT lineID, UINT sequence, 
+										const AcGePoint3d start, const AcGePoint3d& end );
+
+private:
+	static EntryFileList* pEntryFileList;
 };
 
 } // end of data

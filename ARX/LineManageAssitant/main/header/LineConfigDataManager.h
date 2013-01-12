@@ -11,7 +11,7 @@ namespace com
 namespace guch
 {
 
-namespace assistent
+namespace assistant
 {
 
 namespace config
@@ -33,6 +33,8 @@ public:
 	UINT GetNextID();
 
 	LineCategoryItemData* FindLine( const wstring& lineName ) const;
+
+	LineCategoryItemData* FindByKind( const wstring& lineKind ) const;
 
 	LineCategoryItemData* FindLine( UINT ID ) const;
 

@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Toolbar</title>
+
+    <script type="text/javascript">
+      //---------------------------------------------------------------------------------------
+      //
+      //        功能：获取的层信息
+      //
+      //         作者：Qin H.X.
+      //
+      //         日期： 2007.08.23
+      //          
+      //         修改历史：无 
+      //          
+      //---------------------------------------------------------------------------------------  
+        function ListLayers() {
+        //
+        var layers = parent.ViewerFrame.GetMapFrame().GetLayers(false, false);
+        var outString = "当前地图包含以下层：<br><br>";
+        for (var i = 0; i < layers.length; i++) {
+            var layer = layers[i];
+            outString = outString + layer.name + "<br>";
+        }
+        var obj = parent.InfoFrame.document.getElementById("info");
+        obj.innerHTML = outString;
+
+        }
+      //---------------------------------------------------------------------------------------
+      //
+      //        功能：获取地图大小（地图单位）
+      //
+      //         作者：Qin H.X.
+      //
+      //          日期： 2007.08.23
+      //---------------------------------------------------------------------------------------           
+        function GetMapSize() {
+            var height = parent.ViewerFrame.GetMapFrame().GetMapHeight();
+            var width = parent.ViewerFrame.GetMapFrame().GetMapWidth();
+
+            var obj = parent.InfoFrame.document.getElementById("info");
+            obj.innerHTML = "地图大小（地图单位）<br><br>" + 
+            "宽度: " + width + "<br>高度: " + height;
+        }
+        
+        function LoadNavigationPage() {
+            parent.DynaFrame.window.location = "Navigation.htm"
+        }
+        
+        function LoadDigitize() {
+            parent.DynaFrame.window.location = "Digitize.htm"
+        }
+        
+      //---------------------------------------------------------------------------------------
+      //
+      //        功能：ExecuteMapAction的使用
+      //
+      //         作者：Qin H.X.
+      //
+      //          日期： 2007.08.23
+      //---------------------------------------------------------------------------------------           
+        
+        function MapManipulation(action) {
+            switch (action) {
+
+                case "selectpolygon":
+                    parent.ViewerFrame.ExecuteMapAction(17);
+                    break;
+                case "selectradius":
+                    parent.ViewerFrame.ExecuteMapAction(16);
+                    break;
+                case "refresh":
+                    parent.ViewerFrame.ExecuteMapAction(20);
+                    break;
+                case "zoominit":
+                    parent.ViewerFrame.ExecuteMapAction(14);
+                    break;
+                case "gopreviousview":
+                    parent.ViewerFrame.ExecuteMapAction(12);
+                    break;
+                case "gonextview":
+                    parent.ViewerFrame.ExecuteMapAction(13);
+                    break;
+                case "move":
+                    parent.ViewerFrame.ExecuteMapAction(1);
+                    break;
+                case "zoomin":
+                    parent.ViewerFrame.ExecuteMapAction(9);
+                break;
+
+            }
+        
+        }
+        
+        
+        
+    </script>
+
+</head>
+<body style="text-align: left">
+    <table border="0" align="center" style="font-size: 8pt; font-family: Arial">
+        <tbody>
+            <tr>
+                <td style="height: 22px">
+                <div style="cursor: pointer;" 
+                onmousedown="MapManipulation('move')" 
+                onmouseover="btn_pan.src='stdicons/icon_pan_disabled.gif'"
+                      onmouseout="btn_pan.src='stdicons/icon_pan.gif'">
+                <img id="btn_pan" src="stdicons/icon_pan.gif" 
+                width="16" height="16" alt="Pan" />
+                    平移</div>
+
+                </td>
+                <td style="height: 22px">
+                    <div style="cursor: pointer;" onmousedown="MapManipulation('zoomin')" onmouseover="btn_zoomrect.src='stdicons/icon_zoomrect_disabled.gif'"
+                        onmouseout="btn_zoomrect.src='stdicons/icon_zoomrect.gif'">
+                        <img id="btn_zoomrect" src="stdicons/icon_zoomrect.gif" width="16" height="16" alt="Zoom in" />
+                        缩放</div>
+                </td>
+                <td style="height: 22px">
+                    <div style="cursor: pointer;" onmousedown="MapManipulation('selectpolygon')" onmouseover="btn_selectpolygon.src='stdicons/icon_selectpolygon_disabled.gif'"
+                        onmouseout="btn_selectpolygon.src='stdicons/icon_selectpolygon.gif'">
+                        <img id="btn_selectpolygon" src="stdicons/icon_selectpolygon.gif" width="16" height="16"
+                            alt="Select by Polygon" />
+                        多边形选择
+                    </div>
+                </td>
+                <td style="height: 22px">
+                    <div style="cursor: pointer;" onmousedown="MapManipulation('selectradius')" onmouseover="btn_selectradius.src='stdicons/icon_selectradius_disabled.gif'"
+                        onmouseout="btn_selectradius.src='stdicons/icon_selectradius.gif'">
+                        <img id="btn_selectradius" src="stdicons/icon_selectradius.gif" width="16" height="16"
+                            alt="Select by Radius" />
+                        半径选择
+                    </div>
+                </td>
+                <td style="height: 22px">
+                    <div style="cursor: pointer;" onmousedown="MapManipulation('refresh')" onmouseover="btn_refresh.src='stdicons/icon_refreshmap_disabled.gif'"
+                        onmouseout="btn_refresh.src='stdicons/icon_refreshmap.gif'">
+                        <img id="btn_refresh" src="stdicons/icon_refreshmap.gif" width="16" height="16" alt="Refresh Map" />
+                        更新
+                    </div>
+                </td>
+                <td style="height: 22px">
+                    <div style="cursor: pointer;" onmousedown="MapManipulation('zoominit')" onmouseover="btn_initview.src='stdicons/icon_fitwindow_disabled.gif'"
+                        onmouseout="btn_initview.src='stdicons/icon_fitwindow.gif'">
+                        <img id="btn_initview" src="stdicons/icon_fitwindow.gif" width="16" height="16" alt="Initial View" />
+                        原始视图
+                    </div>
+                </td>
+                <td style="height: 22px">
+                    <div style="cursor: pointer;" onmousedown="MapManipulation('gopreviousview')" onmouseover="btn_previousview.src='stdicons/icon_zoomprev_disabled.gif'"
+                        onmouseout="btn_previousview.src='stdicons/icon_zoomprev.gif'">
+                        <img id="btn_previousview" src="stdicons/icon_zoomprev.gif" width="16" height="16"
+                            alt="Previous View" />
+                        前一视图
+                    </div>
+                </td>
+                <td style="height: 22px">
+                    <div style="cursor: pointer;" onmousedown="MapManipulation('gonextview')" onmouseover="btn_nextview.src='stdicons/icon_zoomnext_disabled.gif'"
+                        onmouseout="btn_nextview.src='stdicons/icon_zoomnext.gif'">
+                        <img id="btn_nextview" src="stdicons/icon_zoomnext.gif" width="16" height="16" alt="Next View" />
+                        后一视图</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="cursor: pointer;" onmousedown="ListLayers()" onmouseover="btn_getlayers.src='stdicons/icon_invokescript_disabled.gif'"
+                        onmouseout="btn_getlayers.src='stdicons/icon_invokescript.gif'">
+                        <img id="btn_getlayers" src="stdicons/icon_invokescript.gif" width="16" height="16"
+                            alt="Get Layer List" />
+                        获取层信息
+                    </div>
+                </td>
+                <td>
+                    <div style="cursor: pointer;" onmousedown="GetMapSize()" onmouseover="btn_getmapsize.src='stdicons/icon_invokescript_disabled.gif'"
+                        onmouseout="btn_getmapsize.src='stdicons/icon_invokescript.gif'">
+                        <img id="btn_getmapsize" src="stdicons/icon_invokescript.gif" width="16" height="16"
+                            alt="Get Map Size" />
+                        获取地图尺寸</div>
+                </td>
+                <td>
+                    <div style="cursor: pointer;" onmousedown="LoadNavigationPage()" onmouseover="btn_loadnavigation.src='stdicons/icon_invokescript_disabled.gif'"
+                        onmouseout="btn_loadnavigation.src='stdicons/icon_invokescript.gif'">
+                        <img id="btn_loadnavigation" src="stdicons/icon_invokescript.gif" width="16" height="16"
+                            alt="Navigate Map" />
+                        浏览地图
+                    </div>
+                </td>
+                <td>
+                    <div style="cursor: pointer;" onmousedown="LoadDigitize()" onmouseover="btn_loaddigitize.src='stdicons/icon_invokescript_disabled.gif'"
+                        onmouseout="btn_loaddigitize.src='stdicons/icon_invokescript.gif'">
+                        <img id="btn_loaddigitize" src="stdicons/icon_invokescript.gif" width="16" height="16"
+                            alt="Navigate Map" />
+                        数字化多边形
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

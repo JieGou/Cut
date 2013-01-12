@@ -146,3 +146,45 @@ wstrVector* vectorContructor( const wstring& data, const wstring& sep, size_t st
 
 	return wstrv;
 }
+
+/****************************************************************************
+**
+**  ArxDbgUtils::dbToStr
+**
+**  **jma
+**
+*************************************/
+
+LPCTSTR
+dbToStr(AcDbDatabase* db, CString& str)
+{
+    if (db == NULL) {
+        str = _T("NULL");
+        return str;
+    }
+
+    const TCHAR* fname;
+    Acad::ErrorStatus es = db->getFilename(fname);
+    if (es == Acad::eOk)
+        str.Format(_T("%p  \"%s\""), db, fname);
+    else {
+            // see if we can get name from a document
+        AcApDocument* doc = acDocManager->document(db);
+        if (doc) {
+            str.Format(_T("%p  \"%s\""), db, doc->fileName());
+        }
+        else {
+                // last resort, just use the pointer value.  eNotApplicable
+                // happens frequently on temporary databases, otherwise we
+                // would like to know what is going on.
+            if (es == Acad::eNotApplicable)
+                str.Format(_T("%p"), db);
+            else {
+                ASSERT(0);
+                str.Format(_T("%p  %d"), db, es);
+            }
+        }
+    }
+
+    return str;
+}
