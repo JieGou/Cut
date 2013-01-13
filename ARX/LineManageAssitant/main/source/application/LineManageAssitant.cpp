@@ -65,6 +65,17 @@ static void unloadApp()
   LMADbObjectManager::RegisterClass();
 }
 
+static void dwgLoaded()
+{
+	//从当前DWG文件中读取管线信息
+	//LineEntryFileManager::ReadFromCurrentDWG();
+}
+
+static void dwgUnLoaded()
+{
+	//有DWG文件卸载，删除配置数据
+	LineEntryFileManager::RemoveEntryFileOnDWGUnLoad();
+}
 
 //////////////////////////////////////////////////////////////
 //
@@ -122,15 +133,26 @@ extern "C" AcRx::AppRetCode acrxEntryPoint( AcRx::AppMsgCode msg, void* appId)
     switch( msg ) 
     {
     case AcRx::kInitAppMsg: 
+
         acrxDynamicLinker->unlockApplication(appId);
         acrxDynamicLinker->registerAppMDIAware(appId);
         
 		initApp(appId); 
-
         break;
 
     case AcRx::kUnloadAppMsg: 
+
         unloadApp(); 
+        break;
+
+	case AcRx::kLoadDwgMsg:
+
+		dwgLoaded();
+        break;
+
+    case AcRx::kUnloadDwgMsg:
+
+		dwgUnLoaded();
         break;
 
     case AcRx::kInitDialogMsg:

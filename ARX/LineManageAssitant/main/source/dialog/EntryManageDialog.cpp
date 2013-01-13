@@ -11,6 +11,7 @@
 #include <LMAUtils.h>
 #include <LineConfigDataManager.h>
 #include <AddEntryDialog.h>
+#include <ArxWrapper.h>
 
 using namespace com::guch::assistant::data;
 using namespace com::guch::assistant::exception;
@@ -36,10 +37,10 @@ EntryManageDialog::EntryManageDialog(CWnd* pParent /*=NULL*/)
 	: CDialog(EntryManageDialog::IDD, pParent)
 {
 	//得到当前管理的文档
-	m_fileName = L"Entry_Draw.txt";
+	m_fileName = curDoc()->fileName();
 
 	//得到实体数据文件中的数据
-	m_EntryFile = new LineEntryFile( m_fileName );
+	m_EntryFile = LineEntryFileManager::RegisterEntryFile(m_fileName);
 }
 
 BOOL EntryManageDialog::OnInitDialog()
@@ -271,8 +272,14 @@ BOOL EntryManageDialog::InsertLine( LineEntry* lineEntry, BOOL bInitialize )
 		//生成该项的ID
 		lineEntry->m_LineID = (UINT)GetTickCount();
 
-		//保存数据
+		//保存数据到管理器
 		m_EntryFile->InsertLine(lineEntry);
+
+		//保存到数据库
+		ArxWrapper::PostToNameObjectsDict(lineEntry,lineEntry->LINE_ENTRY_LAYER);
+
+		//保存到导出文件
+		m_EntryFile->Persistent();
 	}
 
 	//设置改项的ID
@@ -340,6 +347,12 @@ BOOL EntryManageDialog::UpdateLine( LineEntry* lineEntry )
 		//保存数据
 		m_EntryFile->UpdateLine(lineEntry);
 
+		//保存到数据库
+		ArxWrapper::PostToNameObjectsDict(lineEntry,lineEntry->LINE_ENTRY_LAYER);
+
+		//保存到导出文件
+		m_EntryFile->Persistent();
+
 		//更新详细信息
 		InitEntryPointsData();
 	}
@@ -349,7 +362,9 @@ BOOL EntryManageDialog::UpdateLine( LineEntry* lineEntry )
 
 BOOL EntryManageDialog::InitEntryDetailHeader()
 {
-	acutPrintf(L"初始化管线数据表头.\n");
+#ifdef DEBUG
+	acutPrintf(L"初始化管线中点坐标的数据.\n");
+#endif
 
 	int index = 0;
 
@@ -401,7 +416,7 @@ BOOL EntryManageDialog::InitEntryPointsData(LineEntry* lineEntry)
 {
 	m_LineDetailList.DeleteAllItems();
 
-	acutPrintf(L"初始化管线点坐标信息.\n");
+	acutPrintf(L"初始化坐标信息.\n");
 
 	if( lineEntry && lineEntry->m_PointList )
 	{
@@ -442,8 +457,10 @@ BOOL EntryManageDialog::InitEntryPointsData(LineEntry* lineEntry)
 
 EntryManageDialog::~EntryManageDialog()
 {
+#ifdef DEBUG
 	if( m_EntryFile )
-		delete m_EntryFile; 
+		acutPrintf(L"数据文件【%s】实体管理对话框关闭了.\n",m_EntryFile->m_FileName.c_str());
+#endif
 }
 
 void EntryManageDialog::DoDataExchange(CDataExchange* pDX)
@@ -483,6 +500,9 @@ void EntryManageDialog::OnBnClickedButtonOK()
 	{
 		PointEntry* point = new PointEntry();
 
+		//得到当前编号（及其在列表中的序列号）
+		point->m_PointNO = (UINT)i;
+
 		temp = m_LineDetailList.GetItemText(i,1);
 		acdbDisToF(temp.GetBuffer(), -1, &((point->m_Point)[X]));
 
@@ -492,16 +512,20 @@ void EntryManageDialog::OnBnClickedButtonOK()
 		temp = m_LineDetailList.GetItemText(i,3);
 		acdbDisToF(temp.GetBuffer(), -1, &((point->m_Point)[Z]));
 
+		//加入到队列中
 		newPoints->push_back(point);
 	}
 
+	//得到当前编辑的直线
 	LineEntry* selectLine = GetSelectLine();
+
+	//设置新的数据
 	if( selectLine )
 	{
 		selectLine->SetPoints(newPoints);
 	}
 
-	//保存
+	//保存到临时文件
 	m_EntryFile->Persistent();
 }
 
@@ -570,11 +594,17 @@ void EntryManageDialog::OnBnClickedButtonDel()
 		int result = MessageBoxW(message, caption, MB_OKCANCEL);
 		if ( result == IDOK )
 		{
+			//从数据库删除
+			ArxWrapper::PostToNameObjectsDict(pEntry,pEntry->LINE_ENTRY_LAYER,true);
+
 			//Delete from the list
 			m_EntryFile->DeleteLine(selectedID);
 
 			// delete the selected item. 
 			m_LinesTree.DeleteItem(selectedItem);
+
+			//保存到导出文件
+			m_EntryFile->Persistent();
 		}
 	}
 }

@@ -17,6 +17,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 #include <dbsymtb.h>
 #include <dbapserv.h>
@@ -55,6 +56,9 @@ struct PointEntry
 	PointEntry( const PointEntry& );
 	PointEntry( const wstring& data );
 
+	//AcDbObjectId m_EntryId;
+	AcDbEntity* m_pEntry;
+
 	wstring toString() const;
 };
 
@@ -72,6 +76,8 @@ class LineEntry : public AcDbObject
 public:
 
 	ACRX_DECLARE_MEMBERS(LineEntry);
+
+	static const wstring LINE_ENTRY_LAYER;
 
 	LineEntry();
 	LineEntry( const wstring& rLineNO,
@@ -105,7 +111,10 @@ public:
         const;
 
 protected:
+
 	void ClearPoints();
+	void ClearPoints(PointList* pPointList);
+	void Redraw();
 
 public:
 
@@ -117,6 +126,7 @@ public:
 
 	UINT m_CurrentPointNO;
 
+	PointList* m_PrePointList;
 	PointList* m_PointList;
 };
 
@@ -124,13 +134,14 @@ typedef vector<LineEntry*> LineList;
 typedef LineList::iterator LineIterator;
 typedef LineList::const_iterator ConstLineIterator;
 
+typedef map<UINT,PointList*> LinePointMap;
 /**
  * 管线实体文件
  */
 class LineEntryFile
 {
 public:
-	LineEntryFile(const wstring& fileName);
+	LineEntryFile(const wstring& fileName, bool import = false);
 	~LineEntryFile();
 
 	void InsertLine( LineEntry* lineEntry);
@@ -148,7 +159,10 @@ public:
 	LineEntry* HasAnotherLineByNO( const UINT& lineID, const wstring& lineNO  ) const;
 	LineEntry* HasAnotherLineByByName( const UINT& lineID, const wstring& lineName  ) const;
 
-	void Init();
+	PointList* GetTempLine( const UINT& lineID );
+	PointList* TransferTempLine( const UINT& lineID );
+
+	void Import();
 	void Persistent() const;
 
 	LineList* GetList() const {return m_LineList;}
@@ -158,6 +172,9 @@ public:
 private:
 
 	LineList* m_LineList;
+
+	//临时实体管理器
+	LinePointMap* m_LinePoint;
 };
 
 /**
@@ -171,14 +188,19 @@ class LineEntryFileManager
 {
 public:
 
+	static void ReadFromCurrentDWG();
+
+	static void RemoveEntryFileOnDWGUnLoad();
+
 	static LineEntryFile* GetLineEntryFile( const wstring& fileName );
 
-	static LineEntryFile* RegisterLine(const wstring& fileName);
+	static LineEntryFile* RegisterEntryFile(const wstring& fileName);
 
-	static bool RegisterLineSegment( const wstring& fileName, UINT lineID, UINT sequence, 
-										const AcGePoint3d start, const AcGePoint3d& end );
+	static bool RegisterLineSegment( const wstring& fileName, AcDbEntity* pEntry, UINT lineID, UINT sequence, 
+										const AcGePoint3d& start, const AcGePoint3d& end );
 
 private:
+
 	static EntryFileList* pEntryFileList;
 };
 

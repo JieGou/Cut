@@ -166,12 +166,12 @@ dbToStr(AcDbDatabase* db, CString& str)
     const TCHAR* fname;
     Acad::ErrorStatus es = db->getFilename(fname);
     if (es == Acad::eOk)
-        str.Format(_T("%p  \"%s\""), db, fname);
+        str.Format(_T("%s"), fname);
     else {
             // see if we can get name from a document
         AcApDocument* doc = acDocManager->document(db);
         if (doc) {
-            str.Format(_T("%p  \"%s\""), db, doc->fileName());
+            str.Format(_T("%s"), doc->fileName());
         }
         else {
                 // last resort, just use the pointer value.  eNotApplicable
@@ -187,4 +187,10 @@ dbToStr(AcDbDatabase* db, CString& str)
     }
 
     return str;
+}
+
+void rxErrorMsg(Acad::ErrorStatus msgId)
+{
+    if (msgId != Acad::eOk)
+        acutPrintf(_T("\n³ö´íÔ­Òò: ¡¾%s¡¿"), acadErrorStatusText(msgId));
 }

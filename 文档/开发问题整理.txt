@@ -68,3 +68,14 @@ pragma warning (disable : 2220)
 	
 21。 cust_obj工程的调试数据库格式是Zi，但依然可以加载pdb信息
 
+22.
+tmpStr = NULL;    // must explicitly set to NULL or readItem() crashes!
+    pFiler->readItem(&tmpStr);
+	m_LineKind = wstring(tmpStr);
+	acutDelString(tmpStr);
+
+23. 矩阵转换，向量
+
+24. 关于调试AutoCAD http://usa.autodesk.com/adsk/servlet/index?siteID=123112&id=18172834
+
+25. 从namedObjectsDictionary删除对象后，并没有通知文档（或者数据库）更改了，也就不能去保存

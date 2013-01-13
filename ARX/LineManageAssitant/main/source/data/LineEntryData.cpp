@@ -17,6 +17,7 @@
 
 #include <ArxWrapper.h>
 #include <acdocman.h>
+#include <acutmem.h>
 
 namespace com
 {
@@ -44,7 +45,8 @@ namespace data
 PointEntry::PointEntry()
 :m_PointNO(0),
 m_LevelKind(L""),
-m_Direction(L"")	
+m_Direction(L""),
+m_pEntry(NULL)
 {
 	m_Point[X] = 0;
 	m_Point[Y] = 0;
@@ -54,7 +56,8 @@ m_Direction(L"")
 PointEntry::PointEntry( const UINT& pointNO, const ads_point& point, const wstring& levelKind, const wstring& direction)
 :m_PointNO(pointNO),
 m_LevelKind(levelKind),
-m_Direction(direction)	
+m_Direction(direction),
+m_pEntry(NULL)	
 {
 	m_Point[X] = point[X];
 	m_Point[Y] = point[Y];
@@ -70,6 +73,8 @@ PointEntry::PointEntry( const PointEntry& pointEntry)
 	this->m_Point[X] = pointEntry.m_Point[X];
 	this->m_Point[Y] = pointEntry.m_Point[Y];
 	this->m_Point[Z] = pointEntry.m_Point[Z];
+
+	this->m_pEntry = pointEntry.m_pEntry;
 }
 
 PointEntry::PointEntry( const wstring& data )
@@ -122,6 +127,13 @@ wstring PointEntry::toString() const
 ///////////////////////////////////////////////////////////////////////////
 // Implementation LineEntry
 
+const wstring LineEntry::LINE_ENTRY_LAYER = L"管线实体层";
+
+ACRX_DXF_DEFINE_MEMBERS(LineEntry, AcDbObject, 
+AcDb::kDHL_CURRENT, AcDb::kMReleaseCurrent, 
+0,
+    LineEntry, LMA);
+
 /**
  * 管线实体
  */
@@ -133,6 +145,7 @@ LineEntry::LineEntry()
 	m_LineKind(L""),
 	m_CurrentPointNO(0)
 {
+	m_PrePointList = NULL;
 	m_PointList = new PointList();
 }
 
@@ -145,6 +158,7 @@ LineEntry::LineEntry(const wstring& rLineNO,
 	m_LineKind(rLineKind),
 	m_CurrentPointNO(0)
 {
+	m_PrePointList = NULL;
 	m_PointList = new PointList();
 }
 
@@ -190,6 +204,12 @@ LineEntry::~LineEntry()
 }
 
 void LineEntry::ClearPoints()
+{
+	ClearPoints(this->m_PrePointList);
+	ClearPoints(this->m_PointList);
+}
+
+void LineEntry::ClearPoints( PointList* pPointList)
 {
 	if( m_PointList )
 	{
@@ -266,12 +286,15 @@ void LineEntry::DeletePoint( const UINT& PointNO )
 	}
 }
 
-
 void LineEntry::SetPoints( PointList* newPoints)
 {
-	ClearPoints();
+	//保存当前的节点列表，以用于删除以前的对象
+	m_PrePointList = m_PointList;
 
+	//新的列表，用于创建新的线段
 	m_PointList = newPoints;
+
+	Redraw();
 }
 
 wstring LineEntry::toString()
@@ -282,7 +305,7 @@ wstring LineEntry::toString()
 	temp.Format(L"%d\t%s\t%s\t%s\t%d",m_LineID,m_LineNO,m_LineName,m_LineKind,m_CurrentPointNO);
 
 #ifdef DEBUG
-	acutPrintf(L"实体数据【%s】\n",temp.GetBuffer());
+	//acutPrintf(L"\n管线实体序列化为【%s】",temp.GetBuffer());
 #endif
 
 	lineData = temp;
@@ -295,12 +318,17 @@ wstring LineEntry::toString()
 		lineData += (*iter)->toString();
 	}
 
-	//每行有回车
-	lineData += L"\n";
-
 	return lineData;
 }
 
+void LineEntry::Redraw()
+{
+	//删除以前的线段
+	ArxWrapper::eraseLMALine(*this,true);
+
+	//绘制新的线段
+	ArxWrapper::createLMALine(*this);
+}
 
 // Files data in from a DWG file.
 //
@@ -319,37 +347,50 @@ LineEntry::dwgInFields(AcDbDwgFiler* pFiler)
         pFiler->readItem(&id);
     }
 
-	int lineID;
-    pFiler->readItem(&lineID);
-	m_LineID = (UINT)lineID;
+	if( !this->isErased() )
+	{
+		Adesk::UInt32 lineID;
+		pFiler->readItem(&lineID);
+		m_LineID = (UINT)lineID;
 
-	ACHAR* buffer = new ACHAR[255];
+		TCHAR* tmpStr = NULL;    // must explicitly set to NULL or readItem() crashes!
+		pFiler->readItem(&tmpStr);
+		m_LineNO = wstring(tmpStr);
+		acutDelString(tmpStr);
 
-	memset(buffer,0,sizeof(ACHAR)*255);
-	pFiler->readItem(&buffer);
-	m_LineNO = wstring(buffer);
+		tmpStr = NULL;    // must explicitly set to NULL or readItem() crashes!
+		pFiler->readItem(&tmpStr);
+		m_LineName = wstring(tmpStr);
+		acutDelString(tmpStr);
 
-	memset(buffer,0,sizeof(ACHAR)*255);
-	pFiler->readItem(&buffer);
-	m_LineName = wstring(buffer);
+		tmpStr = NULL;    // must explicitly set to NULL or readItem() crashes!
+		pFiler->readItem(&tmpStr);
+		m_LineKind = wstring(tmpStr);
+		acutDelString(tmpStr);
 
-	memset(buffer,0,sizeof(ACHAR)*255);
-	pFiler->readItem(&buffer);
-	m_LineKind = wstring(buffer);
-
-	CString filename;
-	dbToStr(this->database(),filename);
+		CString filename;
+		dbToStr(this->database(),filename);
 
 #ifdef DEBUG
-	acutPrintf(L"从数据库文件【%s】读出管线实体 ID【%d】编号【%s】名称【%s】类型【%s】",
-				filename.GetBuffer(),m_LineID,m_LineNO,m_LineName,m_LineKind);
+		acutPrintf(L"\n从文件【%s】读出管线实体 ID【%d】编号【%s】名称【%s】类型【%s】.",
+					filename.GetBuffer(),m_LineID,m_LineNO,m_LineName,m_LineKind);
 #endif
 
-	wstring fileName(filename.GetBuffer());
-	LineEntryFile* entryFile = LineEntryFileManager::RegisterLine(fileName);
+		wstring fileName(filename.GetBuffer());
+		LineEntryFile* entryFile = LineEntryFileManager::RegisterEntryFile(fileName);
 
-	//向管线文件中加入管线line
-	entryFile->InsertLine(this);
+		if( m_PointList )
+			delete m_PointList;
+
+		this->m_PointList = entryFile->TransferTempLine(m_LineID);
+
+#ifdef DEBUG
+		acutPrintf(L"\n从临时管线管理器中得到线段数据，个数为【%d】", ( m_PointList ? m_PointList->size() : 0 ) );
+#endif
+
+		//向管线文件中加入管线line
+		entryFile->InsertLine(this);
+	}
 
     return pFiler->filerStatus();
 }
@@ -372,11 +413,11 @@ LineEntry::dwgOutFields(AcDbDwgFiler* pFiler) const
         pFiler->writeHardPointerId((AcDbHardPointerId)ownerId());
 
 #ifdef DEBUG
-	acutPrintf(L"保存管线实体到数据库 ID【%d】编号【%s】名称【%s】类型【%s】",
+	acutPrintf(L"保存管线实体到数据库 ID【%d】编号【%s】名称【%s】类型【%s】\n",
 				m_LineID,m_LineNO,m_LineName,m_LineKind);
 #endif
 
-    pFiler->writeItem(int(m_LineID));
+    pFiler->writeItem(Adesk::UInt32(m_LineID));
 
 	pFiler->writeItem(m_LineNO.c_str());
 	pFiler->writeItem(m_LineName.c_str());
@@ -444,11 +485,14 @@ LineEntry::dxfOutFields(AcDbDxfFiler* pFiler) const
 /**
  * 管线实体文件
  */
-LineEntryFile::LineEntryFile(const wstring& fileName)
+LineEntryFile::LineEntryFile(const wstring& fileName, bool import)
 	:m_FileName(fileName)
 {
 	m_LineList = new LineList();
-	Init();
+	m_LinePoint = new LinePointMap();
+
+	if( import )
+		Import();
 }
 
 LineEntryFile::~LineEntryFile()
@@ -459,15 +503,17 @@ LineEntryFile::~LineEntryFile()
 				iter != m_LineList->end();
 				iter++ )
 		{
-			if(*iter)
-				delete *iter;
+			(*iter)->close();
 		}
 
 		delete m_LineList;
 	}
+
+	if( m_LinePoint )
+		delete m_LinePoint;
 }
 
-void LineEntryFile::Init()
+void LineEntryFile::Import()
 {
 	CFile archiveFile;
 
@@ -527,9 +573,11 @@ void LineEntryFile::Init()
 
 void LineEntryFile::Persistent() const
 {
-	acutPrintf(L"开始保存管线实体数据\n");
+	acutPrintf(L"开始导出管线实体数据\n");
 
-	CFile archiveFile(this->m_FileName.c_str(),CFile::modeCreate|CFile::modeWrite);
+	CString exportFile;
+	exportFile.Format(L"%s导出.txt",this->m_FileName.c_str());
+	CFile archiveFile(exportFile,CFile::modeCreate|CFile::modeWrite);
 
 	//遍历所有的类型定义
 	for( ConstLineIterator iter = m_LineList->begin(); 
@@ -547,14 +595,15 @@ void LineEntryFile::Persistent() const
 			string dataStr = WstringToString(wData);
 
 #ifdef DEBUG
-			acutPrintf(L"管线实体数据 [%s] [%d]\n",wData.c_str(),(UINT)dataStr.length());
+			acutPrintf(L"\n管线实体数据【%s】.",wData.c_str());
 #endif
 			//使用 virtual void Write( const void* lpBuf, UINT nCount ); 将窄字符写入文件
 			archiveFile.Write(dataStr.c_str(),(UINT)dataStr.size());
+			archiveFile.Write("\n",(UINT)strlen("\n"));
 		}
 	}
 
-	acutPrintf(L"管线实体数据保存完成\n");
+	acutPrintf(L"\n管线实体数据保存完成.");
 	archiveFile.Close();
 }
 
@@ -562,8 +611,6 @@ void LineEntryFile::InsertLine(LineEntry* lineEntry)
 {
 	if( lineEntry )
 		m_LineList->push_back(lineEntry);
-
-	this->Persistent();
 }
 
 BOOL LineEntryFile::UpdateLine(LineEntry* lineEntry)
@@ -575,7 +622,6 @@ BOOL LineEntryFile::UpdateLine(LineEntry* lineEntry)
 		(*iter)->m_LineName = lineEntry->m_LineName;
 		(*iter)->m_LineNO = lineEntry->m_LineNO;
 
-		this->Persistent();
 		return TRUE;
 	}
 
@@ -589,13 +635,11 @@ BOOL LineEntryFile::DeleteLine( const UINT& lineID )
 	if( iter != this->m_LineList->end())
 	{
 		m_LineList->erase(iter);
-		this->Persistent();
 		return TRUE;
 	}
 	else
 		return FALSE;
 }
-
 
 LineIterator LineEntryFile::FindLinePos( const UINT& lineID ) const
 {
@@ -692,7 +736,71 @@ LineEntry* LineEntryFile::HasAnotherLineByByName( const UINT& lineID, const wstr
 	return NULL;
 }
 
+PointList* LineEntryFile::GetTempLine( const UINT& lineID )
+{
+	LinePointMap::iterator iter = m_LinePoint->find(lineID);
+
+	if( iter == m_LinePoint->end() )
+	{
+		PointList* newList = new PointList();
+		m_LinePoint->insert( std::pair<UINT,PointList*>(lineID,newList));
+
+		return newList;
+	}
+	else
+	{
+		return iter->second;
+	}
+}
+
+PointList* LineEntryFile::TransferTempLine( const UINT& lineID )
+{
+	LinePointMap::iterator iter = m_LinePoint->find(lineID);
+
+	if( iter == m_LinePoint->end() )
+	{
+		return NULL;
+	}
+	else
+	{
+		PointList* findList = iter->second;
+		m_LinePoint->erase(iter);
+
+		return findList;
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////
+
 EntryFileList* LineEntryFileManager::pEntryFileList = NULL;
+
+void LineEntryFileManager::ReadFromCurrentDWG()
+{
+#ifdef DEBUG
+	acutPrintf(L"从当前DWG文件读取数据。");
+#endif
+
+	ArxWrapper::PullFromNameObjectsDict();
+}
+
+void LineEntryFileManager::RemoveEntryFileOnDWGUnLoad()
+{
+#ifdef DEBUG
+		acutPrintf(L"DWG文件关闭了，删除管理数据。");
+
+		if( pEntryFileList )
+		{
+			for( EntryFileIter iter = pEntryFileList->begin();
+			iter != pEntryFileList->end();
+			iter++)
+			{
+				delete (*iter);
+			}
+
+			pEntryFileList->clear();
+		}
+#endif
+}
 
 LineEntryFile* LineEntryFileManager::GetLineEntryFile( const wstring& fileName )
 {
@@ -700,7 +808,7 @@ LineEntryFile* LineEntryFileManager::GetLineEntryFile( const wstring& fileName )
 	{
 		pEntryFileList = new EntryFileList();
 #ifdef DEBUG
-		LOG(L"文件实体管理器还未创建。");
+		acutPrintf(L"\n文件实体管理器还未创建.");
 #endif
 		return NULL;
 	}
@@ -714,46 +822,112 @@ LineEntryFile* LineEntryFileManager::GetLineEntryFile( const wstring& fileName )
 	}
 
 #ifdef DEBUG
-	acutPrintf(L"没有找到文件【%s】对应的管线实体。",fileName.c_str());
+	acutPrintf(L"\n没有找到文件【%s】对应的管线实体.",fileName.c_str());
 #endif
 
 	return NULL;
 }
 
-LineEntryFile* LineEntryFileManager::RegisterLine(const wstring& fileName)
+LineEntryFile* LineEntryFileManager::RegisterEntryFile(const wstring& fileName)
 {
 	LineEntryFile* entryFile = GetLineEntryFile(fileName);
 	if( entryFile == NULL )
 	{
-		acutPrintf(L"创建【%s】对应的管线实体。",fileName.c_str());
+		acutPrintf(L"\n创建【%s】对应的管线实体.",fileName.c_str());
 
 		entryFile = new LineEntryFile(fileName);
+		pEntryFileList->push_back( entryFile );
 	}
 
 	return entryFile;
 }
 
-bool LineEntryFileManager::RegisterLineSegment( const wstring& fileName, UINT lineID, UINT sequence, 
-										const AcGePoint3d start, const AcGePoint3d& end )
+bool LineEntryFileManager::RegisterLineSegment( const wstring& fileName, AcDbEntity* pEntry, UINT lineID, UINT sequence, 
+										const AcGePoint3d& start, const AcGePoint3d& end )
 {
 	//找到文件管理类
-	LineEntryFile* pFileEntry = GetLineEntryFile(fileName);
-
-	if( pFileEntry == NULL )
-	{
-#ifdef DEBUG
-		acutPrintf(L"创建新的管线实体文件管理器【%s】。",fileName.c_str());
-#endif
-		pFileEntry = new LineEntryFile(fileName);
-		pEntryFileList->push_back( pFileEntry );
-	}
+	LineEntryFile* pFileEntry = RegisterEntryFile(fileName);
+	acutPrintf(L"\n添加线段时，找到管线实体文件管理器【%s】.",fileName.c_str());
 
 	//找到实体类
 	LineEntry* lineEntry = pFileEntry->FindLine(lineID);
+	PointList* pPointList = NULL;
 
 	if( lineEntry == NULL )
 	{
-		//lineEntry = new LineE
+#ifdef DEBUG
+		acutPrintf(L"\n保存到临时管线管理器中.");
+#endif
+		pPointList = pFileEntry->GetTempLine( lineID );
+	}
+
+	if( sequence == 1 )
+	{
+#ifdef DEBUG
+		acutPrintf(L"\n序列号为1，这是第一个线段.");
+#endif
+		ads_point startPoint;
+		startPoint[X] = start.x;
+		startPoint[Y] = start.y;
+		startPoint[Z] = start.z;
+
+		PointEntry* tempPoint = new PointEntry(0,startPoint,L"",L"");
+		tempPoint->m_pEntry = pEntry;
+
+		if( lineEntry )
+		{
+			lineEntry->InsertPoint( *tempPoint );
+			delete tempPoint;
+		}
+		else
+		{
+			pPointList->push_back( tempPoint );
+		}
+
+		ads_point endPoint;
+		endPoint[X] = end.x;
+		endPoint[Y] = end.y;
+		endPoint[Z] = end.z;
+
+		tempPoint = new PointEntry(0,endPoint,L"",L"");
+		tempPoint->m_pEntry = pEntry;
+
+		if( lineEntry )
+		{
+			lineEntry->InsertPoint( *tempPoint );
+			delete tempPoint;
+		}
+		else
+		{
+			pPointList->push_back( tempPoint );
+		}
+	}
+	else if (  sequence > 1 )
+	{
+#ifdef DEBUG
+		acutPrintf(L"\n普通线段.");
+#endif
+		ads_point endPoint;
+		endPoint[X] = end.x;
+		endPoint[Y] = end.y;
+		endPoint[Z] = end.z;
+
+		PointEntry* tempPoint = new PointEntry(0,endPoint,L"",L"");
+		tempPoint->m_pEntry = pEntry;
+
+		if( lineEntry )
+		{
+			lineEntry->InsertPoint( *tempPoint );
+			delete tempPoint;
+		}
+		else
+		{
+			pPointList->push_back( tempPoint );
+		}
+	}
+	else if ( sequence == 0)
+	{
+		acutPrintf(L"\n无效的线段.");
 	}
 
 	return true;

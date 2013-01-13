@@ -60,8 +60,8 @@ public:
     ACRX_DECLARE_MEMBERS(LMALineDbObject);
 
     LMALineDbObject();
-    LMALineDbObject(const Adesk::Int16& id,
-					const Adesk::Int16& seqNO,
+    LMALineDbObject(const Adesk::Int32& id,
+					const Adesk::Int32& seqNO,
 					const AcGePoint3d& start,
 					const AcGePoint3d& end,
 					const double& radius,
@@ -76,11 +76,11 @@ public:
 		Init();
 	}
 
-    Acad::ErrorStatus         getLineID     (Adesk::Int16&);
-    Acad::ErrorStatus         setLineID     (Adesk::Int16);
+    Acad::ErrorStatus         getLineID     (Adesk::Int32&);
+    Acad::ErrorStatus         setLineID     (Adesk::Int32);
 
-	Acad::ErrorStatus         getPointSeqNO     (Adesk::Int16&);
-    Acad::ErrorStatus         setPointSeqNO     (Adesk::Int16);
+	Acad::ErrorStatus         getPointSeqNO     (Adesk::Int32&);
+    Acad::ErrorStatus         setPointSeqNO     (Adesk::Int32);
 
     virtual Acad::ErrorStatus dwgInFields (AcDbDwgFiler*);
     virtual Acad::ErrorStatus dwgOutFields(AcDbDwgFiler*)
@@ -100,10 +100,10 @@ protected:
 private:
 
 	//Store in database
-	Adesk::Int16 mLineID;
+	Adesk::Int32 mLineID;
 
 	//Identify the index in the line
-	Adesk::Int16 mSequenceNO;
+	Adesk::Int32 mSequenceNO;
 
 	//Identify the line
 	LineEntry* mLineEntry;

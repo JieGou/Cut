@@ -15,6 +15,7 @@
 #include <ArxWrapper.h>
 #include <ArxCustomObject.h>
 #include <LMAUtils.h>
+#include <LineEntryData.h>
 
 namespace com
 {
@@ -31,11 +32,13 @@ namespace arx
 void LMADbObjectManager::RegisterClass()
 {
 	LMALineDbObject::rxInit();
+	LineEntry::rxInit();
 }
 
 void LMADbObjectManager::UnRegisterClass()
 {
 	deleteAcRxClass(LMALineDbObject::desc());
+	deleteAcRxClass(LineEntry::desc());
 }
 
 ACRX_DXF_DEFINE_MEMBERS(LMALineDbObject, AcDb3dSolid, 
@@ -65,7 +68,7 @@ Acad::ErrorStatus LMALineDbObject::Init()
 // Gets the value of the line ID member.
 //
 Acad::ErrorStatus
-	LMALineDbObject::getLineID(Adesk::Int16& lineId)
+	LMALineDbObject::getLineID(Adesk::Int32& lineId)
 {
     // Tells AutoCAD a read operation is taking place.
     //
@@ -77,7 +80,7 @@ Acad::ErrorStatus
 // Sets the value of the line ID member.
 //
 Acad::ErrorStatus
-LMALineDbObject::setLineID(Adesk::Int16 lineId)
+LMALineDbObject::setLineID(Adesk::Int32 lineId)
 {
     // Triggers openedForModify notification.
     //
@@ -89,7 +92,7 @@ LMALineDbObject::setLineID(Adesk::Int16 lineId)
 // Gets the value of the line ID member.
 //
 Acad::ErrorStatus
-	LMALineDbObject::getPointSeqNO(Adesk::Int16& pointSeqNO)
+	LMALineDbObject::getPointSeqNO(Adesk::Int32& pointSeqNO)
 {
     // Tells AutoCAD a read operation is taking place.
     //
@@ -101,7 +104,7 @@ Acad::ErrorStatus
 // Sets the value of the line ID member.
 //
 Acad::ErrorStatus
-LMALineDbObject::setPointSeqNO(Adesk::Int16 pointSeqNO)
+LMALineDbObject::setPointSeqNO(Adesk::Int32 pointSeqNO)
 {
     // Triggers openedForModify notification.
     //
@@ -127,11 +130,29 @@ LMALineDbObject::dwgInFields(AcDbDwgFiler* pFiler)
         pFiler->readItem(&id);
     }
 
-    pFiler->readItem(&mLineID);
-	pFiler->readItem(&mSequenceNO);
+	Adesk::UInt32 lineID;
+    pFiler->readItem(&lineID);
+	mLineID = (UINT)lineID;
+
+	Adesk::UInt32 seqNO;
+	pFiler->readItem(&seqNO);
+	mSequenceNO = (UINT)seqNO;
 
 	pFiler->readPoint3d(&mStartPoint);
 	pFiler->readPoint3d(&mEndPoint);
+	
+	CString filename;
+	dbToStr(this->database(),filename);
+
+#ifdef DEBUG
+	acutPrintf(L"\n从DWG文件【%s】得到管线线段实体 ID【%d】序列号【%d】 起点 X:【%lf】Y:【%lf】Z:【%lf】 终点 X:【%lf】Y:【%lf】Z:【%lf】.",
+					filename.GetBuffer(),mLineID,mSequenceNO,
+					mStartPoint.x,mStartPoint.y,mStartPoint.z,
+					mEndPoint.x,mEndPoint.y,mEndPoint.z);
+#endif
+
+	LineEntryFileManager::RegisterLineSegment(filename.GetBuffer(),this,mLineID,mSequenceNO,
+												mStartPoint,mEndPoint);
 
     return pFiler->filerStatus();
 }
@@ -153,11 +174,22 @@ LMALineDbObject::dwgOutFields(AcDbDwgFiler* pFiler) const
     if (pFiler->filerType() == AcDb::kWblockCloneFiler)
         pFiler->writeHardPointerId((AcDbHardPointerId)ownerId());
 
-    pFiler->writeItem(mLineID);
-	pFiler->writeItem(mSequenceNO);
+    pFiler->writeItem(Adesk::UInt32(mLineID));
+	pFiler->writeItem(Adesk::UInt32(mSequenceNO));
 
 	pFiler->writeItem(mStartPoint);
 	pFiler->writeItem(mEndPoint);
+
+	CString filename;
+	dbToStr(this->database(),filename);
+
+#ifdef DEBUG
+	acutPrintf(L"\n从保存管线线段实体 ID【%d】序列号【%d】 起点 X:【%lf】Y:【%lf】Z:【%lf】 终点 X:【%lf】Y:【%lf】Z:【%lf】到DWG文件【%s】.",
+					mLineID,mSequenceNO,
+					mStartPoint.x,mStartPoint.y,mStartPoint.z,
+					mEndPoint.x,mEndPoint.y,mEndPoint.z,
+					filename.GetBuffer());
+#endif
 
     return pFiler->filerStatus();
 }
@@ -188,9 +220,9 @@ LMALineDbObject::dxfInFields(AcDbDxfFiler* pFiler)
 
 			switch ( inbuf.restype )
 			{
-				case AcDb::kDxfInt16:
+				case AcDb::kDxfInt32:
 					mLineID = inbuf.resval.rint;
-				case AcDb::kDxfInt16 + 1:
+				case AcDb::kDxfInt32 + 1:
 					mSequenceNO = inbuf.resval.rint;
 			}
         }
@@ -208,8 +240,8 @@ LMALineDbObject::dxfOutFields(AcDbDxfFiler* pFiler) const
 
     AcDb3dSolid::dxfOutFields(pFiler);
     pFiler->writeItem(AcDb::kDxfSubclass, _T("LMALineDbObject"));
-    pFiler->writeItem(AcDb::kDxfInt16, mLineID);
-	pFiler->writeItem(AcDb::kDxfInt16 + 1, mSequenceNO);
+    pFiler->writeItem(AcDb::kDxfInt32, mLineID);
+	pFiler->writeItem(AcDb::kDxfInt32 + 1, mSequenceNO);
 
     return pFiler->filerStatus();
 }

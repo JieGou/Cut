@@ -6,6 +6,7 @@
 
 #include <dbmain.h>
 #include <acdocman.h>
+#include <acestext.h>
 
 using namespace std;
 
@@ -33,3 +34,5 @@ void SetControlText( CWnd* pWnd, int iControl, LPCTSTR lpszString );
 wstrVector* vectorContructor( const wstring& data, const wstring& seq, size_t start = 0, size_t end = 0 );
 
 LPCTSTR dbToStr(AcDbDatabase* db, CString& str);
+
+void rxErrorMsg(Acad::ErrorStatus msgId);

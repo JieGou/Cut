@@ -51,6 +51,15 @@ public:
 	//Add entry to model
 	static AcDbObjectId PostToModelSpace(AcDbEntity* pEnt,const wstring& layerName );
 
+	//Remove entry from model
+	static Acad::ErrorStatus RemoveFromModelSpace(AcDbEntity* pEnt,const wstring& layerName );
+
+	//Add object to name dictionary
+	static AcDbObjectId PostToNameObjectsDict(AcDbObject* pObj,const wstring& key, bool toDelete = false );
+
+	//Read object from name dictionary
+	static void PullFromNameObjectsDict();
+
 	//move offset
 	static AcDbEntity* MoveToBottom(AcDbEntity* pEntry);
 
@@ -67,4 +76,6 @@ public:
 										const AcGePoint3d& end,
 										const wstring& layerName,
 										const double& radius );
+
+	static void eraseLMALine(const LineEntry& lineEntry, bool old = false);
 };
