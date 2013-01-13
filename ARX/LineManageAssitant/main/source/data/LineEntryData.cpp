@@ -211,18 +211,18 @@ void LineEntry::ClearPoints()
 
 void LineEntry::ClearPoints( PointList* pPointList)
 {
-	if( m_PointList )
+	if( pPointList )
 	{
-		for( PointIter iter = m_PointList->begin();
-				iter != m_PointList->end();
+		for( PointIter iter = pPointList->begin();
+				iter != pPointList->end();
 				iter++ )
 		{
 			if(*iter)
 				delete *iter;
 		}
 
-		delete m_PointList;
-		m_PointList = NULL;
+		delete pPointList;
+		pPointList = NULL;
 	}
 }
 
@@ -323,8 +323,11 @@ wstring LineEntry::toString()
 
 void LineEntry::Redraw()
 {
-	//删除以前的线段
+	//删除以前的线段(从数据库中)
 	ArxWrapper::eraseLMALine(*this,true);
+
+	//删除以前的线段(从内存中)
+	ClearPoints(this->m_PrePointList);
 
 	//绘制新的线段
 	ArxWrapper::createLMALine(*this);

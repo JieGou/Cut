@@ -594,8 +594,14 @@ void EntryManageDialog::OnBnClickedButtonDel()
 		int result = MessageBoxW(message, caption, MB_OKCANCEL);
 		if ( result == IDOK )
 		{
-			//从数据库删除
+			//从数据库删除管线本身
 			ArxWrapper::PostToNameObjectsDict(pEntry,pEntry->LINE_ENTRY_LAYER,true);
+
+			//从数据库删除管线所有的线段
+			ArxWrapper::eraseLMALine(*pEntry);
+
+			//删除所有的内存节点
+			pEntry->ClearPoints();
 
 			//Delete from the list
 			m_EntryFile->DeleteLine(selectedID);

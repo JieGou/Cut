@@ -110,10 +110,11 @@ public:
     virtual Acad::ErrorStatus dxfOutFields(AcDbDxfFiler*)
         const;
 
-protected:
-
 	void ClearPoints();
 	void ClearPoints(PointList* pPointList);
+
+protected:
+
 	void Redraw();
 
 public:
