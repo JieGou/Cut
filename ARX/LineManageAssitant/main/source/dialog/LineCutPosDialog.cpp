@@ -25,106 +25,21 @@
 
 #include <ArxWrapper.h>
 
-AcDbObjectId PostToModelSpace(AcDbEntity* pEnt,bool close = true)
-{
-	AcDbBlockTable *pBlockTable;
-	acdbHostApplicationServices()->workingDatabase()
-		->getBlockTable(pBlockTable, AcDb::kForRead);
+#include <ArxCustomObject.h>
 
-	AcDbBlockTableRecord *pBlockTableRecord;
-	pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRecord,
-	AcDb::kForWrite);
-
-	AcDbObjectId entId;
-	pBlockTableRecord->appendAcDbEntity(entId, pEnt);
-
-	pBlockTable->close();
-	pBlockTableRecord->close();
-
-	if( close )
-		pEnt->close();
-
-	return entId;
-}
-
-void Transform(AcDbEntity* pEntry, int xoffset = 0, int yoffset = 0, int zoffset = 0)
-{
-	AcGeVector3d vec(xoffset,yoffset,zoffset);
-
-	AcGeMatrix3d moveMatrix;
-	moveMatrix.setToTranslation(vec);
-
-	pEntry->transformBy(moveMatrix);
-}
-
-AcDb3dSolid* CreateCylinder( double radius = 0, double height = 0 )
-{
-	// 创建特定参数的圆柱体（实际上最后一个参数决定了实体是一个圆锥体还是圆柱） 
-	AcDb3dSolid* pSolid = new AcDb3dSolid(); 
-	pSolid->createFrustum(height, radius, radius, radius);
-
-	return pSolid;
-}
-
-AcDb3dSolid* drawCylinder(double radius)
-{
-	// 第一个圆柱
-	AcDb3dSolid *pSolid = CreateCylinder(radius,300);
-
-	// 进行位移
-	//Transform(pSolid,30);
-	//pSolid->close();
-
-	//pSolid = CreateCylinder(20,40);
-
-	// 进行位移
-	//Transform(pSolid,0,100);
-	//pSolid->close();
-
-	//pSolid = CreateCylinder(10,10);
-
-	// 进行位移
-	//Transform(pSolid,0,0,100);
-	//pSolid->close();
-
-	return pSolid;
-}
-
-
-void generateCutRegion(AcDb3dSolid* pSolid, int offset, int direction)
-{
-	//创建切面
-	AcGePlane plane;
-
-	if( direction == 1)
-		plane.set(AcGePoint3d(offset,0,0),AcGeVector3d(1,0,0));
-	else if( direction == 2)
-		plane.set(AcGePoint3d(0,offset,0),AcGeVector3d(0,1,0));
-	else if( direction == 3)
-		plane.set(AcGePoint3d(0,0,offset),AcGeVector3d(0,0,1));
-
-	//得到实体与切面相切的截面
-	AcDbRegion *pSelectionRegion = NULL;
-	pSolid->getSection(plane, pSelectionRegion);
-
-	//将其移动到YZ平面
-	//moveToBottom(pSelectionRegion);
-
-	//将截面加入到模型空间
-	PostToModelSpace(pSelectionRegion);
-}
+using namespace com::guch::assistant::arx;
 
 // LineCutPosDialog dialog
 
-IMPLEMENT_DYNAMIC(LineCutPosDialog, CAcUiDialog)
+CString LineCutPosDialog::m_CutLayerName = L"";
 
-AcDb3dSolid* LineCutPosDialog::m3dSolid = NULL;
+IMPLEMENT_DYNAMIC(LineCutPosDialog, CAcUiDialog)
 
 LineCutPosDialog::LineCutPosDialog(CWnd* pParent /*=NULL*/)
 	: CAcUiDialog(LineCutPosDialog::IDD, pParent),
-	m_Direction(0)
+	m_Direction(0),
+	m_strOffset(0)
 {
-
 }
 
 LineCutPosDialog::~LineCutPosDialog()
@@ -136,21 +51,15 @@ BOOL LineCutPosDialog::OnInitDialog()
 	//和页面交互数据
 	CAcUiDialog::OnInitDialog();
 
-	edit_m_A00.SetWindowTextW(L"0.1");
-	edit_m_A10.SetWindowTextW(L"1");
-	edit_m_A20.SetWindowTextW(L"0");
+	//默认X轴选中
+	m_DirectionX.SetCheck(BST_CHECKED);
+	m_Direction = 1;
 
-	edit_m_A01.SetWindowTextW(L"20");
-	edit_m_A11.SetWindowTextW(L"0");
-	edit_m_A21.SetWindowTextW(L"0");
+	//默认偏移为0
+	m_EditOffset.SetWindowTextW(L"0.00");
 
-	edit_m_A02.SetWindowTextW(L"0");
-	edit_m_A12.SetWindowTextW(L"0");
-	edit_m_A22.SetWindowTextW(L"0");
-
-	edit_m_T0.SetWindowTextW(L"0");
-	edit_m_T1.SetWindowTextW(L"0");
-	edit_m_T2.SetWindowTextW(L"0");
+	//加载图片
+	m_PickCutPosButton.AutoLoad();
 
 	return TRUE;
 }
@@ -158,227 +67,28 @@ BOOL LineCutPosDialog::OnInitDialog()
 void LineCutPosDialog::DoDataExchange(CDataExchange* pDX)
 {
 	CAcUiDialog::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_OFFSET, mOffset);
-	DDX_Control(pDX, IDC_X, mDirectionX);
+	DDX_Control(pDX, IDC_OFFSET, m_EditOffset);
+
+	DDX_Control(pDX, IDC_X, m_DirectionX);
 	DDX_Control(pDX, IDC_Y, m_DirectionY);
 	DDX_Control(pDX, IDC_Z, m_DirectionZ);
 
-	DDX_Control(pDX, IDC_EDIT_A00, edit_m_A00);
-	DDX_Control(pDX, IDC_EDIT_A10, edit_m_A10);
-	DDX_Control(pDX, IDC_EDIT_A20, edit_m_A20);
-
-	DDX_Control(pDX, IDC_EDIT_A01, edit_m_A01);
-	DDX_Control(pDX, IDC_EDIT_A11, edit_m_A11);
-	DDX_Control(pDX, IDC_EDIT_A21, edit_m_A21);
-
-	DDX_Control(pDX, IDC_EDIT_A02, edit_m_A02);
-	DDX_Control(pDX, IDC_EDIT_A12, edit_m_A12);
-	DDX_Control(pDX, IDC_EDIT_A22, edit_m_A22);
-
-	DDX_Control(pDX, IDC_EDIT_T0, edit_m_T0);
-	DDX_Control(pDX, IDC_EDIT_T1, edit_m_T1);
-	DDX_Control(pDX, IDC_EDIT_T2, edit_m_T2);
-}
-
-void CreatePipe( const AcGePoint3d& start, const AcGePoint3d& end, const double& radius)
-{
-	acutPrintf(L"开始绘制管体\n");
-
-	//得到线段的长度
-	double length = start.distanceTo(end);
-	if( length < 0.1 )
-		return;
-
-	acutPrintf(L"得到管体高度%lf\n",length);
-
-	//绘制圆柱体
-	AcDb3dSolid* p3dPipe = CreateCylinder(radius,length);
-	if( p3dPipe == NULL )
-		return;
-
-	//得到线段与Z轴的垂直向量
-	AcGeVector3d line3dVector(end.x - start.x,end.y - start.y, end.z-start.z);
-	AcGeVector3d rotateVctor = line3dVector.crossProduct(AcGeVector3d::kZAxis);
-
-	//得到旋转的角度
-	double angle = -line3dVector.angleTo(AcGeVector3d::kZAxis);
-	acutPrintf(L"得到旋转角度%lf\n",angle);
-
-	//进行旋转
-	AcGeMatrix3d rotateMatrix = AcGeMatrix3d::rotation( angle, rotateVctor, AcGePoint3d::kOrigin);
-	p3dPipe->transformBy(rotateMatrix);
-	
-	//得到线段的中心点
-	AcGePoint3d center(start.x + end.x, start.y + end.y, start.z + end.z); 
-	center /= 2;
-	acutPrintf(L"得到中心点[%lf][%lf][%lf]\n",center.x,center.y,center.z);
-
-	//进行偏移
-	AcGeMatrix3d moveMatrix;
-	moveMatrix.setToTranslation(AcGeVector3d(center.x,center.y,center.z));
-
-	p3dPipe->transformBy(moveMatrix);
-
-	//加入到3D模型中
-	PostToModelSpace(p3dPipe);
-
-#ifdef DEBUG
-	acutPrintf(L"插入中心线，用于矫正");
-
-	AcDbLine *pLine = new AcDbLine(start, end);
-    PostToModelSpace(pLine);
-#endif
+	DDX_Control(pDX, IDC_BUTTON_PICKCUT,m_PickCutPosButton);
 }
 
 void LineCutPosDialog::OnBnClickedOk()
 {
-	GetTransformData();
-
-	/*
-	//绘制圆柱
-	{
-		//得到半径和高度
-		double radius = _wtof(m_A00.GetBuffer());
-		double height = _wtof(m_A01.GetBuffer());
-
-		m3dSolid = CreateCylinder(radius,height);
-		if( m3dSolid == NULL )
-			return;
-	}
-	*/
-
-	//绘制管道
-
-	double radius = _wtof(m_A00.GetBuffer());
-
-	double startX = _wtof(m_A10.GetBuffer());
-	double startY = _wtof(m_A11.GetBuffer());
-	double startZ = _wtof(m_A12.GetBuffer());
-
-	double endX = _wtof(m_A20.GetBuffer());
-	double endY = _wtof(m_A21.GetBuffer());
-	double endZ = _wtof(m_A22.GetBuffer());
-
-	CreatePipe(AcGePoint3d(startX,startY,startZ),AcGePoint3d(endX,endY,endZ),radius);
-
-	/*
-	{
-		acutPrintf(L"首先绘制线段\n");
-		point = AcGePoint3d(x,y,z);
-		ArxWrapper::createLine(AcGePoint3d(),point,L"测试矩阵旋转");
-	}
-
-	//首先进行旋转
-	{
-		//AcGeMatrix3d rotateMatrix = AcGeMatrix3d::alignCoordSys(AcGePoint3d::kOrigin,AcGeVector3d::kXAxis,AcGeVector3d::kYAxis,AcGeVector3d::kZAxis,
-		//	AcGePoint3d::kOrigin,AcGeVector3d::kXAxis,AcGeVector3d::kYAxis,AcGeVector3d(point.x,point.y,point.z));
-		
-		//得到垂直向量
-		AcGeVector3d line3dVector(x,y,z);
-		AcGeVector3d rotateVctor = line3dVector.crossProduct(AcGeVector3d::kZAxis);
-
-		//得到角度
-		double angle = line3dVector.angleTo(AcGeVector3d::kZAxis)/-2;
-
-		//double angle = _wtof(m_A10.GetBuffer());
-		acutPrintf(L"向量角度,除以-2,进行旋转[%lf]\n",angle);
-
-		//AcGeMatrix3d rotateMatrix = AcGeMatrix3d::rotation( (3.14159265358979323846 * angle ) / 360,AcGeVector3d(point.x,point.y,point.z),AcGePoint3d::kOrigin);
-		AcGeMatrix3d rotateMatrix = AcGeMatrix3d::rotation( angle, rotateVctor, AcGePoint3d::kOrigin);
-		m3dSolid->transformBy(rotateMatrix);
-
-		//X轴旋转
-		//AcGeVector3d vecX(_wtof(m_A20.GetBuffer()),_wtof(m_A21.GetBuffer()),_wtof(m_A22.GetBuffer()));
-
-		//得到
-
-		//rotateMatrix = AcGeMatrix3d::rotation( ( 3.14159265358979323846 * _wtof(m_A10.GetBuffer()) ) / 180 , vecX );
-		m3dSolid->transformBy(rotateMatrix);
-
-		//Y轴旋转
-		//AcGeVector3d vecY(0,1,0);
-		//rotateMatrix = AcGeMatrix3d::rotation( ( 3.14159265358979323846 * _wtof(m_A11.GetBuffer()) ) / 180, vecY );
-		//m3dSolid->transformBy(rotateMatrix);
-
-		//Z轴旋转
-		//AcGeVector3d vecZ(0,0,1);
-		//rotateMatrix = AcGeMatrix3d::rotation( ( 3.14159265358979323846 * _wtof(m_A12.GetBuffer()) ) / 180, vecZ );
-		//m3dSolid->transformBy(rotateMatrix);
-	}
-
-	//然后进行相应的位移
-	{
-		AcGeVector3d moveVec(_wtof(m_T0.GetBuffer()), _wtof(m_T1.GetBuffer()), _wtof(m_T2.GetBuffer()));
-
-		AcGeMatrix3d moveMatrix;
-		moveMatrix.setToTranslation(moveVec);
-
-		m3dSolid->transformBy(moveMatrix);
-	}
-
-	// 将圆锥体添加到模型空间
-	PostToModelSpace(m3dSolid);
-	*/
-
-	/*
-	//AcGePoint3d orignal(_wtof(m_T0.GetBuffer()), _wtof(m_T1.GetBuffer()), _wtof(m_T2.GetBuffer()));
-		
-	int offset = 0;
-	
-	if( m_strOffset.GetLength())
-		offset = _wtoi(m_strOffset);
-
-	//generateCutRegion(pSolid,offset,m_Direction);
-	*/
-
-	CAcUiDialog::OnOK();
-}
-
-void LineCutPosDialog::GetTransformData()
-{
+	//得到用户输入的数据
 	UpdateData(FALSE);
 
-	edit_m_A00.Convert();
-	edit_m_A00.GetWindowText(m_A00);
+	//生成切图
+	GenereateCutRegion();
 
-	edit_m_A10.Convert();
-	edit_m_A10.GetWindowText(m_A10);
+	//显示该图层
+	ShowCutRegion();
 
-	edit_m_A20.Convert();
-	edit_m_A20.GetWindowText(m_A20);
-
-	//-------------------------//
-
-	edit_m_A01.Convert();
-	edit_m_A01.GetWindowText(m_A01);
-
-	edit_m_A11.Convert();
-	edit_m_A11.GetWindowText(m_A11);
-
-	edit_m_A21.Convert();
-	edit_m_A21.GetWindowText(m_A21);
-
-	//-------------------------//
-
-	edit_m_A02.Convert();
-	edit_m_A02.GetWindowText(m_A02);
-
-	edit_m_A12.Convert();
-	edit_m_A12.GetWindowText(m_A12);
-
-	edit_m_A22.Convert();
-	edit_m_A22.GetWindowText(m_A22);
-
-	//-------------------------//
-
-	edit_m_T0.Convert();
-	edit_m_T0.GetWindowText(m_T0);
-
-	edit_m_T1.Convert();
-	edit_m_T1.GetWindowText(m_T1);
-
-	edit_m_T2.Convert();
-	edit_m_T2.GetWindowText(m_T2);
+	//关闭对话框
+	CAcUiDialog::OnOK();
 }
 
 void LineCutPosDialog::OnBnClickedX()
@@ -401,6 +111,209 @@ BEGIN_MESSAGE_MAP(LineCutPosDialog, CAcUiDialog)
 	ON_BN_CLICKED(IDC_X, &LineCutPosDialog::OnBnClickedX)
 	ON_BN_CLICKED(IDC_Y, &LineCutPosDialog::OnBnClickedY)
 	ON_BN_CLICKED(IDC_Z, &LineCutPosDialog::OnBnClickedZ)
+	ON_BN_CLICKED(IDC_BUTTON_PICKCUT, &LineCutPosDialog::OnBnPickCutPos)
 END_MESSAGE_MAP()
+
+void Transform(AcDbEntity* pEntry, int xoffset = 0, int yoffset = 0, int zoffset = 0)
+{
+	AcGeVector3d vec(xoffset,yoffset,zoffset);
+
+	AcGeMatrix3d moveMatrix;
+	moveMatrix.setToTranslation(vec);
+
+	pEntry->transformBy(moveMatrix);
+}
+
+void LineCutPosDialog::GenerateCutPlane()
+{
+	//创建切面
+	CString offset;
+	m_EditOffset.GetWindowTextW(offset);
+
+	if( offset.GetLength())
+		m_strOffset = _wtoi(offset);
+
+	if( m_Direction == 1)
+	{
+		m_CutLayerName.Format(L"与X轴垂直偏移量为【%d】的切面",m_strOffset);
+		m_CutPlane.set(AcGePoint3d(m_strOffset,0,0),AcGeVector3d(1,0,0));
+	}
+	else if( m_Direction == 2)
+	{
+		m_CutLayerName.Format(L"与Y轴垂直偏移量为【%d】的切面",m_strOffset);
+		m_CutPlane.set(AcGePoint3d(0,m_strOffset,0),AcGeVector3d(0,1,0));
+	}
+	else if( m_Direction == 3)
+	{
+		m_CutLayerName.Format(L"与Z轴垂直偏移量为【%d】的切面",m_strOffset);
+		m_CutPlane.set(AcGePoint3d(0,0,m_strOffset),AcGeVector3d(0,0,1));
+	}
+
+#ifdef DEBUG
+	acutPrintf(L"\n切面为【%s】",m_CutLayerName.GetBuffer());
+#endif
+}
+
+void LineCutPosDialog::GenereateCutRegion()
+{
+	//首先恢复视图
+	CutBack();
+
+	//得到切面
+	GenerateCutPlane();
+
+	//得到当前的实体文件管理器
+	LineEntryFile* pLineFile = LineEntryFileManager::GetCurrentLineEntryFile();
+	if( pLineFile == NULL )
+	{
+		acutPrintf(L"\n没能找到管线文件管理器，检查下吧！");
+		return;
+	}
+
+	//得到实体列表
+	LineList* lineList = pLineFile->GetList();
+	if( lineList == NULL )
+	{
+		acutPrintf(L"\n当前文件中没有管线，无需进行切图！");
+		return;
+	}
+
+	//遍历实体文件管理，针对每一条实体进行切图
+	LineIterator lineIter = lineList->begin();
+
+	for(;lineIter != lineList->end();
+		lineIter++)
+	{
+#ifdef DEBUG
+		acutPrintf(L"\n对管线【%s】进行切图！",(*lineIter)->m_LineName.c_str());
+#endif
+		if( *lineIter != NULL )
+			GenereateCutRegion(*lineIter);
+	}
+}
+
+void LineCutPosDialog::GenereateCutRegion(LineEntry* lineEntry)
+{
+	PointList* pointList = lineEntry->m_PointList;
+	if( pointList == NULL )
+	{
+		acutPrintf(L"\n该管线没有线段，无需切图！");
+		return;
+	}
+
+	//对所有的线段进行遍历
+	PointIter pointIter = pointList->begin();
+	for(;pointIter != pointList->end();pointIter++)
+	{
+		if( pointIter == pointList->begin() )
+			continue;
+
+		PointEntry* pointEntry = (*pointIter);
+
+		if( pointEntry == NULL )
+		{
+			acutPrintf(L"\n该线段不合法，需要注意！");
+			continue;
+		}
+
+#ifdef DEBUG
+		acutPrintf(L"\n对第【%d】个线段进行切图！",pointEntry->m_PointNO);
+#endif
+
+		if( pointEntry->m_pEntry == NULL )
+		{
+			acutPrintf(L"\n当前线段没有对应的数据库实体，不能切图！");
+			continue;
+		}
+
+		LMALineDbObject* pLMALine = LMALineDbObject::cast(pointEntry->m_pEntry);
+
+		if( pLMALine == NULL )
+		{
+			acutPrintf(L"\n当前线段不是有效的辅助系统管理的实体，不考虑切图！");
+			continue;
+		}
+
+		//得到实体与切面相切的截面
+		AcDbRegion *pSelectionRegion = NULL;
+		pLMALine->getSection(m_CutPlane, pSelectionRegion);
+
+		if( pSelectionRegion )
+		{
+			//创建切面所在的图层
+			ArxWrapper::createNewLayer(m_CutLayerName.GetBuffer());
+
+			//将截面加入到模型空间
+			ArxWrapper::PostToModelSpace(pSelectionRegion,m_CutLayerName.GetBuffer());
+
+			//创建该界面的填充区域
+			ArxWrapper::CreateHatch(pSelectionRegion,L"JIS_LC_20", true, m_CutLayerName.GetBuffer(), m_CutPlane, m_strOffset);
+		}
+	}
+}
+
+void LineCutPosDialog::ShowCutRegion()
+{
+	//只显示切面图层
+	ArxWrapper::ShowLayer(m_CutLayerName.GetBuffer());
+
+	//切换视图
+	ArxWrapper::ChangeView(m_Direction);
+}
+
+void LineCutPosDialog::CutBack()
+{
+	acutPrintf(L"\n存在的切图为【%s】！",m_CutLayerName.GetBuffer());
+
+	if( m_CutLayerName.GetLength() > 0 )
+	{
+		acutPrintf(L"\n恢复WCS视窗");
+		acedCommand(RTSTR, _T("_UCS"), RTSTR, L"W", 0);
+
+		acutPrintf(L"\n删除切图所在的图层");
+		if( ArxWrapper::DeleteLayer(m_CutLayerName.GetBuffer()) )
+		{
+			acutPrintf(L"\n初始化设置");
+			m_CutLayerName.Format(L"");
+		}
+
+		acutPrintf(L"\n显示其他图层");
+		ArxWrapper::ShowLayer(L"");
+	}
+	else
+	{
+		acutPrintf(L"\n当前系统内没有切图！");
+	}
+}
+
+void LineCutPosDialog::OnBnPickCutPos()
+{
+	// Hide the dialog and give control to the editor
+    BeginEditorCommand();
+
+    ads_point pt;
+
+	CString temp;
+
+    // Get a point
+    if (acedGetPoint(NULL, _T("\n选取切割点: "), pt) == RTNORM) {
+        // If the point is good, continue
+        CompleteEditorCommand();
+
+		if( m_Direction == 1 )
+			temp.Format(_T("%g"), pt[X]);
+		else if ( m_Direction == 2 )
+			temp.Format(_T("%g"), pt[Y]);
+		else if ( m_Direction == 3 )
+			temp.Format(_T("%g"), pt[Z]);
+    } else {
+        // otherwise cancel the command (including the dialog)
+        CancelEditorCommand();
+    }
+
+	m_EditOffset.SetWindowTextW(temp.GetBuffer());
+
+	UpdateData(FALSE);
+}
 
 // LineCutPosDialog message handlers

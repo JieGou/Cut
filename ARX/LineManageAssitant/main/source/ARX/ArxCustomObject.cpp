@@ -52,6 +52,7 @@ LMALineDbObject::LMALineDbObject()
 	,mLineEntry(NULL)
 	,mStartPoint(AcGePoint3d::kOrigin)
 	,mEndPoint(AcGePoint3d::kOrigin)
+	,mAlignedDim(NULL)
 {
 };
 
@@ -283,12 +284,71 @@ Acad::ErrorStatus LMALineDbObject::CreatePipe()
 
 	transformBy(moveMatrix);
 
+	CreateDimensions();
+
 #ifdef DEBUG
 	//acutPrintf(L"插入中心线，用于矫正");
 
 	//AcDbLine *pLine = new AcDbLine(start, end);
     //ArxWrapper::PostToModelSpace(pLine,mLayerName);
 #endif
+
+	return Acad::eOk;
+}
+
+Acad::ErrorStatus LMALineDbObject::CreateDimensions()
+{
+	//创建标注体
+    mAlignedDim = new AcDbAlignedDimension;
+
+	//得到线段长度
+	double length = mStartPoint.distanceTo(mEndPoint);
+	if( length < 0.1 )
+		return Acad::eInvalidInput;
+
+#ifdef DEBUG
+	acutPrintf(L"\n标注长度为【%lf】",length);
+#endif
+
+	static const double dimTextOff = mRadius * 2;
+
+	//首先在原点处，沿X轴方向标注
+	mAlignedDim->setXLine1Point(AcGePoint3d::kOrigin);
+    mAlignedDim->setXLine2Point(AcGePoint3d(length,0,0));
+	mAlignedDim->setTextPosition(AcGePoint3d(length/2,dimTextOff,0));
+
+    // dimLinePt automatically set from where text was placed,
+    // unless you deliberately set the dimLinePt
+    //dim->setHorizontalRotation(getDimHorizRotation());
+
+	//设置标注字的配置
+    mAlignedDim->useSetTextPosition();    // make text go where user picked
+    mAlignedDim->setDatabaseDefaults();
+
+	//首先旋转到Z轴出
+	AcGeMatrix3d zMatrix = AcGeMatrix3d::rotation( -1.57, AcGeVector3d::kYAxis, AcGePoint3d::kOrigin);
+	mAlignedDim->transformBy(zMatrix);
+
+	//得到线段与Z轴的垂直向量
+	AcGeVector3d line3dVector(mEndPoint.x - mStartPoint.x,mEndPoint.y - mStartPoint.y, mEndPoint.z-mStartPoint.z);
+	AcGeVector3d rotateVctor = line3dVector.crossProduct(AcGeVector3d::kZAxis);
+
+	//得到旋转的角度
+	double angle = -line3dVector.angleTo(AcGeVector3d::kZAxis);
+	acutPrintf(L"得到旋转角度%lf\n",angle);
+
+	//进行旋转
+	AcGeMatrix3d rotateMatrix = AcGeMatrix3d::rotation( angle, rotateVctor, AcGePoint3d::kOrigin);
+	mAlignedDim->transformBy(rotateMatrix);
+
+	//进行偏移
+	AcGeMatrix3d moveMatrix;
+	moveMatrix.setToTranslation(AcGeVector3d(mStartPoint.x,mStartPoint.y,mStartPoint.z));
+
+	mAlignedDim->transformBy(moveMatrix);
+
+	//添加到模型空间
+	ArxWrapper::PostToModelSpace(mAlignedDim,L"0");
 
 	return Acad::eOk;
 }

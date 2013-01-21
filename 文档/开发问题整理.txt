@@ -79,3 +79,9 @@ tmpStr = NULL;    // must explicitly set to NULL or readItem() crashes!
 24. 关于调试AutoCAD http://usa.autodesk.com/adsk/servlet/index?siteID=123112&id=18172834
 
 25. 从namedObjectsDictionary删除对象后，并没有通知文档（或者数据库）更改了，也就不能去保存
+
+26. LineEntry 为数据库对象，不要在析构函数中删除对象（当然其中的内存泄露还需调查）
+
+27. Radio Button的ID序号一致（需要确认）。但只需要（能）第一个button的Group属性值为true。
+
+28. PickUp Button的图片，需要时Owner Draw，且初始化在Dialog初始化后

@@ -153,10 +153,43 @@ void MenuManager::AddDropdownMenu()
             V_VT(&index) = VT_I4;
             V_I4(&index) = 4;
 
-			cmdMenuName.Format(L"%s\n",CommandManager::CMD_LIEN_CUT);
-            IPopUpMenu.AddMenuItem(index, MAIN_MENU_LINE_CUT, cmdMenuName);
+			cmdMenuName.Format(L"%s\n",L"ÇÐÍ¼¹ÜÀí");
+            CAcadPopupMenu ICutManagePopUpMenu(IPopUpMenu.AddSubMenu(index, cmdMenuName));
 
-            pDisp = IPopUpMenu.m_lpDispatch;
+			{
+				IDispatch* pCutManageDisp=NULL;
+
+				VariantInit(&index);
+				V_VT(&index) = VT_I4;
+				V_I4(&index) = 0;
+
+				cmdMenuName.Format(L"%s\n",CommandManager::CMD_LIEN_CUT);
+				ICutManagePopUpMenu.AddMenuItem(index, MAIN_MENU_LINE_CUT, cmdMenuName);
+			
+				VariantInit(&index);
+				V_VT(&index) = VT_I4;
+				V_I4(&index) = 1;
+
+				cmdMenuName.Format(L"%s\n",CommandManager::CMD_LINE_CUT_BACK);
+				ICutManagePopUpMenu.AddMenuItem(index, MAIN_MENU_LINE_CUT_BACK, cmdMenuName);
+
+				pCutManageDisp = ICutManagePopUpMenu.m_lpDispatch;
+				pCutManageDisp->AddRef();
+			}
+
+			VariantInit(&index);
+            V_VT(&index) = VT_I4;
+            V_I4(&index) = 5;
+            IPopUpMenu.AddSeparator(index);
+
+			VariantInit(&index);
+            V_VT(&index) = VT_I4;
+            V_I4(&index) = 6;
+
+			cmdMenuName.Format(L"%s\n",CommandManager::CMD_LINE_TEST);
+            IPopUpMenu.AddMenuItem(index, MAIN_MENU_LINE_TEST, cmdMenuName);
+      
+			pDisp = IPopUpMenu.m_lpDispatch;
             pDisp->AddRef();
         }
 

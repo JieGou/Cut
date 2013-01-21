@@ -8,6 +8,10 @@
 #include <acui.h>
 #include "afxwin.h"
 
+#include <LineEntryData.h>
+
+using namespace com::guch::assistant::data;
+
 // LineCutPosDialog dialog
 
 class LineCutPosDialog : public CAcUiDialog
@@ -25,7 +29,6 @@ public:
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	void GetTransformData();
 
 	DECLARE_MESSAGE_MAP()
 
@@ -36,49 +39,40 @@ public:
 	afx_msg void OnBnClickedX();
 	afx_msg void OnBnClickedY();
 	afx_msg void OnBnClickedZ();
+	afx_msg void OnBnPickCutPos();
+	static afx_msg void CutBack();
 
-	static AcDb3dSolid *m3dSolid;
+protected:
+
+	void GenerateCutPlane();
+
+	void GenereateCutRegion();
+
+	void GenereateCutRegion(LineEntry* lineEntry);
+
+	void ShowCutRegion();
 
 private:
 
-	CString m_strOffset;
+	//切面的偏移量
+	int m_strOffset;
 
-	CString m_A00;
-	CString m_A10;
-	CString m_A20;
-
-	CString m_A01;
-	CString m_A11;
-	CString m_A21;
-
-	CString m_A02;
-	CString m_A12;
-	CString m_A22;
-
-	CString m_T0;
-	CString m_T1;
-	CString m_T2;
-
+	//切面的方向
 	int m_Direction;
 
+	//切面
+	AcGePlane m_CutPlane;
+
+	//切面的名称
+	static CString m_CutLayerName;
+
 public:
-	CButton mDirectionX;
+
+	CButton m_DirectionX;
 	CButton m_DirectionY;
 	CButton m_DirectionZ;
 
-	CAcUiNumericEdit edit_m_A00;
-	CAcUiNumericEdit edit_m_A10;
-	CAcUiNumericEdit edit_m_A20;
+	CAcUiNumericEdit m_EditOffset;
 
-	CAcUiNumericEdit edit_m_A01;
-	CAcUiNumericEdit edit_m_A11;
-	CAcUiNumericEdit edit_m_A21;
-
-	CAcUiNumericEdit edit_m_A02;
-	CAcUiNumericEdit edit_m_A12;
-	CAcUiNumericEdit edit_m_A22;
-
-	CAcUiNumericEdit edit_m_T0;
-	CAcUiNumericEdit edit_m_T1;
-	CAcUiNumericEdit edit_m_T2;
+	CAcUiPickButton m_PickCutPosButton;
 };

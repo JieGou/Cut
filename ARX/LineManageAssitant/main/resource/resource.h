@@ -11,6 +11,8 @@
 #define IDD_DIALOG_CUT_POS              136
 #define IDD_DIALOG_BLOCK_CONFIG_ADD     137
 #define IDD_DIALOG_ADD_ENTRY            138
+#define IDD_DIALOG_VECTOR_TRANSFORM     139
+#define IDR_TOOLBAR_LMA                 139
 #define IDC_EDIT_XPT                    1000
 #define IDC_EDIT_ANGLE                  1001
 #define IDC_BUTTON_POINT                1002
@@ -36,6 +38,7 @@
 #define IDC_EDIT4                       1032
 #define IDC_BUTTON1                     1032
 #define IDC_EDIT_SAFESIZE               1032
+#define IDC_BUTTON_PICKCUT              1032
 #define IDC_EDIT5                       1033
 #define IDC_BUTTON2                     1033
 #define IDC_EDIT_RADIUS                 1033
@@ -53,11 +56,9 @@
 #define IDC_EDIT1                       1037
 #define IDC_EDIT_NO                     1037
 #define IDC_EDIT_A00                    1037
-#define IDC_EDIT6                       1038
-#define IDC_X                           1038
 #define IDC_BUTTON_DEL_POINT            1038
+#define IDC_X                           1038
 #define IDC_Y                           1039
-#define IDC_EDIT7                       1040
 #define IDC_Z                           1040
 #define IDC_EDIT_KIND                   1040
 #define IDC_OFFSET                      1041
@@ -75,7 +76,6 @@
 #define IDC_STATIC_RADIUS               1047
 #define IDC_EDIT_A02                    1047
 #define IDC_STATIC_LENGTH               1048
-#define IDC_EDIT_22                     1048
 #define IDC_EDIT_A22                    1048
 #define IDC_STATIC_WIDTH                1049
 #define IDC_EDIT_A12                    1049
@@ -98,13 +98,23 @@
 #define ID_GENERATE_CUT                 32774
 #define ID_32775                        32775
 #define ID_LINE_CONFIG                  32776
+#define ID_BUTTON_CANCEl                32778
+#define ID_BUTTON_CANCEL                32778
+#define ID_BUTTON32779                  32779
+#define ID_BUTTON_CANCLE                32780
+#define ID_32781                        32781
+#define ID_32782                        32782
+#define ID_32783                        32783
+#define ID_GENERATE_BACK                32784
+#define ID_32785                        32785
+#define ID_MENU_TEST                    32786
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        139
-#define _APS_NEXT_COMMAND_VALUE         32777
+#define _APS_NEXT_RESOURCE_VALUE        141
+#define _APS_NEXT_COMMAND_VALUE         32787
 #define _APS_NEXT_CONTROL_VALUE         1056
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

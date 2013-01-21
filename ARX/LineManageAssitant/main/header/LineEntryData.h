@@ -193,6 +193,8 @@ public:
 
 	static void RemoveEntryFileOnDWGUnLoad();
 
+	static LineEntryFile* GetCurrentLineEntryFile();
+
 	static LineEntryFile* GetLineEntryFile( const wstring& fileName );
 
 	static LineEntryFile* RegisterEntryFile(const wstring& fileName);

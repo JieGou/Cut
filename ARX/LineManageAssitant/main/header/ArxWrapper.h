@@ -36,7 +36,11 @@ typedef Point3dVector::const_iterator Point3dIter;
 class ArxWrapper
 {
 public:
-	static void createNewLayer(const wstring& layerName);
+	static bool createNewLayer(const wstring& layerName);
+
+	static bool ShowLayer(const wstring& theOnly);
+
+	static bool DeleteLayer(const wstring& layerName);
 
 	static AcDbObjectId createLine( const AcGePoint3d& start,
 							const AcGePoint3d& end,
@@ -78,4 +82,15 @@ public:
 										const double& radius );
 
 	static void eraseLMALine(const LineEntry& lineEntry, bool old = false);
+
+	//Change view
+	static void ChangeView(int viewDirection);
+
+	//…Ë÷√ÃÓ≥‰
+	static AcDbObjectId CreateHatch(AcDbEntity* entity,const wstring& patName, bool bAssociative, const wstring& layerName, const AcGePlane& plane, const double& distance );
+
+	static AcDbObjectId CreateHatch(AcDbObjectIdArray objIds,const wstring& patName, bool bAssociative, const wstring& layerName, const AcGeVector3d& normal, const double& elevation);
+
+	//≤‚ ‘∫Ø ˝
+	static void TestFunction();
 };

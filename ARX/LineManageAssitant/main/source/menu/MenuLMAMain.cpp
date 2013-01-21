@@ -72,5 +72,17 @@ void MenuLMAMain::onAction(const CString& menuName)
 	{
 		CommandManager::GenerateCut();
 	}
+	else if( menuName == MAIN_MENU_LINE_CUT_BACK )
+	{
+		CommandManager::GenerateCutBack();
+	}
+	else if( menuName == MAIN_MENU_LINE_TEST )
+	{
+		CommandManager::TestFunction();
+	}
+	else
+	{
+		acutPrintf(L"\n未定义的菜单项【%s】",const_cast<CString&>(menuName).GetBuffer());
+	}
 }
 

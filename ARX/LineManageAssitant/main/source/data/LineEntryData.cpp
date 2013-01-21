@@ -200,7 +200,7 @@ LineEntry::LineEntry( const wstring& data)
 
 LineEntry::~LineEntry()
 {
-	ClearPoints();
+	//ClearPoints();
 }
 
 void LineEntry::ClearPoints()
@@ -934,6 +934,16 @@ bool LineEntryFileManager::RegisterLineSegment( const wstring& fileName, AcDbEnt
 	}
 
 	return true;
+}
+
+LineEntryFile* LineEntryFileManager::GetCurrentLineEntryFile()
+{
+	//Get current filename
+	wstring fileName = curDoc()->fileName();
+
+	acutPrintf(L"\n对【%s】的管线进行切图.",fileName.c_str());
+
+	return GetLineEntryFile(fileName);
 }
 
 } // end of data

@@ -97,6 +97,9 @@ protected:
 	// creat the 3d pipe
 	Acad::ErrorStatus CreatePipe();
 
+	// create the dimensions
+	Acad::ErrorStatus CreateDimensions();
+
 private:
 
 	//Store in database
@@ -116,6 +119,9 @@ private:
 
 	//the outter radius
 	double mRadius;
+
+	//dimension
+	AcDbAlignedDimension* mAlignedDim;
 };
 
 } // end of arx

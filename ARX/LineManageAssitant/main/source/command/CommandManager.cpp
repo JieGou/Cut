@@ -9,6 +9,7 @@
 #include "LineTypeConfigPropertySheet.h"
 #include "LineCutPosDialog.h"
 #include <EntryManageDialog.h>
+#include <ArxWrapper.h>
 
 using namespace com::guch::assistant::config;
 using namespace com::guch::assistant::entry;
@@ -21,6 +22,8 @@ const WCHAR* CommandManager::CMD_GROUP = L"LMA_CMD_GROUP";
 const WCHAR* CommandManager::CMD_LINE_CONFIG = L"LMA_CONFIG";
 const WCHAR* CommandManager::CMD_LINE_INPUT = L"LMA_INPUT";
 const WCHAR* CommandManager::CMD_LIEN_CUT = L"LMA_CUT";
+const WCHAR* CommandManager::CMD_LINE_CUT_BACK = L"LMA_CUT_BACK";
+const WCHAR* CommandManager::CMD_LINE_TEST = L"LMA_TESTFUN";
 
 CommandManager* CommandManager::instance()
 {
@@ -43,9 +46,12 @@ void CommandManager::Release()
 
 CommandManager::CommandManager(void)
 {
+	//注册主功能
 	mSupportCommands[CMD_LINE_CONFIG] = ShowConfigDialog;
 	mSupportCommands[CMD_LINE_INPUT] = ShowAddLineDialog;
 	mSupportCommands[CMD_LIEN_CUT] = GenerateCut;
+	mSupportCommands[CMD_LINE_CUT_BACK] = GenerateCutBack;
+	mSupportCommands[CMD_LINE_TEST] = TestFunction;
 }
 
 CommandManager::~CommandManager(void)
@@ -92,6 +98,23 @@ void CommandManager::ShowAddLineDialog()
 
 void CommandManager::GenerateCut()
 {
+	//AsdkAcUiDialogSample dlg(CWnd::FromHandle(adsw_acadMainWnd()));
 	LineCutPosDialog dlg(CWnd::FromHandle(adsw_acadMainWnd()));
 	INT_PTR nReturnValue = dlg.DoModal();
+}
+
+void CommandManager::GenerateCutBack()
+{
+#ifdef DEBUG
+	acutPrintf(L"\n通过点击菜单恢复视窗");
+#endif
+	LineCutPosDialog::CutBack();
+}
+
+void CommandManager::TestFunction()
+{
+#ifdef DEBUG
+	acutPrintf(L"\n测试AutoCAD的功能");
+#endif
+	ArxWrapper::TestFunction();
 }

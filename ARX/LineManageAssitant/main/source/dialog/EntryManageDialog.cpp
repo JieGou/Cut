@@ -525,6 +525,9 @@ void EntryManageDialog::OnBnClickedButtonOK()
 		selectLine->SetPoints(newPoints);
 	}
 
+	//默认进入XY视图
+	acedCommand(RTSTR, _T("._-VIEW"), RTSTR, L"TOP", 0);
+
 	//保存到临时文件
 	m_EntryFile->Persistent();
 }
