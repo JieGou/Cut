@@ -33,9 +33,21 @@ using namespace std;
 typedef vector<AcGePoint3d*> Point3dVector;
 typedef Point3dVector::const_iterator Point3dIter;
 
+
 class ArxWrapper
 {
 public:
+
+	static const double kPi;
+	static const double kHalfPi;
+	static const double kTwoPi;
+	static const double kRad45;
+	static const double kRad90;
+	static const double kRad135;
+	static const double kRad180;
+	static const double kRad270;
+	static const double kRad360;
+
 	static bool createNewLayer(const wstring& layerName);
 
 	static bool ShowLayer(const wstring& theOnly);
@@ -58,6 +70,8 @@ public:
 	//Remove entry from model
 	static Acad::ErrorStatus RemoveFromModelSpace(AcDbEntity* pEnt,const wstring& layerName );
 
+	static Acad::ErrorStatus RemoveFromModelSpace(const AcDbHandle& handle,const wstring& layerName );
+
 	//Add object to name dictionary
 	static AcDbObjectId PostToNameObjectsDict(AcDbObject* pObj,const wstring& key, bool toDelete = false );
 
@@ -71,7 +85,7 @@ public:
 	static void createLMALine( const LineEntry& entry );
 
 	//Polygon cylinder
-	static void DrawPolyCylinder( const LineEntry& lineEntry, const double& radius);
+	static void DrawPolyCylinder( const LineEntry& lineEntry );
 
 	//cylinder
 	static AcDb3dSolid* DrawCylinder( const UINT& lineID,
@@ -79,7 +93,7 @@ public:
 										const AcGePoint3d& start,
 										const AcGePoint3d& end,
 										const wstring& layerName,
-										const double& radius );
+										LineEntry& entry);
 
 	static void eraseLMALine(const LineEntry& lineEntry, bool old = false);
 
@@ -90,6 +104,10 @@ public:
 	static AcDbObjectId CreateHatch(AcDbEntity* entity,const wstring& patName, bool bAssociative, const wstring& layerName, const AcGePlane& plane, const double& distance );
 
 	static AcDbObjectId CreateHatch(AcDbObjectIdArray objIds,const wstring& patName, bool bAssociative, const wstring& layerName, const AcGeVector3d& normal, const double& elevation);
+
+	//Ìí¼Ó×¢ÊÍ
+	static AcDbObjectId CreateMLeader(const AcGePoint3d& center, const int& offset, const int& direction,
+											const wstring& content, const wstring& layerName);
 
 	//²âÊÔº¯Êý
 	static void TestFunction();

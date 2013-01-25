@@ -16,6 +16,12 @@
 #include <ArxCustomObject.h>
 #include <LMAUtils.h>
 #include <LineEntryData.h>
+#include <gelnsg3d.h>
+#include <LineConfigDataManager.h>
+#include <GlobalDataConfig.h>
+
+using namespace com::guch::assistant::config;
+using namespace com::guch::assistant::data;
 
 namespace com
 {
@@ -49,18 +55,43 @@ AcDb::kDHL_CURRENT, AcDb::kMReleaseCurrent,
 LMALineDbObject::LMALineDbObject()
 	: mLineID(-1)
 	,mSequenceNO(-1)
-	,mLineEntry(NULL)
 	,mStartPoint(AcGePoint3d::kOrigin)
 	,mEndPoint(AcGePoint3d::kOrigin)
-	,mAlignedDim(NULL)
+	,mLineEntry(NULL)
+	,mRadius(0)
+	,mWidth(0)
+	,mLength(0)
+	,mLineShape()
 {
 };
 
 Acad::ErrorStatus LMALineDbObject::Init()
 {
-	if( mLineEntry )
+	if( !mLineEntry )
 	{
 		LOG(L"配置线段为空，寻找配置信息");
+		return Acad::eInvalidInput;
+	}
+
+	LineCategoryItemData* lineConfigData = LineConfigDataManager::Instance()->FindByKind( mLineEntry->m_LineKind );
+
+	if( lineConfigData == NULL )
+	{
+		acutPrintf(L"\n没有找到类型【%lf】的配置数据",mLineEntry->m_LineKind.c_str());
+		return Acad::eInvalidInput;
+	}
+
+	//圆形或矩形
+	mLineShape = lineConfigData->mShape;
+
+	if( mLineShape == GlobalData::LINE_SHAPE_CIRCLE )
+	{
+		acdbDisToF(lineConfigData->mRadius.c_str(), -1, &mRadius);
+	}
+	else if ( mLineShape == GlobalData::LINE_SHAPE_SQUARE )
+	{
+		acdbDisToF(lineConfigData->mLength.c_str(), -1, &mLength);
+		acdbDisToF(lineConfigData->mWidth.c_str(), -1, &mWidth);
 	}
 
 	return CreatePipe();
@@ -114,6 +145,11 @@ LMALineDbObject::setPointSeqNO(Adesk::Int32 pointSeqNO)
     return Acad::eOk;
 }
 
+void LMALineDbObject::setLineEntity(LineEntry* pEntry)
+{
+	this->mLineEntry = pEntry;
+}
+
 // Files data in from a DWG file.
 //
 Acad::ErrorStatus
@@ -122,6 +158,7 @@ LMALineDbObject::dwgInFields(AcDbDwgFiler* pFiler)
     assertWriteEnabled();
 
     AcDb3dSolid::dwgInFields(pFiler);
+
     // For wblock filing we wrote out our owner as a hard
     // pointer ID so now we need to read it in to keep things
     // in sync.
@@ -142,6 +179,9 @@ LMALineDbObject::dwgInFields(AcDbDwgFiler* pFiler)
 	pFiler->readPoint3d(&mStartPoint);
 	pFiler->readPoint3d(&mEndPoint);
 	
+	pFiler->readAcDbHandle(&mHandleDim);
+	pFiler->readAcDbHandle(&mHandleText);
+
 	CString filename;
 	dbToStr(this->database(),filename);
 
@@ -166,6 +206,7 @@ LMALineDbObject::dwgOutFields(AcDbDwgFiler* pFiler) const
     assertReadEnabled();
 
     AcDb3dSolid::dwgOutFields(pFiler);
+
     // Since objects of this class will be in the Named
     // Objects Dictionary tree and may be hard referenced
     // by some other object, to support wblock we need to
@@ -180,6 +221,9 @@ LMALineDbObject::dwgOutFields(AcDbDwgFiler* pFiler) const
 
 	pFiler->writeItem(mStartPoint);
 	pFiler->writeItem(mEndPoint);
+	
+	pFiler->writeAcDbHandle(mHandleDim);
+	pFiler->writeAcDbHandle(mHandleText);
 
 	CString filename;
 	dbToStr(this->database(),filename);
@@ -191,6 +235,8 @@ LMALineDbObject::dwgOutFields(AcDbDwgFiler* pFiler) const
 					mEndPoint.x,mEndPoint.y,mEndPoint.z,
 					filename.GetBuffer());
 #endif
+
+
 
     return pFiler->filerStatus();
 }
@@ -249,17 +295,27 @@ LMALineDbObject::dxfOutFields(AcDbDxfFiler* pFiler) const
 
 Acad::ErrorStatus LMALineDbObject::CreatePipe()
 {
-	acutPrintf(L"开始绘制管体\n");
+	acutPrintf(L"\n开始绘制管体");
 
 	//得到线段的长度
-	double length = mStartPoint.distanceTo(mEndPoint);
-	if( length < 0.1 )
+	double height = mStartPoint.distanceTo(mEndPoint);
+	if( height < 0.1 )
 		return Acad::eInvalidInput;
+	
+	if( mLineShape == GlobalData::LINE_SHAPE_CIRCLE )
+	{
+		acutPrintf(L"\n绘制半径为【%lf】高为【%lf】的圆柱",mRadius,height);
 
-	acutPrintf(L"得到管体高度%lf\n",length);
+		//绘制圆柱体
+		this->createFrustum(height,mRadius,mRadius,mRadius);
+	}
+	else if ( mLineShape == GlobalData::LINE_SHAPE_SQUARE )
+	{
+		acutPrintf(L"\n绘制长【%lf】宽【%lf】高【%lf】的长方体",mLength, mWidth, height);
+		//绘制圆柱体
 
-	//绘制圆柱体
-	this->createFrustum(length,mRadius,mRadius,mRadius);
+		this->createBox(mLength,mWidth,height);
+	}
 
 	//得到线段与Z轴的垂直向量
 	AcGeVector3d line3dVector(mEndPoint.x - mStartPoint.x,mEndPoint.y - mStartPoint.y, mEndPoint.z-mStartPoint.z);
@@ -267,7 +323,7 @@ Acad::ErrorStatus LMALineDbObject::CreatePipe()
 
 	//得到旋转的角度
 	double angle = -line3dVector.angleTo(AcGeVector3d::kZAxis);
-	acutPrintf(L"得到旋转角度%lf\n",angle);
+	acutPrintf(L"\n得到旋转角度【%lf】",angle);
 
 	//进行旋转
 	AcGeMatrix3d rotateMatrix = AcGeMatrix3d::rotation( angle, rotateVctor, AcGePoint3d::kOrigin);
@@ -276,7 +332,7 @@ Acad::ErrorStatus LMALineDbObject::CreatePipe()
 	//得到线段的中心点
 	AcGePoint3d center(mStartPoint.x + mEndPoint.x, mStartPoint.y + mEndPoint.y, mStartPoint.z + mEndPoint.z); 
 	center /= 2;
-	acutPrintf(L"得到中心点[%lf][%lf][%lf]\n",center.x,center.y,center.z);
+	acutPrintf(L"\n得到中心点【%lf】【%lf】【%lf】",center.x,center.y,center.z);
 
 	//进行偏移
 	AcGeMatrix3d moveMatrix;
@@ -299,7 +355,19 @@ Acad::ErrorStatus LMALineDbObject::CreatePipe()
 Acad::ErrorStatus LMALineDbObject::CreateDimensions()
 {
 	//创建标注体
-    mAlignedDim = new AcDbAlignedDimension;
+    AcDbAlignedDimension* mAlignedDim = new AcDbAlignedDimension;
+
+	//设置标注的文字
+	AcDbText* mLineDim = new AcDbText;
+
+	{
+		CString textSeq;
+		textSeq.Format(L"【%d】",mSequenceNO);
+		mLineDim->setTextString(textSeq);
+
+		//高度减半
+		mLineDim->setHeight(mLineDim->height()/4); 
+	}
 
 	//得到线段长度
 	double length = mStartPoint.distanceTo(mEndPoint);
@@ -310,48 +378,133 @@ Acad::ErrorStatus LMALineDbObject::CreateDimensions()
 	acutPrintf(L"\n标注长度为【%lf】",length);
 #endif
 
-	static const double dimTextOff = mRadius * 2;
+	//文字的偏移为直径距离
+	double dimAlignTextOff = 0;
+	if ( mLineShape == GlobalData::LINE_SHAPE_CIRCLE )
+	{
+		dimAlignTextOff = mRadius * 2;
+	}
+	else if ( mLineShape == GlobalData::LINE_SHAPE_SQUARE )
+	{
+		dimAlignTextOff = mLength + mWidth;
+	}
 
 	//首先在原点处，沿X轴方向标注
 	mAlignedDim->setXLine1Point(AcGePoint3d::kOrigin);
     mAlignedDim->setXLine2Point(AcGePoint3d(length,0,0));
-	mAlignedDim->setTextPosition(AcGePoint3d(length/2,dimTextOff,0));
 
-    // dimLinePt automatically set from where text was placed,
-    // unless you deliberately set the dimLinePt
-    //dim->setHorizontalRotation(getDimHorizRotation());
+	mAlignedDim->setTextPosition(AcGePoint3d(length/2,dimAlignTextOff,0));
+
+	//文字【段号】
+	double dimTextOff = 0;
+	if ( mLineShape == GlobalData::LINE_SHAPE_CIRCLE )
+	{
+		dimTextOff = -mRadius/2;
+	}
+	else if ( mLineShape == GlobalData::LINE_SHAPE_SQUARE )
+	{
+		dimTextOff = -mLength/2;
+	}
+
+	mLineDim->setPosition(AcGePoint3d(length/2, dimTextOff,0));
 
 	//设置标注字的配置
     mAlignedDim->useSetTextPosition();    // make text go where user picked
     mAlignedDim->setDatabaseDefaults();
 
-	//首先旋转到Z轴出
-	AcGeMatrix3d zMatrix = AcGeMatrix3d::rotation( -1.57, AcGeVector3d::kYAxis, AcGePoint3d::kOrigin);
-	mAlignedDim->transformBy(zMatrix);
-
-	//得到线段与Z轴的垂直向量
+	//首先线段的向量
 	AcGeVector3d line3dVector(mEndPoint.x - mStartPoint.x,mEndPoint.y - mStartPoint.y, mEndPoint.z-mStartPoint.z);
-	AcGeVector3d rotateVctor = line3dVector.crossProduct(AcGeVector3d::kZAxis);
 
-	//得到旋转的角度
-	double angle = -line3dVector.angleTo(AcGeVector3d::kZAxis);
-	acutPrintf(L"得到旋转角度%lf\n",angle);
+	{
+		//然后旋转到Z轴处
+		AcGeMatrix3d zMatrix = AcGeMatrix3d::rotation( -ArxWrapper::kRad90, AcGeVector3d::kYAxis, AcGePoint3d::kOrigin);
+		mAlignedDim->transformBy(zMatrix);
+		mLineDim->transformBy(zMatrix);
 
-	//进行旋转
-	AcGeMatrix3d rotateMatrix = AcGeMatrix3d::rotation( angle, rotateVctor, AcGePoint3d::kOrigin);
-	mAlignedDim->transformBy(rotateMatrix);
+		//得到（直线与XZ平面）角度
+		double xAngle = AcGeVector3d(line3dVector.x,line3dVector.y,0).angleTo(AcGeVector3d::kXAxis);
+		acutPrintf(L"\n得到Z轴的旋转角度【%lf】",xAngle);
 
-	//进行偏移
-	AcGeMatrix3d moveMatrix;
-	moveMatrix.setToTranslation(AcGeVector3d(mStartPoint.x,mStartPoint.y,mStartPoint.z));
+		//沿Z轴旋转
+		AcGeMatrix3d rotateZMatrix = AcGeMatrix3d::rotation( xAngle, AcGeVector3d::kZAxis, AcGePoint3d::kOrigin);
+		mAlignedDim->transformBy(rotateZMatrix);
+		mLineDim->transformBy(rotateZMatrix);
+	}
 
-	mAlignedDim->transformBy(moveMatrix);
+	{
+		//得到旋转的角度
+		double angle = -line3dVector.angleTo(AcGeVector3d::kZAxis);
+		acutPrintf(L"\n得到旋转角度【%lf】",angle);
+
+		//得到线段与Z轴组成的平面的垂直向量
+		AcGeVector3d rotateVctor = line3dVector.crossProduct(AcGeVector3d::kZAxis);
+
+		//进行旋转
+		AcGeMatrix3d rotateMatrix = AcGeMatrix3d::rotation( angle, rotateVctor, AcGePoint3d::kOrigin);
+		mAlignedDim->transformBy(rotateMatrix);
+
+		mLineDim->transformBy(rotateMatrix);
+	}
+
+	{
+		//进行偏移
+		AcGeMatrix3d moveMatrix;
+		moveMatrix.setToTranslation(AcGeVector3d(mStartPoint.x,mStartPoint.y,mStartPoint.z));
+
+		mAlignedDim->transformBy(moveMatrix);
+
+		mLineDim->transformBy(moveMatrix);
+	}
+
+	//以序号来标注
+	/*{
+		CString textSeq;
+		textSeq.Format(L"%d",mSequenceNO);
+
+		mAlignedDim->setDimensionText(textSeq);
+	}*/
 
 	//添加到模型空间
-	ArxWrapper::PostToModelSpace(mAlignedDim,L"0");
+	if( mLineEntry )
+	{
+		ArxWrapper::PostToModelSpace(mAlignedDim,mLineEntry->m_LineName.c_str());
+		mAlignedDim->getAcDbHandle(mHandleDim);
 
+		ArxWrapper::PostToModelSpace(mLineDim,mLineEntry->m_LineName.c_str());
+		mLineDim->getAcDbHandle(mHandleText);
+	}
+	else
+	{
+		acutPrintf(L"\n该线段归属的直线不存在，可能出错了！");
+	}
 	return Acad::eOk;
 }
+
+LineCutRegion* LMALineDbObject::GetCutRegion( const AcGePlane& cutPlane )
+{
+	if( !mLineEntry || mLineEntry->m_LineName.length() == 0)
+	{
+		acutPrintf(L"\n线段编号【%d】没有名字，不能进行切图",this->mSequenceNO);
+		return NULL;
+	}
+
+	LineCutRegion* pCutRegion = new LineCutRegion;
+
+	return pCutRegion;
+}
+
+AcGePoint3d LMALineDbObject::GetCutCenter( const AcGePlane& cutPlane )
+{
+	//得到起点用终点形成的线段
+	AcGeLineSeg3d lineSeg(this->mStartPoint,this->mEndPoint);
+
+	//线段与直线相切的交点
+	AcGePoint3d center;
+	Adesk::Boolean hasIntersect = cutPlane.intersectWith(lineSeg, center);
+
+	return center;
+}
+
 
 } // end of arx
 

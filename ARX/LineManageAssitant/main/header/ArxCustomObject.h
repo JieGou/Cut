@@ -32,6 +32,7 @@
 
 #include <LineEntryData.h>
 
+using namespace std;
 using namespace com::guch::assistant::data;
 
 namespace com
@@ -54,6 +55,20 @@ public:
 	static void UnRegisterClass();
 };
 
+class LineCutRegion
+{
+public:
+
+	//切图方向
+	static enum CutDirection {CUT_X,CUT_Y,CUT_Z};
+
+	// 切图区域
+	AcDbRegion* mCutRegion;
+
+	// 切图中心点
+	AcGePoint3d mCenter;
+};
+
 class LMALineDbObject : public AcDb3dSolid
 {
 public:
@@ -64,14 +79,16 @@ public:
 					const Adesk::Int32& seqNO,
 					const AcGePoint3d& start,
 					const AcGePoint3d& end,
-					const double& radius,
 					LineEntry* lineEntry)
 		: mLineID(id)
 		, mSequenceNO(seqNO)
 		, mStartPoint(start)
 		, mEndPoint(end)
-		, mRadius(radius)
 		, mLineEntry(lineEntry)
+		, mRadius(0)
+		, mWidth(0)
+		, mLength(0)
+		, mLineShape()
 	{
 		Init();
 	}
@@ -82,12 +99,42 @@ public:
 	Acad::ErrorStatus         getPointSeqNO     (Adesk::Int32&);
     Acad::ErrorStatus         setPointSeqNO     (Adesk::Int32);
 
+	void setLineEntity( LineEntry* pEntry);
+
     virtual Acad::ErrorStatus dwgInFields (AcDbDwgFiler*);
     virtual Acad::ErrorStatus dwgOutFields(AcDbDwgFiler*)
         const;
     virtual Acad::ErrorStatus dxfInFields (AcDbDxfFiler*);
     virtual Acad::ErrorStatus dxfOutFields(AcDbDxfFiler*)
         const;
+
+	LineCutRegion* GetCutRegion( const AcGePlane& );
+
+	AcGePoint3d GetCutCenter( const AcGePlane& );
+
+	//handler of the dimension
+	AcDbHandle mHandleDim;
+
+	//handler of the text
+	AcDbHandle mHandleText;
+	
+	//Identify the index in the line
+	Adesk::Int32 mSequenceNO;
+
+	//the outter radius
+	double mRadius;
+
+	//the length
+	double mLength;
+
+	//the widht
+	double mWidth;
+	
+	//Identify the line
+	LineEntry* mLineEntry;
+
+	//Identify the lineshape
+	wstring mLineShape;
 
 protected:
 
@@ -105,23 +152,11 @@ private:
 	//Store in database
 	Adesk::Int32 mLineID;
 
-	//Identify the index in the line
-	Adesk::Int32 mSequenceNO;
-
-	//Identify the line
-	LineEntry* mLineEntry;
-
 	//the bottom
 	AcGePoint3d mStartPoint;
 
 	//the top
 	AcGePoint3d mEndPoint;
-
-	//the outter radius
-	double mRadius;
-
-	//dimension
-	AcDbAlignedDimension* mAlignedDim;
 };
 
 } // end of arx

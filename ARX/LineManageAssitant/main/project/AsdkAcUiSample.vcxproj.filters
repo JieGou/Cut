@@ -176,8 +176,6 @@
     <None Include="..\resource\res\LineManageAssistant.rc2">
       <Filter>res</Filter>
     </None>
-    <None Include="..\resource\toolbar1.bmp" />
-    <None Include="..\resource\toolbar_lma.bmp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="inc">

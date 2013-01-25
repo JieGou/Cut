@@ -212,8 +212,6 @@
   <ItemGroup>
     <None Include="..\resource\res\LineManageAssistant.rc2" />
     <None Include="..\doc\ReadMe.txt" />
-    <None Include="..\resource\toolbar1.bmp" />
-    <None Include="..\resource\toolbar_lma.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

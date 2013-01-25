@@ -276,7 +276,7 @@ BOOL EntryManageDialog::InsertLine( LineEntry* lineEntry, BOOL bInitialize )
 		m_EntryFile->InsertLine(lineEntry);
 
 		//保存到数据库
-		ArxWrapper::PostToNameObjectsDict(lineEntry,lineEntry->LINE_ENTRY_LAYER);
+		ArxWrapper::PostToNameObjectsDict(lineEntry,LineEntry::LINE_ENTRY_LAYER);
 
 		//保存到导出文件
 		m_EntryFile->Persistent();

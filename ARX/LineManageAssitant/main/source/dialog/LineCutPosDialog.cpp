@@ -27,6 +27,8 @@
 
 #include <ArxCustomObject.h>
 
+#include <GlobalDataConfig.h>
+
 using namespace com::guch::assistant::arx;
 
 // LineCutPosDialog dialog
@@ -241,13 +243,38 @@ void LineCutPosDialog::GenereateCutRegion(LineEntry* lineEntry)
 		if( pSelectionRegion )
 		{
 			//创建切面所在的图层
-			ArxWrapper::createNewLayer(m_CutLayerName.GetBuffer());
+			if( ArxWrapper::createNewLayer(m_CutLayerName.GetBuffer()) == false )
+				return;
 
 			//将截面加入到模型空间
-			ArxWrapper::PostToModelSpace(pSelectionRegion,m_CutLayerName.GetBuffer());
+			if( ArxWrapper::PostToModelSpace(pSelectionRegion,m_CutLayerName.GetBuffer()) == false )
+				return;
 
 			//创建该界面的填充区域
-			ArxWrapper::CreateHatch(pSelectionRegion,L"JIS_LC_20", true, m_CutLayerName.GetBuffer(), m_CutPlane, m_strOffset);
+			ArxWrapper::CreateHatch(pSelectionRegion,L"NET", true, m_CutLayerName.GetBuffer(), m_CutPlane, m_strOffset);
+
+			{
+				//得到注释的中心点
+				AcGePoint3d centerPoint = pLMALine->GetCutCenter(m_CutPlane);
+
+				//设置注释的内容
+				CString markContent;
+
+				if( pLMALine->mLineShape == GlobalData::LINE_SHAPE_CIRCLE )
+				{
+					markContent.Format(L"管线【%s】号段【%d】半径【%0.2lf】",pLMALine->mLineEntry->m_LineName.c_str(),
+								pLMALine->mSequenceNO,pLMALine->mRadius);
+				}
+				else if ( pLMALine->mLineShape == GlobalData::LINE_SHAPE_SQUARE )
+				{
+					markContent.Format(L"管线【%s】号段【%d】长【%0.2lf】宽【%0.2lf】",pLMALine->mLineEntry->m_LineName.c_str(),
+						pLMALine->mSequenceNO,pLMALine->mLength,pLMALine->mWidth);
+				}
+
+				//创建截图区域的注释
+				ArxWrapper::CreateMLeader(centerPoint,this->m_strOffset,this->m_Direction,
+					markContent.GetBuffer(),m_CutLayerName.GetBuffer());
+			}
 		}
 	}
 }

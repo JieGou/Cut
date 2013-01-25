@@ -85,3 +85,5 @@ tmpStr = NULL;    // must explicitly set to NULL or readItem() crashes!
 27. Radio Button的ID序号一致（需要确认）。但只需要（能）第一个button的Group属性值为true。
 
 28. PickUp Button的图片，需要时Owner Draw，且初始化在Dialog初始化后
+
+29. 生成的与X轴垂直的平面的切面的引线不符合要求。

@@ -25,17 +25,36 @@
 // Hatch
 #include <dbhatch.h>
 
+// Leader
+#include <dblead.h>
+#include <dbmleader.h>
+
 // Custom object
 #include <ArxCustomObject.h>
+
+#include <LMAException.h>
 
 #include <LMAUtils.h>
 
 void TestHatch();
 void TestText();
+void TestLeader();
+void TestMLeader();
 
 using namespace com::guch::assistant::arx;
 using namespace com::guch::assistant::data;
 using namespace com::guch::assistant::config;
+using namespace com::guch::assistant::exception;
+
+const double ArxWrapper::kPi       = 3.14159265358979323846;
+const double ArxWrapper::kHalfPi   = 3.14159265358979323846 / 2.0;
+const double ArxWrapper::kTwoPi	  = 3.14159265358979323846 * 2.0;
+const double ArxWrapper::kRad45    = 3.14159265358979323846 / 4.0;
+const double ArxWrapper::kRad90    = 3.14159265358979323846 / 2.0;
+const double ArxWrapper::kRad135   = (3.14159265358979323846 * 3.0) / 4.0;
+const double ArxWrapper::kRad180   = 3.14159265358979323846;
+const double ArxWrapper::kRad270   = 3.14159265358979323846 * 1.5;
+const double ArxWrapper::kRad360   = 3.14159265358979323846 * 2.0;
 
 /**
  * 将对象放置在命名词典中
@@ -115,7 +134,7 @@ AcDbObjectId ArxWrapper::PostToNameObjectsDict(AcDbObject* pObj,const wstring& k
 						rxErrorMsg(es);
 					}
 
-					pObj->close();
+					//pObj->close();
 				}
 			}
 
@@ -183,44 +202,141 @@ void ArxWrapper::PullFromNameObjectsDict()
 AcDbObjectId ArxWrapper::PostToModelSpace(AcDbEntity* pEnt,const wstring& layerName )
 {
 	AcDbObjectId entId;
+	Acad::ErrorStatus es;
+
+	if( !pEnt )
+		return 0;
 
 #ifdef DEBUG
 	acutPrintf(L"\n加入实体【%p】到图层【%s】",pEnt,layerName.c_str());
 #endif 
 
+	AcDbBlockTable *pBlockTable(NULL);
+	AcDbBlockTableRecord *pBlockTableRecord(NULL);
+
 	try
 	{
-		if( !pEnt )
-			return 0;
-
 		//打开块表数据库
-		AcDbBlockTable *pBlockTable;
-		acdbHostApplicationServices()->workingDatabase()
-			->getBlockTable(pBlockTable, AcDb::kForRead);
+		es = acdbHostApplicationServices()->workingDatabase()->getBlockTable(pBlockTable, AcDb::kForWrite);
+		if( es != Acad::eOk )
+			throw ErrorException(L"打开块表记录失败");
 
 		//得到模型空间
-		AcDbBlockTableRecord *pBlockTableRecord;
-		pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRecord,
-		AcDb::kForWrite);
+		es = pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRecord, AcDb::kForWrite);
+		if( es != Acad::eOk )
+			throw ErrorException(L"打开模块空间记录失败");
 
 		//加入实体
-		pBlockTableRecord->appendAcDbEntity(entId, pEnt);
-		pEnt->setLayer(layerName.c_str());
+		es = pBlockTableRecord->appendAcDbEntity(entId, pEnt);
+		if( es != Acad::eOk )
+			throw ErrorException(L"添加实体记录失败");
+
+		es = pEnt->setLayer(layerName.c_str());
+		if( es != Acad::eOk )
+			throw ErrorException(L"设置实体所在的图层失败");
 
 		//关闭实体
-		pBlockTable->close();
-		pBlockTableRecord->close();
-		pEnt->close();
+		//pEnt->close();
 	}
 	catch(const Acad::ErrorStatus es)
 	{
 		acutPrintf(L"\n操作数据库发生异常！");
 		rxErrorMsg(es);
 	}
+	catch( const ErrorException& e)
+	{
+		acutPrintf(L"\n创建新的实体记录失败【%s】",e.errMsg.c_str());
+		rxErrorMsg(es);
+	}
+
+	if( pBlockTableRecord != NULL )
+		pBlockTableRecord->close();
+
+	if( pBlockTable != NULL )
+		pBlockTable->close();
 
 	return entId;
 }
 
+
+/**
+ * 将对象从模型空间中的某一层上删除
+ **/
+Acad::ErrorStatus ArxWrapper::RemoveFromModelSpace(const AcDbHandle& handle,const wstring& layerName )
+{
+	AcDbObjectId entId;
+
+	try
+	{
+		if( handle.isNull() )
+			return Acad::eOk;
+
+		//打开块表数据库
+		AcDbBlockTable *pBlockTable;
+		acdbHostApplicationServices()->workingDatabase()
+			->getBlockTable(pBlockTable, AcDb::kForWrite);
+
+		//得到模型空间
+		AcDbBlockTableRecord *pBlockTableRecord;
+		pBlockTable->getAt(ACDB_MODEL_SPACE, pBlockTableRecord,
+		AcDb::kForWrite);
+
+		//遍历数据库
+		AcDbBlockTableRecordIterator* iter;
+		Acad::ErrorStatus es = pBlockTableRecord->newIterator(iter);
+        if (es != Acad::eOk) 
+		{
+			acutPrintf(L"\n打开数据库失败了");
+            rxErrorMsg(es);
+            pBlockTableRecord->close();
+        }
+        else 
+		{
+            AcDbEntity* ent;
+            for (; !iter->done(); iter->step()) 
+			{
+                if (iter->getEntity(ent, AcDb::kForWrite) == Acad::eOk) 
+				{
+					AcDbHandle entHandle;
+					ent->getAcDbHandle(entHandle);
+
+					if( !entHandle.isNull() )
+					{
+						if( entHandle == handle )
+						{
+#ifdef DEBUG
+							acutPrintf(L"\n对象找到了，删除并关闭掉");
+#endif						
+							ent->erase();
+							ent->close();
+							break;
+						}
+					}
+					else
+					{
+						acutPrintf(L"\n根据Handle删除对象时出错！");
+					}
+                }
+            }
+
+			//把迭代器删了，防内存泄露
+            delete iter;
+        }
+
+		//关闭实体
+		pBlockTable->close();
+		pBlockTableRecord->close();
+
+		return Acad::eOk;
+	}
+	catch(const Acad::ErrorStatus es)
+	{
+		acutPrintf(L"\n操作数据库发生异常！");
+		rxErrorMsg(es);
+
+		return Acad::eOutOfMemory;
+	}
+}
 
 /**
  * 将对象从模型空间中的某一层上删除
@@ -297,42 +413,59 @@ Acad::ErrorStatus ArxWrapper::RemoveFromModelSpace(AcDbEntity* pEnt,const wstrin
 bool ArxWrapper::createNewLayer(const wstring& layerName)
 {
 	bool result = false;
-
-	//打开层表数据库
+	Acad::ErrorStatus es;
+		
 	AcDbLayerTable *pLayerTable;
-    acdbHostApplicationServices()->workingDatabase()
-        ->getSymbolTable(pLayerTable, AcDb::kForWrite);
+	AcDbLayerTableRecord *pLayerTableRecord = NULL;
 
-	if( pLayerTable )
+	try
 	{
-		AcDbLayerTableRecord *pLayerTableRecord = NULL;
+		//打开层表数据库
+		es = acdbHostApplicationServices()->workingDatabase()
+			->getSymbolTable(pLayerTable, AcDb::kForWrite);
+
+		if( es != Acad::eOk )
+			throw ErrorException(L"打开层表记录失败");
 
 		//层表不存在，则创建
-		if(!pLayerTable->has(layerName.c_str()))
+		if( pLayerTable->has(layerName.c_str()) )
 		{
-			acutPrintf(L"\n创建图层【%s】",layerName.c_str());
+			acutPrintf(L"\n图层【%s】已存在,无需创建",layerName.c_str());
+			pLayerTable->close();
 
-			//构建新的层表记录
-			AcDbLayerTableRecord *pLayerTableRecord =
-				new AcDbLayerTableRecord;
-			pLayerTableRecord->setName(layerName.c_str());
-
-			// Defaults are used for other properties of 
-			// the layer if they are not otherwise specified.
-			pLayerTable->add(pLayerTableRecord);
-
-			result = true;
-		}
-		else
-		{
-			acutPrintf(L"\n图层【%s】已存在",layerName.c_str());
+			return true;
 		}
 
+#ifdef DEBUG
+		acutPrintf(L"\n创建图层【%s】",layerName.c_str());
+#endif
+
+		//构建新的层表记录
+		AcDbLayerTableRecord *pLayerTableRecord = new AcDbLayerTableRecord;
+		es = pLayerTableRecord->setName(layerName.c_str());
+
+		if( es != Acad::eOk )
+			throw ErrorException(L"设置新层表记录的名字失败");
+
+		// Defaults are used for other properties of 
+		// the layer if they are not otherwise specified.
+		es = pLayerTable->add(pLayerTableRecord);
+		if( es != Acad::eOk )
+			throw ErrorException(L"加入新的层表记录失败");
+
+		result = true; 
+	}
+	catch( const ErrorException& e)
+	{
+		acutPrintf(L"\n创建新的层表记录失败【%s】",e.errMsg.c_str());
+		rxErrorMsg(es);
+	}
+
+	if( pLayerTable != NULL )
 		pLayerTable->close();
 
-		if( pLayerTableRecord )
-			pLayerTableRecord->close();
-	}
+	if( pLayerTableRecord != NULL )
+		pLayerTableRecord->close();
 
 	return result;
 }
@@ -579,15 +712,15 @@ AcDb3dSolid* ArxWrapper::DrawCylinder(const UINT& lineID,
 										const AcGePoint3d& start,
 										const AcGePoint3d& end,
 										const wstring& layerName,
-										const double& radius )
+										LineEntry& entry )
 {
 #ifdef DEBUG
-	acutPrintf(L"\n绘制圆柱体实例，加入到图层空间\n");
+	acutPrintf(L"\n绘制柱体实例，加入到图层空间\n");
 #endif
 
 	LMALineDbObject* lmaLineObj = new LMALineDbObject(Adesk::Int32(lineID),
 															Adesk::Int32(sequenceID),
-															start,end,radius,NULL);
+															start,end,&entry);
 	PostToModelSpace(lmaLineObj,layerName);
 
 	return lmaLineObj;
@@ -604,37 +737,11 @@ void ArxWrapper::createLMALine( const LineEntry& lineEntry )
 
 	try
 	{
-		//得到实体的属性
-		LineCategoryItemData* lineCategory = LineConfigDataManager::Instance()->FindByKind(lineEntry.m_LineKind);
-		if( !lineCategory )
-		{
-			acutPrintf(L"\n管线【%s】编号【%s】类型【%s】没有配置数据，不能创建3D模型。\n",lineEntry.m_LineName.c_str(),lineEntry.m_LineNO.c_str(),lineEntry.m_LineKind.c_str());
-			return;
-		}
-		
 		//首先创建图层
 		createNewLayer(lineEntry.m_LineName);
 
-		//如果是圆柱
-		if( lineCategory->mShape == GlobalData::LINE_SHAPE_CIRCLE )
-		{
-			//得到半径
-			const wstring& rRadius = lineCategory->mRadius;
-
-			double radius = _wtol(rRadius.c_str());
-
-			//然后创建柱体
-#ifdef DEBUG
-			acutPrintf(L"\n绘制圆柱体，半径为【%lf】\n",radius);
-#endif
-			DrawPolyCylinder(lineEntry,radius);
-		}
-		else if ( lineCategory->mShape == GlobalData::LINE_SHAPE_SQUARE )
-		{
-			//得到长宽
-
-			//创建方柱体
-		}
+		//绘制3D模型
+		DrawPolyCylinder(lineEntry);
 	}
 	catch(const Acad::ErrorStatus es)
 	{
@@ -646,7 +753,7 @@ void ArxWrapper::createLMALine( const LineEntry& lineEntry )
 /**
  * 创建多线段3D折线
  **/
-void ArxWrapper::DrawPolyCylinder( const LineEntry& lineEntry, const double& radius)
+void ArxWrapper::DrawPolyCylinder( const LineEntry& lineEntry )
 {
 	const PointList& points = *(lineEntry.m_PointList);
 	const wstring& layerName = lineEntry.m_LineName;
@@ -675,7 +782,7 @@ void ArxWrapper::DrawPolyCylinder( const LineEntry& lineEntry, const double& rad
 										(*iter)->m_Point[Z]);
 
 			//创建3D柱体代表直线
-			AcDb3dSolid* pNewLine = DrawCylinder( lineEntry.m_LineID, (*iter)->m_PointNO, *pStart, *pEnd, layerName,radius );
+			AcDb3dSolid* pNewLine = DrawCylinder( lineEntry.m_LineID, (*iter)->m_PointNO, *pStart, *pEnd, layerName, const_cast<LineEntry&>(lineEntry) );
 
 			//保存实例的ObjectID
 			//(*iter)->m_EntryId = pNewLine->objectId();
@@ -737,7 +844,17 @@ void ArxWrapper::eraseLMALine(const LineEntry& lineEntry, bool old)
 #ifdef DEBUG
 				acutPrintf(L"\n线段终点 序号【%d】 坐标 x:【%lf】y:【%lf】z:【%lf】被删除",(*iter)->m_PointNO,(*iter)->m_Point[X],(*iter)->m_Point[Y],(*iter)->m_Point[Z]);
 #endif
-				RemoveFromModelSpace((*iter)->m_pEntry,lineEntry.m_LineName);
+
+				LMALineDbObject* pLineObject = dynamic_cast<LMALineDbObject*>((*iter)->m_pEntry);
+
+				if( pLineObject )
+				{
+					RemoveFromModelSpace(pLineObject->mHandleDim,lineEntry.m_LineName);
+					
+					RemoveFromModelSpace(pLineObject->mHandleText,lineEntry.m_LineName);
+
+					RemoveFromModelSpace(pLineObject,lineEntry.m_LineName);
+				}
 			}
 		}
 	}
@@ -872,11 +989,122 @@ AcDbObjectId ArxWrapper::CreateHatch(AcDbEntity* entity,const wstring& patName, 
 	return ArxWrapper::CreateHatch(objIds,patName,bAssociative,layerName,normal,distance);
 }
 
+AcDbObjectId ArxWrapper::CreateMLeader(const AcGePoint3d& start, const int& offset, const int& direction,
+											const wstring& content, const wstring& layerName)
+{
+	static int leaderOffset = 6;
+
+	//标注的起点
+	AcGePoint3d startPoint(start);
+
+		//进行相应的转换
+	{
+		if( direction == 1 )
+		{
+#ifdef DEBUG
+			acutPrintf(L"\n切面与X轴垂直,把Z轴位置转换为Y，把Y轴位置转换为X");
+#endif
+			startPoint.y = start.z;
+			startPoint.x = start.y;
+		}
+		else if ( direction == 2 )
+		{
+#ifdef DEBUG
+			acutPrintf(L"\n切面与Y轴垂直，把Z轴位置转换为Y轴位置");
+#endif		
+			startPoint.y = start.z;
+			startPoint.z = 0;
+		} 
+	}
+
+	//折点为编译6个单位，且位置在左下方
+	AcGePoint3d endPoint(start.x - leaderOffset, start.y - leaderOffset, start.z);
+
+    AcDbMLeader* leader = new AcDbMLeader;
+
+	//设置标注的内容
+	{
+		int index = 0;
+		leader->addLeaderLine(startPoint,index);
+
+		leader->addLastVertex(index,endPoint);
+		leader->setLastVertex(index,endPoint);
+
+		leader->setContentType(AcDbMLeaderStyle::kMTextContent);
+
+		//设置标注的文字
+		AcDbMText* mtext = new AcDbMText;
+		mtext->setContents(content.c_str());
+
+		mtext->setTextHeight(mtext->textHeight()/2);
+
+		leader->setMText(mtext);
+	}
+
+	//进行相应的转换
+	{
+		if( direction == 1 )
+		{
+#ifdef DEBUG
+			acutPrintf(L"\n切面与X轴垂直,先沿X轴翻转到XZ平面，然后绕Z轴翻转到ZY平面，最后沿X轴平移");
+#endif
+			//进行翻转到XZ平面
+			AcGeMatrix3d rotateMatrix = AcGeMatrix3d::rotation( ArxWrapper::kRad90, AcGeVector3d::kYAxis, AcGePoint3d::kOrigin);
+			leader->transformBy(rotateMatrix);
+
+			//进行翻转到YZ平面
+			rotateMatrix = AcGeMatrix3d::rotation( ArxWrapper::kRad90, AcGeVector3d::kXAxis, AcGePoint3d::kOrigin);
+			leader->transformBy(rotateMatrix);
+
+			//进行偏移
+			AcGeMatrix3d moveMatrix;
+			moveMatrix.setToTranslation(AcGeVector3d(offset,0,0));
+
+			leader->transformBy(moveMatrix);
+		}
+		else if ( direction == 2 )
+		{
+#ifdef DEBUG
+			acutPrintf(L"\n切面与Y轴垂直,先沿X轴翻转到XZ平面，然后沿Y轴平移");
+#endif		
+			//进行翻转
+			AcGeMatrix3d rotateMatrix = AcGeMatrix3d::rotation( ArxWrapper::kRad90, AcGeVector3d::kXAxis, AcGePoint3d::kOrigin);
+			leader->transformBy(rotateMatrix);
+
+			//进行偏移
+			AcGeMatrix3d moveMatrix;
+			moveMatrix.setToTranslation(AcGeVector3d(0,offset,0));
+
+			leader->transformBy(moveMatrix);
+		} 
+		else if ( direction == 3 )
+		{
+#ifdef DEBUG
+			acutPrintf(L"\n切面与Z轴垂直，因此标注进行偏移即可");
+#endif		
+			//进行偏移
+			AcGeMatrix3d moveMatrix;
+			moveMatrix.setToTranslation(AcGeVector3d(0,0,offset));
+
+			leader->transformBy(moveMatrix);
+		}
+	}
+
+	//添加到模型空间中
+	ArxWrapper::PostToModelSpace(leader,layerName);
+
+	return leader->objectId();
+}
+
 void ArxWrapper::TestFunction()
 {
 	//TestHatch();
 
-	TestText();
+	//TestText();
+
+	//TestLeader();
+
+	TestMLeader();
 }
 
 void TestHatch()
@@ -930,4 +1158,90 @@ void TestText()
 		AcGePoint3d ptInsert(pt[X], pt[Y], pt[Z]);
 		CreateText(ptInsert, L"测试文字");
 	}
+}
+
+void TestMLeader()
+{
+	AcGePoint3dArray vertices;
+	AcGePoint3d startPoint,endPoint;
+
+	{
+		ads_point pt;
+
+		if (acedGetPoint(NULL, _T("\n选取MLeader开始点: "), pt) != RTNORM) 
+			return;
+
+		startPoint.x = pt[X];
+		startPoint.y = pt[Y];
+		startPoint.z = pt[Z];
+
+		//if (acedGetPoint(NULL, _T("\n选取MLeader结束点: "), pt) != RTNORM) 
+		//	return;
+
+		endPoint.x = pt[X] - 9;
+		endPoint.y = pt[Y] - 9;
+		endPoint.z = pt[Z];
+	}
+
+    AcDbMLeader* leader = new AcDbMLeader;
+
+	int index = 0;
+	leader->addLeaderLine(startPoint,index);
+
+	leader->addLastVertex(index,endPoint);
+	leader->setLastVertex(index,endPoint);
+
+	leader->setContentType(AcDbMLeaderStyle::kMTextContent);
+
+	AcDbMText* mtext = new AcDbMText;
+	mtext->setContents(L"动力线1#【半径10】");
+
+	leader->setMText(mtext);
+	ArxWrapper::PostToModelSpace(leader,L"0");
+}
+
+void TestLeader()
+{
+    AcGePoint3dArray vertices;
+	AcGePoint3d startPoint;
+
+	{
+		ads_point pt;
+
+		if (acedGetPoint(NULL, _T("\n选取输入点: "), pt) != RTNORM) 
+			return;
+
+		startPoint.x = pt[X];
+		startPoint.y = pt[Y];
+		startPoint.z = pt[Z];
+	}
+		
+	AcGePoint3d endPoint(startPoint.x + 1,startPoint.y-2,0);
+	AcGePoint3d lastPoint(startPoint.x + 5,startPoint.y-2,0);
+
+	vertices.append(startPoint);
+	vertices.append(endPoint);
+	vertices.append(lastPoint);
+
+    AcDbLeader* leader = new AcDbLeader;
+
+    for (int i=0;i<3;i++)
+        leader->appendVertex(vertices[i]);
+
+    leader->setToSplineLeader();    // set to spline just for fun
+    leader->setDatabaseDefaults();    // pick up default dimstyle, etc.
+
+	AcDbMText* mtext = new AcDbMText;
+    //mtext->setLocation(prInsertPt.value());
+    //mtext->setWidth(fabs(prInsertPt.value().x - prCorner.value().x));
+
+	mtext->setContents(L"1#动力线，半径10");
+	mtext->setDirection(AcGeVector3d(1,0,0));
+	mtext->setLocation(endPoint);
+	mtext->setHeight(0.5);
+
+	ArxWrapper::PostToModelSpace(mtext,L"0");
+
+	leader->setAnnotationObjId(mtext->objectId());
+	ArxWrapper::PostToModelSpace(leader,L"0");
 }
