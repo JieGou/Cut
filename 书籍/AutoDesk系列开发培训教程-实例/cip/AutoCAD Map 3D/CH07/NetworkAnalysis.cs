@@ -276,11 +276,11 @@ namespace CH07
         /// <returns> 
         /// Returns true if successful.
         /// </returns>
-        private bool SelectNode(ref Node selectedNode, string promptString, TopologyModel mapTopology)
+        private unsafe bool SelectNode(ref Node selectedNode, string promptString, TopologyModel mapTopology)
         {
 	        // Select the node
 	        Point3d selectedPoints = new Point3d(0.0,0.0,0.0);
-	        ObjectId objSelectedNode = new ObjectId();
+	        //ObjectId objSelectedNode = new ObjectId();
 
 	        MapApplication app = HostMapApplicationServices.Application;
 	        Editor editor = app.GetDocument(app.ActiveProject).Editor;
@@ -295,11 +295,12 @@ namespace CH07
 		        Point3d ac3dPoint = HelperFunctions.Ucs2Wcs(selectedPoints);
 
 		        double distance = 0.0;
+                double* ptr = &distance;
 
-		        // Create the Node from the point selected
-		        try
+                // Create the Node from the point selected
+                try
 		        {
-			        mapTopology.FindNode(ref selectedNode, ref distance, ac3dPoint);
+			        mapTopology.FindNode(ref selectedNode, ptr, ac3dPoint);
 					return true;
 		        }
 		        catch (MapException e)

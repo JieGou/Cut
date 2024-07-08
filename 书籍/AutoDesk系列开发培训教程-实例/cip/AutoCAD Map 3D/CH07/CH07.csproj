@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -25,10 +25,13 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Debug\</OutputPath>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
@@ -45,6 +48,7 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -65,19 +69,26 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AcCoreMgd">
+      <HintPath>C:\ObjectARX 2022\inc\AcCoreMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="acdbmgd">
       <Name>acdbmgd</Name>
-      <HintPath>..\..\..\..\..\..\..\Program Files\AutoCAD Civil 3D 2008\acdbmgd.dll</HintPath>
+      <HintPath>C:\ObjectARX 2022\inc\acdbmgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="acmgd">
       <Name>acmgd</Name>
-      <HintPath>..\..\..\..\..\..\..\Program Files\AutoCAD Civil 3D 2008\acmgd.dll</HintPath>
+      <HintPath>C:\ObjectARX 2022\inc\acmgd.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ManagedMapApi">
-      <Name>ManagedMapApi</Name>
-      <HintPath>..\..\..\..\..\..\..\Program Files\AutoCAD Civil 3D 2008\ManagedMapApi.dll</HintPath>
+      <HintPath>..\Dlls\ManagedMapApi.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -127,6 +138,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Content Include="使用说明.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dwg\Create_Map_Topology.dwg" />
+    <None Include="Dwg\Create_Map_Topology.dwl" />
+    <None Include="Dwg\Create_Map_Topology.dwl2" />
+    <None Include="Dwg\Display_Topology_Info.dwg" />
+    <None Include="Dwg\Find_Best_Path.dwg" />
+    <None Include="Dwg\Find_Polygon_Area_By_Point.dwg" />
+    <None Include="Dwg\Find_Shortest_Path.dwg" />
+    <None Include="Dwg\Polygon_Union_Overlay.dwg" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
