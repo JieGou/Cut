@@ -31,6 +31,7 @@
 
 using System;
 using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.AutoCAD.Runtime;
 
 namespace CH07
 {
@@ -42,7 +43,7 @@ namespace CH07
 		/// <summary>
 		/// Lists the Commands this sample provided.
 		/// </summary>
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("CmdList")]
+        [CommandMethod("CmdList")]
         public static void CmdList()
         {
 	        Utility.AcadEditor.WriteMessage("\n Topology sample commands : \n");
@@ -59,7 +60,7 @@ namespace CH07
 	        Utility.AcadEditor.WriteMessage("** CreateTable\n");
         }
 
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("DisplayTopologyInfo")]
+        [CommandMethod("DisplayTopologyInfo")]
         public void DisplayTopologyInfo()
         {
             TopologyInfoDisplayer displayer = new TopologyInfoDisplayer();
@@ -67,70 +68,70 @@ namespace CH07
         }
 
     	
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("CreateMapTopology")]
+        [CommandMethod("CreateMapTopology")]
         public void CreateMapTopology()
         {
             MapTopologyCreator creator = new MapTopologyCreator();
             creator.CreateMapTopology();
         }
 
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("FindAreaByPoint")]
+        [CommandMethod("FindAreaByPoint")]
         public void FindAreaByPoint()
         {
             TopoPolygonAreaFinder finder = new TopoPolygonAreaFinder();
             finder.FindAreaByPoint();
         }
 
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("FindShortestPath")]
+        [CommandMethod("FindShortestPath")]
         public void FindShortestPath()
         {
             NetworkAnalysis analysis = new NetworkAnalysis();
             analysis.FindShortestPath();
         }
 
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("FindBestPath")]
+        [CommandMethod("FindBestPath")]
         public void FindBestPath()
         {
             NetworkAnalysis analysis = new NetworkAnalysis();
             analysis.FindBestPath();
         }
 
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("PolygonUnion")]
+        [CommandMethod("PolygonUnion")]
         public void Union()
         {
             PolygonOverlay overlay = new PolygonOverlay();
             overlay.Union();
         }
 
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("FindRingsAndEdges")]
+        [CommandMethod("FindRingsAndEdges")]
         public void FindRingsAndEdges()
         {
             RingsAndEdges ringEdges = new RingsAndEdges();
             ringEdges.FindRingsAndEdges();
         }
 
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("AddGeometryToTopology")]
+        [CommandMethod("AddGeometryToTopology")]
         public void AddGeometryToTopology()
         {
             TopologyGeometryModifier modifier = new TopologyGeometryModifier();
             modifier.AddGeometryToExistingTopology ();
         }
 
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("ChangeTopologyName")]
+        [CommandMethod("ChangeTopologyName")]
         public void ChangeTopologyName()
         {
             MapTopologyCreator creator = new MapTopologyCreator();
             creator.ChangeTopologyName();
         }
 
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("ChangeTopologyDescription")]
+        [CommandMethod("ChangeTopologyDescription")]
         public void ChangeTopologyDescription()
         {
             MapTopologyCreator creator = new MapTopologyCreator();
             creator.ChangeTopologyDescription();
         }
 
-        [Autodesk.AutoCAD.Runtime.CommandMethodAttribute("CreateTable")]
+        [CommandMethod("CreateTable")]
         public void CreateTable()
         {
             TpmidTableCreator creator = new TpmidTableCreator();

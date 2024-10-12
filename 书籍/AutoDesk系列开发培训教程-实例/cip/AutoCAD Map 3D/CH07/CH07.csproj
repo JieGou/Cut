@@ -74,7 +74,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ManagedMapApi">
-      <HintPath>..\..\..\..\..\..\Autocad-Civil3d-Tools\Acad-C3D-Tools\Dlls\ManagedMapApi.dll</HintPath>
+      <HintPath>..\Dlls\ManagedMapApi.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -124,6 +124,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Content Include="使用说明.txt" />
+  </ItemGroup>
+    <ItemGroup>
+    <None Include="Dwg\Create_Map_Topology.dwg" />
+    <None Include="Dwg\Display_Topology_Info.dwg" />
+    <None Include="Dwg\Find_Best_Path.dwg" />
+    <None Include="Dwg\Find_Polygon_Area_By_Point.dwg" />
+    <None Include="Dwg\Find_Shortest_Path.dwg" />
+    <None Include="Dwg\Polygon_Union_Overlay.dwg" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Chuongmep.Acad.Api.accoremgd">
